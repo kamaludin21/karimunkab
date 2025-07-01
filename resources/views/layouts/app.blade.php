@@ -63,12 +63,14 @@
             Berita
           </a>
         </li>
+        <li>
+          <a href="/pariwisata"
+            class="{{ ($activePage ?? '') === 'pariwisata' ? 'text-orange-600 border-b-2' : 'hover:text-slate-700 border-transparent border-b-2' }} h-full block hover:border-b-2 py-2">
+            Pariwisata
+          </a>
+        </li>
         <li class="py-2">
           Informasi Publik
-        </li>
-
-        <li class="py-2">
-          Pariwisata
         </li>
         <li class="py-2">
           PPID
