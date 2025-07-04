@@ -119,6 +119,23 @@
     </section>
   </div>
 
+  <section class="w-full bg-white py-20">
+    <div class="max-w-screen-lg bg-white mx-auto gap-2">
+      <div>
+         <p class="text-4xl font-medium text-slate-800">Pengumuman</p>
+      </div>
+
+      <div class="grid grid-cols-2">
+        <div>
+          <img class="w-full h-96 rounded-3xl object-cover" src="{{ asset('img/pattern.png') }}" alt="">
+        </div>
+      </div>
+
+    </div>
+
+
+  </section>
+
   {{-- Berita --}}
   <section class="w-full bg-white py-20">
     <div class="max-w-screen-lg bg-white mx-auto grid gap-6">

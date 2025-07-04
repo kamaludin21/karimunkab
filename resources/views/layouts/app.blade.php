@@ -23,7 +23,7 @@
 </head>
 
 <body class="grid bg-slate-100">
-  <nav class="bg-white sticky top-0 z-10 shadow">
+  <nav class="bg-white sticky top-0 z-50 shadow">
     <div class=" max-w-screen-lg px-2 lg:px-0 flex justify-between mx-auto w-full py-4">
       <div class="flex gap-6">
         <img src="{{ asset('assets/images/logo_kab.png') }}" class="w-12 h-auto hover:scale-110 duration-200"
