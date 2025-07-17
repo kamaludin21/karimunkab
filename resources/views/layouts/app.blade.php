@@ -59,24 +59,56 @@
         </li>
         <li>
           <a href="/berita"
-            class="{{ ($activePage ?? '') === 'berita' ? 'text-orange-600 border-b-2' : 'hover:text-slate-700 border-transparent border-b-2' }} h-full block hover:border-b-2 py-2">
-            Berita
+            class="{{ ($activePage ?? '') === 'berita' ? 'text-orange-600 border-b-2' : 'hover:text-slate-700 border-transparent border-b-2' }} h-full block hover:border-b-2 py-2 uppercase">
+            berita
           </a>
+        </li>
+        <li class="group relative">
+          <a href="javacript:void(0)"
+            class="{{ ($activePage ?? '') === 'informasi-publik' ? 'text-orange-600 border-b-2' : 'hover:text-slate-700 border-transparent border-b-2' }} h-full block hover:border-b-2 py-2 flex items-center gap-1">
+            <span>Informasi Publik</span>
+            <x-icons.chevron-down class="h-5 w-5 stroke-2 group-hover:rotate-180 duration-300" />
+          </a>
+          <div
+            class="hidden group-hover:block bg-white p-1 min-w-40 w-full h-auto rounded absolute top-full ring-1 ring-slate-300 grid">
+            <div class="hover:bg-slate-100 p-2 rounded">
+              <a href="/pengumuman" class="">
+                Pengumuman
+              </a>
+            </div>
+            <div class="hover:bg-slate-100 p-2 rounded">
+              <a href="/arsip-dokumen" class="">
+                Arsip Dokumen
+              </a>
+            </div>
+          </div>
         </li>
         <li>
-          <a href="/pariwisata"
-            class="{{ ($activePage ?? '') === 'pariwisata' ? 'text-orange-600 border-b-2' : 'hover:text-slate-700 border-transparent border-b-2' }} h-full block hover:border-b-2 py-2">
-            Pariwisata
+          <a href="/tautan-aplikasi"
+            class="{{ ($activePage ?? '') === 'tautan-aplikasi' ? 'text-orange-600 border-b-2' : 'hover:text-slate-700 border-transparent border-b-2' }} h-full block hover:border-b-2 py-2 uppercase">
+            Tautan Aplikasi
           </a>
         </li>
-        <li class="py-2">
-          Informasi Publik
-        </li>
-        <li class="py-2">
-          PPID
-        </li>
-        <li class="py-2">
-          Sekapur Sirih
+        <li class="group relative">
+          <a href="javacript:void(0)"
+            class="{{ ($activePage ?? '') === 'ppid' ? 'text-orange-600 border-b-2' : 'hover:text-slate-700 border-transparent border-b-2' }} h-full block hover:border-b-2 py-2 flex items-center gap-1">
+            <span>PPID</span>
+            <x-icons.chevron-down class="h-5 w-5 stroke-2 group-hover:rotate-180 duration-300" />
+          </a>
+          <div
+            class="hidden group-hover:block bg-white p-1 min-w-40 w-max h-auto rounded absolute top-full ring-1 ring-slate-300 grid">
+            <div class="hover:bg-slate-100 p-2 rounded">
+              <a href="/arsip-dokumen" class="">
+                Permohonan Informasi Publik
+              </a>
+            </div>
+            <div class="hover:bg-slate-100 p-2 rounded">
+              <a href="/arsip-dokumen" class="">
+                Informasi Publik Berkala
+              </a>
+            </div>
+
+          </div>
         </li>
       </ul>
     </div>
@@ -91,23 +123,13 @@
       <div class="">
         {{-- Line 1 --}}
         <div class="flex py-8 border-b border-slate-500">
-          <div class="flex-1">
-            <p class="leading-8">Quick Link</p>
-            <ul class="text-sm font-light leading-6">
-              <li>Umpan Balik</li>
-              <li>Peta Situs</li>
-            </ul>
+          <div class="flex-1 space-y-2">
+            <img src="{{ asset('assets/images/logo_kab.png') }}" class="w-32 h-auto" alt="">
           </div>
-          <div class="flex-1">
-            <p class="leading-8">Legalitas</p>
-            <ul class="text-sm font-light leading-6">
-              <li>Ketentuan Layanan</li>
-              <li>Kebijakan Privasi</li>
-              <li>Kebijakan Cookie</li>
-            </ul>
-          </div>
+
+
           <div class="w-2/4">
-            <p class="text-9xl tracking-wide font-bold text-right text-slate-50">BUMI</p>
+            <p class="text-9xl tracking-wide font-bold text-right text-slate-50/40">BUMI</p>
           </div>
         </div>
 
@@ -115,13 +137,16 @@
         <div class="flex py-8 items-end">
           <div class="flex-1">
             <p class="text-slate-200 text-base font-normal">KABUPATEN KARIMUN</p>
-            <p class="text-sm font-light">DISKOMINFO &#169; 2025 </p>
+            <p class="text-sm font-light">DISKOMINFO</p>
           </div>
-          <p class="w-3/4 leading-[0.8] text-9xl tracking-wide font-bold text-right text-slate-50">
+          <p class="w-3/4 leading-[0.8] text-9xl tracking-wide font-bold text-right text-slate-50/40">
             <span class="align-[0px]">BERAZAM</span>
           </p>
         </div>
       </div>
     </div>
   </footer>
+  <div class="w-full bg-orange-600 py-1">
+    <p class="text-sm text-center font-light text-slate-100">Copyright &copy; 2025 </p>
+  </div>
 </body>

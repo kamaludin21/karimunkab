@@ -11,6 +11,29 @@
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+.bg-pattern {
+  background:
+    linear-gradient(45deg, #0000 71%, #94a3b8 0 79%, #0000 0) calc(69px / -2)
+      calc(69px / 2) / calc(2 * 69px) calc(2 * 69px),
+    linear-gradient(135deg, #0000 71%, #94a3b8 0 79%, #0000 0) calc(69px / 2)
+      calc(69px / 2) / calc(2 * 69px) calc(2 * 69px),
+    radial-gradient(#94a3b8 35%, #f1f5f9 37%) 0 0/69px 69px;
+}
+
+.bg-box {
+  --s: 300px; /* control the size*/
+  --c1: #334155;
+  --c2: #1e293b;
+
+  --_g: #0000 90deg, var(--c1) 0;
+  background:
+    conic-gradient(from 90deg at 2px 2px, var(--_g)),
+    conic-gradient(from 90deg at 1px 1px, var(--_g)), var(--c2);
+  background-size:
+    var(--s) var(--s),
+    calc(var(--s) / 5) calc(var(--s) / 5);
+}
+
 .font-inter {
   font-family:
     Inter,
