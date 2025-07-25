@@ -1,6 +1,6 @@
  {{-- Kontak Karimun --}}
  <section class="w-full bg-white py-20">
-   <div class="max-w-screen-lg bg-white mx-auto grid gap-2">
+   <div class="max-w-screen-lg bg-white mx-auto grid gap-2 px-2">
      <div class="pb-8">
        <p class="text-4xl font-medium text-slate-800">Kontak & Lokasi</p>
      </div>
@@ -54,8 +54,8 @@
         </div>
       </div> --}}
 
-     <div class="border border-slate-200 bg-slate-100 w-full h-96 rounded-xl flex">
-       <div class="p-6 space-y-2 w-1/2">
+     <div class="border border-slate-200 bg-slate-100 w-full h-auto md:h-96 rounded-xl flex flex-col md:flex-row">
+       <div class="p-4 md:p-6 space-y-2 w-full md:w-1/2">
          <div class="mb-4">
            <p class="text-xl font-medium text-slate-800">Alamat</p>
            <p class="text-lg font-light text-slate-600">
@@ -116,10 +116,10 @@
             </button>
           </div> --}}
        </div>
-       <div class="w-1/2">
+       <div class="w-full md:w-1/2 h-96 md:h-auto">
          <iframe
            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d490697.263595916!2d103.30220041051754!3d0.8210764104654463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d9dea304b7f557%3A0x3039d80b220cab0!2sKarimun%20Regency%2C%20Riau%20Islands!5e1!3m2!1sen!2sid!4v1750295890338!5m2!1sen!2sid"
-           width="100%" height="100%" class="rounded-r-xl" style="border:0;" allowfullscreen="" loading="lazy"
+           width="100%" height="100%" class="rounded-b-xl md:rounded-b-none rounded-r-none md:rounded-r-xl " style="border:0;" allowfullscreen="" loading="lazy"
            referrerpolicy="no-referrer-when-downgrade"></iframe>
        </div>
      </div>

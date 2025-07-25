@@ -1,10 +1,10 @@
   {{-- Berita --}}
-  <section class="w-full bg-white py-20">
-    <div class="max-w-screen-lg bg-white mx-auto grid gap-6">
-      <p class="text-4xl font-medium text-slate-800">Berita Karimun</p>
-      <div class="grid grid-cols-2 gap-4">
+  <section class="w-full bg-white py-10 md:py-20">
+    <div class="max-w-screen-lg px-2 bg-white mx-auto grid gap-6">
+      <p class="text-5xl font-medium text-slate-800">Berita Karimun</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div
-          class="h-96 bg-[url(https://images.unsplash.com/photo-1750232453488-f6a40815126d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-cover grid items-end">
+          class="h-72 md:h-96 bg-[url(https://images.unsplash.com/photo-1750232453488-f6a40815126d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-cover grid items-end">
           <div class="bg-slate-800/50 p-4 h-full flex flex-col w-full justify-between">
             <div>
               <div class="w-fit whitespace-nowrap p-0.5 rounded-md text-slate-100 text-sm">

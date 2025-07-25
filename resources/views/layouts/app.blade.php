@@ -24,14 +24,29 @@
 
 <body class="grid bg-slate-100">
   <nav class="bg-white sticky top-0 z-50 shadow">
-    <div class=" max-w-screen-lg px-2 lg:px-0 flex justify-between mx-auto w-full py-4">
+    <div class="max-w-screen-lg px-2 flex items-center justify-between mx-auto w-full py-4">
       <div class="flex gap-6">
         <img src="{{ asset('assets/images/logo_kab.png') }}" class="w-12 h-auto hover:scale-110 duration-200"
           alt="logo_kab">
         <img src="{{ asset('assets/images/logo_hut.png') }}" class="w-12 h-auto hover:scale-110 duration-200"
           alt="logo_hut">
       </div>
-      <div class="bg-white w-1/3 h-10 border border-slate-400 rounded-lg flex p-1">
+      {{-- Nav Menu Mobile --}}
+      <div class="block md:hidden">
+        <button
+          class="bg-white hover:bg-slate-800 p-2 active:scale-95 rounded-lg border border-slate-300 group duration-200">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="text-slate-600 group-hover:text-white h-6 w-6">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M4 6l16 0" />
+            <path d="M4 12l16 0" />
+            <path d="M4 18l16 0" />
+          </svg>
+        </button>
+      </div>
+      {{-- Hidden on mobile --}}
+      <div class="bg-white w-1/3 h-10 border border-slate-400 rounded-lg hidden md:flex p-1">
         <input type="text" class="flex-1 focus:outline-none pl-2" placeholder="Pencarian">
         <button class="bg-white hover:bg-amber-300 rounded-r-md px-2">
           <svg xmlns="http://www.w3.org/2000/svg" class="text-orange-600 h-6 w-auto" viewBox="0 0 24 24" fill="none"
@@ -44,7 +59,7 @@
       </div>
     </div>
     {{-- Menu navigator --}}
-    <div class="max-w-screen-lg px-2 lg:px-0 mx-auto w-full border-t-1 border-slate-200">
+    <div class="hidden md:block max-w-screen-lg px-2 mx-auto w-full border-t-1 border-slate-200">
       <ul class="text-sm font-medium uppercase flex gap-4 text-slate-500">
         <li class="h-full">
           <a href="/"
@@ -98,8 +113,15 @@
           <div
             class="hidden group-hover:block bg-white p-1 min-w-40 w-max h-auto rounded absolute top-full ring-1 ring-slate-300 grid">
             <div class="hover:bg-slate-100 p-2 rounded">
-              <a href="/arsip-dokumen" class="">
-                Permohonan Informasi Publik
+              <a href="/arsip-dokumen" class="flex gap-2">
+                <span>Permohonan Informasi Publik</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+                  stroke-linejoin="round" class="h-5 w-5 stroke-[1.7] ">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" />
+                  <path d="M11 13l9 -9" />
+                  <path d="M15 4h5v5" />
+                </svg>
               </a>
             </div>
             <div class="hover:bg-slate-100 p-2 rounded">
@@ -117,29 +139,26 @@
     @yield('content')
   </main>
   <footer class="w-full bg-slate-900 py-10">
-    <div class="max-w-screen-lg mx-auto text-slate-300">
-      {{-- <p>Bumi</p>
-      <p>Berazam</p> --}}
-      <div class="">
-        {{-- Line 1 --}}
-        <div class="flex py-8 border-b border-slate-500">
-          <div class="flex-1 space-y-2">
+    <div class="max-w-screen-lg px-2 mx-auto text-slate-300">
+      <div class="overflow-hidden">
+        <div class="flex py-8 relative border-b border-slate-700">
+          <div class="flex-1 space-y-2 z-10">
             <img src="{{ asset('assets/images/logo_kab.png') }}" class="w-32 h-auto" alt="">
           </div>
-
-
-          <div class="w-2/4">
-            <p class="text-9xl tracking-wide font-bold text-right text-slate-50/40">BUMI</p>
+          <div class="absolute right-0 z-0 bottom-0">
+            <p
+              class="text-9xl tracking-wide font-bold text-right bg-gradient-to-t bg-slate-900 via-slate-800 to-slate-800 bg-clip-text text-transparent">
+              BUMI
+            </p>
           </div>
         </div>
-
-        {{-- Line 2 --}}
-        <div class="flex py-8 items-end">
-          <div class="flex-1">
+        <div class="flex py-8 items-end relative">
+          <div class="flex-1 z-10">
             <p class="text-slate-200 text-base font-normal">KABUPATEN KARIMUN</p>
             <p class="text-sm font-light">DISKOMINFO</p>
           </div>
-          <p class="w-3/4 leading-[0.8] text-9xl tracking-wide font-bold text-right text-slate-50/40">
+          <p
+            class="absolute top-4 right-0 bottom-0 leading-[0.8] text-9xl tracking-wide font-bold text-right bg-gradient-to-b bg-slate-900 via-slate-800 to-slate-800 bg-clip-text text-transparent">
             <span class="align-[0px]">BERAZAM</span>
           </p>
         </div>
@@ -147,6 +166,6 @@
     </div>
   </footer>
   <div class="w-full bg-orange-600 py-1">
-    <p class="text-sm text-center font-light text-slate-100">Copyright &copy; 2025 </p>
+    <p class="text-sm text-center font-medium text-slate-100">Copyright &copy; 2025 </p>
   </div>
 </body>

@@ -1,14 +1,14 @@
 @extends('layouts.app', ['activePage' => 'tautan-aplikasi'])
 
 @section('content')
-  <section class="max-w-screen-lg mx-auto w-full">
+  <section class="max-w-screen-lg px-2 mx-auto w-full">
     {{-- Header --}}
     <div class="pt-10">
       <p class="text-4xl font-medium text-slate-800">Tautan Aplikasi</p>
     </div>
 
-    <div class="flex gap-2 py-16">
-      <div class="w-1/3 p-4 h-min border rounded-lg border-slate-200 space-y-2">
+    <div class="flex flex-col md:flex-row gap-2 py-16">
+      <div class="w-full md:w-1/3 p-4 h-min border rounded-lg border-slate-200 space-y-2">
         <p class="text-lg font-medium text-slate-600">Kategori Tautan</p>
         <hr class="border-t border-slate-200">
         <ul class="space-y-2 text-slate-500">
@@ -18,9 +18,9 @@
           <li class="hover:bg-slate-200 hover:px-2 py-2 duration-200 rounded-md">Aplikasi Nasional</li>
         </ul>
       </div>
-      <div class="w-2/3 p-4 border rounded-lg border-slate-200 space-y-4">
+      <div class="w-full md:w-2/3 p-2 md:p-4 border rounded-lg border-slate-200 space-y-4">
         <p class="text-2xl font-medium text-slate-600">Semua</p>
-        <div class="bg-white border border-slate-200 rounded-lg  flex p-4 items-center justify-between">
+        <div class="bg-white border border-slate-200 rounded-lg flex p-2 md:p-4 items-center justify-between">
           <div>
             <p class="text-lg text-slate-800 font-medium">Desa Kundur</p>
             <a href="" class="text-slate-600">https://kundur.desa.id</a>
