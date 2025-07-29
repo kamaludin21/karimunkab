@@ -19,21 +19,22 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
     rel="stylesheet">
-
 </head>
 
 <body class="grid bg-slate-100">
-  <nav class="bg-white sticky top-0 z-50 shadow">
+  <nav x-data="{ mobileOpen: false }" class="bg-white sticky top-0 z-50 shadow">
     <div class="max-w-screen-lg px-2 flex items-center justify-between mx-auto w-full py-4">
       <div class="flex gap-6">
-        <img src="{{ asset('assets/images/logo_kab.png') }}" class="w-12 h-auto hover:scale-110 duration-200"
+        <img src="{{ asset('assets/images/logo_kab.png') }}" class="w-auto h-12 hover:scale-110 duration-200"
           alt="logo_kab">
-        <img src="{{ asset('assets/images/logo_hut.png') }}" class="w-12 h-auto hover:scale-110 duration-200"
+        <img src="{{ asset('assets/images/logo_hut.png') }}" class="w-auto h-12 hover:scale-110 duration-200"
+          alt="logo_hut">
+        <img src="{{ asset('assets/images/hutri_80.png') }}" class="w-auto h-12 hover:scale-110 duration-200"
           alt="logo_hut">
       </div>
       {{-- Nav Menu Mobile --}}
       <div class="block md:hidden">
-        <button
+        <button @click="mobileOpen = !mobileOpen"
           class="bg-white hover:bg-slate-800 p-2 active:scale-95 rounded-lg border border-slate-300 group duration-200">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -60,10 +61,10 @@
     </div>
     {{-- Menu navigator --}}
     <div class="hidden md:block max-w-screen-lg px-2 mx-auto w-full border-t-1 border-slate-200">
-      <ul class="text-sm font-medium uppercase flex gap-4 text-slate-500">
+      <ul class="text-sm font-medium uppercase flex gap-4 text-slate-600">
         <li class="h-full">
           <a href="/"
-            class="{{ ($activePage ?? '') === 'beranda' ? 'text-orange-600' : 'hover:text-slate-700  border-transparent' }} flex gap-1 items-center border-b-2 py-2">
+            class="{{ ($activePage ?? '') === 'beranda' ? 'text-orange-600' : 'hover:text-slate-800  border-transparent' }} flex gap-1 items-center border-b-2 py-2">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path
@@ -72,15 +73,15 @@
             <span>Beranda</span>
           </a>
         </li>
-        <li>
+        <li class="">
           <a href="/berita"
-            class="{{ ($activePage ?? '') === 'berita' ? 'text-orange-600 border-b-2' : 'hover:text-slate-700 border-transparent border-b-2' }} h-full block hover:border-b-2 py-2 uppercase">
+            class="{{ ($activePage ?? '') === 'berita' ? 'text-orange-600 border-b-2' : 'hover:text-slate-800 border-transparent border-b-2' }} h-full block hover:border-b-2 p-2 uppercase">
             berita
           </a>
         </li>
         <li class="group relative">
           <a href="javacript:void(0)"
-            class="{{ ($activePage ?? '') === 'informasi-publik' ? 'text-orange-600 border-b-2' : 'hover:text-slate-700 border-transparent border-b-2' }} h-full block hover:border-b-2 py-2 flex items-center gap-1">
+            class="{{ ($activePage ?? '') === 'informasi-publik' ? 'text-orange-600 border-b-2' : 'hover:text-slate-800 border-transparent border-b-2' }} h-full block hover:border-b-2 py-2 flex items-center gap-1">
             <span>Informasi Publik</span>
             <x-icons.chevron-down class="h-5 w-5 stroke-2 group-hover:rotate-180 duration-300" />
           </a>
@@ -93,6 +94,11 @@
             </div>
             <div class="hover:bg-slate-100 p-2 rounded">
               <a href="/arsip-dokumen" class="">
+                Nomor Penting
+              </a>
+            </div>
+            <div class="hover:bg-slate-100 p-2 rounded">
+              <a href="/arsip-dokumen" class="">
                 Arsip Dokumen
               </a>
             </div>
@@ -100,13 +106,13 @@
         </li>
         <li>
           <a href="/tautan-aplikasi"
-            class="{{ ($activePage ?? '') === 'tautan-aplikasi' ? 'text-orange-600 border-b-2' : 'hover:text-slate-700 border-transparent border-b-2' }} h-full block hover:border-b-2 py-2 uppercase">
+            class="{{ ($activePage ?? '') === 'tautan-aplikasi' ? 'text-orange-600 border-b-2' : 'hover:text-slate-800 border-transparent border-b-2' }} h-full block hover:border-b-2 py-2 uppercase">
             Tautan Aplikasi
           </a>
         </li>
         <li class="group relative">
           <a href="javacript:void(0)"
-            class="{{ ($activePage ?? '') === 'ppid' ? 'text-orange-600 border-b-2' : 'hover:text-slate-700 border-transparent border-b-2' }} h-full block hover:border-b-2 py-2 flex items-center gap-1">
+            class="{{ ($activePage ?? '') === 'ppid' ? 'text-orange-600 border-b-2' : 'hover:text-slate-800 border-transparent border-b-2' }} h-full block hover:border-b-2 py-2 flex items-center gap-1">
             <span>PPID</span>
             <x-icons.chevron-down class="h-5 w-5 stroke-2 group-hover:rotate-180 duration-300" />
           </a>
@@ -133,6 +139,59 @@
           </div>
         </li>
       </ul>
+    </div>
+    {{-- Mobile Menu --}}
+    <div id="mobile-menu" x-cloak x-show="mobileOpen" x-transition @click.away="mobileOpen = false"
+      class="block md:hidden shadow-lg bg-white p-2 absolute w-full rounded-b-lg border-t-1 border-slate-200 text-slate-600 grid divide-y divide-slate-400">
+      <a href="" class="w-full text-lg font-base flex justify-between hover:bg-slate-100 p-2 group">
+        <span>Beranda</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+          class="h-8 w-8 rotate-45 group-hover:rotate-90 duration-200">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M12 5l0 14" />
+          <path d="M18 11l-6 -6" />
+          <path d="M6 11l6 -6" />
+        </svg>
+      </a>
+      <a href="" class="w-full text-lg font-base flex justify-between hover:bg-slate-100 p-2 group">
+        <span>Berita</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+          class="h-8 w-8 rotate-45 group-hover:rotate-90 duration-200">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M12 5l0 14" />
+          <path d="M18 11l-6 -6" />
+          <path d="M6 11l6 -6" />
+        </svg>
+      </a>
+      <a href="" class="w-full text-lg font-base flex justify-between hover:bg-slate-100 p-2">
+        <span>Informasi Publik </span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+          stroke-linejoin="round" class="h-8 w-8 duration-200">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M6 9l6 6l6 -6" />
+        </svg>
+      </a>
+      <a href="" class="w-full text-lg font-base flex justify-between hover:bg-slate-100 p-2 group">
+        <span>Tautan Aplikasi</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+          class="h-8 w-8 rotate-45 group-hover:rotate-90 duration-200">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M12 5l0 14" />
+          <path d="M18 11l-6 -6" />
+          <path d="M6 11l6 -6" />
+        </svg>
+      </a>
+      <a href="" class="w-full text-lg font-base flex justify-between hover:bg-slate-100 p-2">
+        <span>PPID</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+          stroke-linejoin="round" class="h-8 w-8 duration-200">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M6 9l6 6l6 -6" />
+        </svg>
+      </a>
     </div>
   </nav>
   <main class="bg-white">

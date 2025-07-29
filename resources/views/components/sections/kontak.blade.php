@@ -2,7 +2,7 @@
  <section class="w-full bg-white py-20">
    <div class="max-w-screen-lg bg-white mx-auto grid gap-2 px-2">
      <div class="pb-8">
-       <p class="text-4xl font-medium text-slate-800">Kontak & Lokasi</p>
+       <p class="text-4xl font-medium text-slate-800">Alamat Lokasi</p>
      </div>
 
      {{-- Kontak, Sosmed, Survei --}}

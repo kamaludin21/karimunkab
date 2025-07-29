@@ -11,6 +11,8 @@
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+[x-cloak] { display: none !important; }
+
 .bg-pattern {
   background:
     linear-gradient(45deg, #0000 71%, #94a3b8 0 79%, #0000 0) calc(69px / -2)
@@ -62,3 +64,5 @@
   -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
   scrollbar-width: none; /* Hide scrollbar for Firefox */
 }
+
+
