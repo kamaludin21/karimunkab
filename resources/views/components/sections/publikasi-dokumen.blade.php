@@ -1,11 +1,11 @@
 {{-- Publikasi Dokumen --}}
 <section class="w-full bg-white py-20">
   <div class="max-w-screen-lg px-2 bg-white mx-auto grid gap-10">
-    <p class="text-4xl font-medium text-slate-800">Publikasi Dokumen</p>
+    <p class="text-5xl font-medium text-slate-700">Publikasi Dokumen</p>
 
     <div class="grid w-full grid-cols-[1fr_auto] md:grid-cols-[auto_auto_1fr_auto]">
       <!-- Header Row -->
-      <div class="text-slate-800 hidden bg-slate-100 pr-8 py-3 text-sm font-bold md:block">TAHUN</div>
+      <div class="text-slate-800 hidden bg-slate-100 pr-8 py-3 text-sm font-bold md:block pl-1">TAHUN</div>
       <div class="text-slate-800 hidden bg-slate-100 pr-8 py-3 text-sm font-bold md:block">HARI BULAN</div>
       <div class="text-slate-800 bg-slate-100 pr-8 py-3 text-sm font-bold">JUDUL</div>
       <div class="text-slate-800 bg-slate-100 pr-8 py-3 text-sm font-bold">AUTHOR</div>

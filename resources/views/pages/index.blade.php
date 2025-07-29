@@ -4,6 +4,7 @@
   <x-sections.hero />
   <x-sections.link />
   <x-sections.berita />
+  <x-sections.nomor-penting />
   <x-sections.pengumuman />
   <x-sections.kabar-opd />
   <x-sections.publikasi-dokumen />

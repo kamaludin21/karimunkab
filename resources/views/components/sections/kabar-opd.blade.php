@@ -1,7 +1,7 @@
 {{-- Kabar OPD --}}
 <section class="w-full border-y border-slate-300 bg-box py-28">
   <div class="max-w-screen-lg px-2 mx-auto grid gap-10">
-    <p class="text-4xl font-medium text-slate-50">Kabar OPD</p>
+    <p class="text-5xl font-medium text-slate-50">Kabar OPD</p>
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
       @for ($i = 0; $i < 6; $i++)
         <div class="w-full space-y-2 bg-gray-50 hover:bg-white cursor-pointer rounded-lg p-4 text-slate-600">
