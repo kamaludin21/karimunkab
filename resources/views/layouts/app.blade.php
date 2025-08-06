@@ -36,13 +36,20 @@
       <div class="block md:hidden">
         <button @click="mobileOpen = !mobileOpen"
           class="bg-white hover:bg-slate-800 p-2 active:scale-95 rounded-lg border border-slate-300 group duration-200">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="text-slate-600 group-hover:text-white h-6 w-6">
+          <svg x-show="!mobileOpen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="text-slate-600 group-hover:text-white h-6 w-6">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M4 6l16 0" />
             <path d="M4 12l16 0" />
             <path d="M4 18l16 0" />
+          </svg>
+          {{-- Switch this icon when reverse status --}}
+          <svg x-show="mobileOpen" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="text-slate-600 group-hover:text-white h-6 w-6">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M18 6l-12 12" />
+            <path d="M6 6l12 12" />
           </svg>
         </button>
       </div>
@@ -214,7 +221,7 @@
   <main class="bg-white">
     @yield('content')
   </main>
-  <footer class="w-full bg-slate-900 py-10">
+  <footer class="w-full bg-slate-900 pt-10 pb-20">
     <div class="max-w-screen-lg px-2 mx-auto text-slate-300">
       <div class="overflow-hidden">
         <div class="flex py-8 relative border-b border-slate-700">
@@ -241,7 +248,7 @@
       </div>
     </div>
   </footer>
-  <div class="w-full bg-orange-600 py-1">
+  <div class="w-full bg-slate-800 py-1">
     <p class="text-sm text-center font-medium text-slate-100">Copyright &copy; 2025 </p>
   </div>
 </body>

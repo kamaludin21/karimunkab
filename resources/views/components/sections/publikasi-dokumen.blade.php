@@ -5,15 +5,15 @@
 
     <div class="grid w-full grid-cols-[1fr_auto] md:grid-cols-[auto_auto_1fr_auto]">
       <!-- Header Row -->
-      <div class="text-slate-800 hidden bg-slate-100 pr-8 py-3 text-sm font-bold md:block pl-1">TAHUN</div>
-      <div class="text-slate-800 hidden bg-slate-100 pr-8 py-3 text-sm font-bold md:block">HARI BULAN</div>
-      <div class="text-slate-800 bg-slate-100 pr-8 py-3 text-sm font-bold">JUDUL</div>
-      <div class="text-slate-800 bg-slate-100 pr-8 py-3 text-sm font-bold">AUTHOR</div>
+      <div class="text-slate-700 hidden bg-slate-100 pr-8 py-3 text-sm font-bold md:block pl-1">TAHUN</div>
+      <div class="text-slate-700 hidden bg-slate-100 pr-8 py-3 text-sm font-bold md:block">HARI BULAN</div>
+      <div class="text-slate-700 bg-slate-100 pr-8 py-3 text-sm font-bold">JUDUL</div>
+      <div class="text-slate-700 bg-slate-100 pr-8 py-3 text-sm font-bold">AUTHOR</div>
 
       <!-- Data Row 1 -->
       <div class="contents group">
         <div
-          class="hidden border-t border-slate-300 pr-8 md:flex items-center text-slate-700 group-hover:text-orange-600">
+          class="hidden border-t border-slate-300 pr-8 md:flex items-center text-slate-700 group-hover:text-orange-600 pl-1">
           2024
         </div>
         <div

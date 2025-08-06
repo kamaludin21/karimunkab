@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "./grid-pattern.css";
+@import "./dot-pattern.css";
+@import "./nightsky-pattern.css";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -25,8 +27,8 @@
     radial-gradient(#94a3b8 35%, #f1f5f9 37%) 0 0/69px 69px;
 }
 
-.bg-box {
-  --s: 300px; /* control the size*/
+/* .bg-box {
+  --s: 300px;
   --c1: #334155;
   --c2: #1e293b;
 
@@ -37,7 +39,7 @@
   background-size:
     var(--s) var(--s),
     calc(var(--s) / 5) calc(var(--s) / 5);
-}
+} */
 
 .font-inter {
   font-family:

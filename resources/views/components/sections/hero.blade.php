@@ -2,7 +2,7 @@
   <video class="absolute inset-0 w-full h-full object-cover z-1" autoplay muted loop playsinline>
     <source src="{{ asset('assets/videos/view_karimun.mp4') }}" type="video/mp4" />
   </video>
-  <div class="absolute inset-0 bg-black/70 backdrop-blur-sm pointer-events-none z-5"></div>
+  <div class="absolute inset-0 bg-black/30 pointer-events-none z-5"></div>
   <div
     class="relative z-10 flex flex-col lg:flex-row items-start lg:items-center px-2 justify-between max-w-screen-lg mx-auto w-full gap-4 bg-transparent">
     <div class="flex-1 w-full">

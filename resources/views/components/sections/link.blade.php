@@ -1,7 +1,7 @@
-<div class="w-full border-t border-slate-200 py-10">
+<div class="w-full border-t border-slate-200 py-10 bg-slate-100">
   <section class="max-w-screen-lg mx-auto grid px-2">
     <div class="flex flex-wrap justify-center gap-2 md:gap-8 w-full text-slate-700">
-      <div class="border border-slate-300 rounded-3xl grid grid-cols-none content-end p-1 flex-1 md:flex-none w-2/5 md:w-1/4 relative">
+      <div class="border border-slate-300 rounded-3xl grid grid-cols-none content-end p-1 flex-1 md:flex-none w-2/5 md:w-1/4 relative bg-white">
         <button
           class="absolute right-1 top-1 bg-slate-200 duration-200 cursor-pointer rounded-full p-2 w-fit justify-items-end hover:bg-orange-600 group">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
@@ -20,7 +20,7 @@
         </div>
       </div>
 
-      <div class="border border-slate-300 rounded-3xl grid grid-cols-none content-end p-1 flex-1 md:flex-none w-2/5 md:w-1/4 relative">
+      <div class="border border-slate-300 rounded-3xl grid grid-cols-none content-end p-1 flex-1 md:flex-none w-2/5 md:w-1/4 relative bg-white">
         <button
           class="absolute right-1 top-1 bg-slate-200 duration-200 cursor-pointer rounded-full p-2 w-fit justify-items-end hover:bg-orange-600 group">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -39,7 +39,7 @@
         </div>
       </div>
 
-      <div class="border border-slate-300 rounded-3xl grid grid-cols-none content-end p-1 flex-1 md:flex-none w-2/5 md:w-1/4 relative">
+      <div class="border border-slate-300 rounded-3xl grid grid-cols-none content-end p-1 flex-1 md:flex-none w-2/5 md:w-1/4 relative bg-white">
         <button
           class="absolute right-1 top-1 bg-slate-200 duration-200 cursor-pointer rounded-full p-2 w-fit justify-items-end hover:bg-orange-600 group">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -58,7 +58,7 @@
         </div>
       </div>
 
-      <div class="border border-slate-300 rounded-3xl grid grid-cols-none content-end p-1 flex-1 md:flex-none w-2/5 md:w-1/4 relative">
+      <div class="border border-slate-300 rounded-3xl grid grid-cols-none content-end p-1 flex-1 md:flex-none w-2/5 md:w-1/4 relative bg-white">
         <button
           class="absolute right-1 top-1 bg-slate-200 duration-200 cursor-pointer rounded-full p-2 w-fit justify-items-end hover:bg-orange-600 group">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -77,7 +77,7 @@
         </div>
       </div>
 
-      <div class="border border-slate-300 rounded-3xl grid grid-cols-none content-end p-1 flex-1 md:flex-none w-2/5 md:w-1/4 relative">
+      <div class="border border-slate-300 rounded-3xl grid grid-cols-none content-end p-1 flex-1 md:flex-none w-2/5 md:w-1/4 relative bg-white">
         <button
           class="absolute right-1 top-1 bg-slate-200 duration-200 cursor-pointer rounded-full p-2 w-fit justify-items-end hover:bg-orange-600 group">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"

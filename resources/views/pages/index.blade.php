@@ -1,3 +1,8 @@
+@php
+// TODO: query link 5 here:
+
+@endphp
+
 @extends('layouts.app', ['activePage' => 'beranda'])
 
 @section('content')
