@@ -109,7 +109,8 @@ class NewsResource extends Resource
         TextColumn::make('category.title')
           ->label('Judul'),
         TextColumn::make('published_at')
-          ->label('Publikasi'),
+          ->label('Publikasi')
+          ->formatStateUsing(fn ($state) => \Carbon\Carbon::parse($state)->translatedFormat('d F Y')),
       ])
       ->actions([
         Tables\Actions\ActionGroup::make([
