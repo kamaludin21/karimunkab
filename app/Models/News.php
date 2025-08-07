@@ -33,4 +33,9 @@ class News extends Model
   {
     return $this->belongsTo(User::class, 'user_id');
   }
+
+  public function getImageUrlAttribute()
+  {
+    return asset('storage/' . ($this->images[0] ?? 'img/default.jpg'));
+  }
 }

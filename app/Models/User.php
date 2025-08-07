@@ -8,12 +8,13 @@ use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Notifications\Notifiable;
 use Filament\Panel;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
 
 
 class User extends Authenticatable implements FilamentUser
 {
   /** @use HasFactory<\Database\Factories\UserFactory> */
-  use HasFactory, Notifiable;
+  use HasFactory, Notifiable, HasRoles;
 
   /**
    * The attributes that are mass assignable.

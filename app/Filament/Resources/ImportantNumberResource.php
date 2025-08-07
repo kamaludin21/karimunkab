@@ -33,15 +33,15 @@ class ImportantNumberResource extends Resource
           ->label('Nama Kontak')
           ->required(),
         TextInput::make('phone_number')
-          ->label('Nomor Telp')
+          ->label('Nomor Telpon')
           ->type('tel') // input type HTML: <input type="tel">
           ->inputMode('tel') // mobile keyboard khusus angka
           ->required()
-          ->prefix('+62')
           ->minLength(9)
-          ->maxLength(15)
+          ->maxLength(16)
+          ->helperText('Awali dengan: 628xxx')
           ->rule('regex:/^[0-9]+$/') // hanya angka (tanpa spasi, tanda)
-          ->placeholder('81234567890'),
+          ->placeholder('+6281234567890'),
         Toggle::make('is_whatsapp')
           ->label('Aktif Whatsapp?')
           ->inline(false)

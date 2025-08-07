@@ -59,9 +59,7 @@
          <div class="mb-4">
            <p class="text-xl font-medium text-slate-700">Alamat</p>
            <p class="text-lg font-light text-slate-600">
-             Jalan Jenderal Sudirman, Poros, Nomor 371-372, Kelurahan Darussalam, Kecamatan Meral Barat, Kabupaten
-             Karimun,
-             29666
+             Komplek Perkantoran Bupati, Jl. Jend. Sudirman-Poros Meral, Tj. Balai Karimun, Kecamatan Karimun, Sei Raya
            </p>
          </div>
          <div class="mb-4 space-y-2">

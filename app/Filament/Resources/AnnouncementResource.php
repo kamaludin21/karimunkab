@@ -81,12 +81,14 @@ class AnnouncementResource extends Resource
         TextColumn::make('index')
           ->label('No.')
           ->rowIndex(),
+        TextColumn::make('author.name')
+          ->label('Author'),
         TextColumn::make('title')
           ->label('Judul')
           ->searchable(),
         TextColumn::make('published_at')
           ->label('Publikasi')
-          ->formatStateUsing(fn ($state) => \Carbon\Carbon::parse($state)->translatedFormat('d F Y'))
+          ->formatStateUsing(fn($state) => \Carbon\Carbon::parse($state)->translatedFormat('d F Y'))
       ])
       ->defaultSort('published_at', 'desc')
       ->actions([

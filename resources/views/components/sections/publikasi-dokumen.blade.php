@@ -1,3 +1,5 @@
+@props(['documents'])
+
 {{-- Publikasi Dokumen --}}
 <section class="w-full bg-white py-20">
   <div class="max-w-screen-lg px-2 bg-white mx-auto grid gap-10">
@@ -10,47 +12,60 @@
       <div class="text-slate-700 bg-slate-100 pr-8 py-3 text-sm font-bold">JUDUL</div>
       <div class="text-slate-700 bg-slate-100 pr-8 py-3 text-sm font-bold">AUTHOR</div>
 
-      <!-- Data Row 1 -->
-      <div class="contents group">
-        <div
-          class="hidden border-t border-slate-300 pr-8 md:flex items-center text-slate-700 group-hover:text-orange-600 pl-1">
-          2024
-        </div>
-        <div
-          class="hidden border-t border-slate-300 pr-8 md:flex items-center text-slate-700 group-hover:text-orange-600">
-          1
-          Januari</div>
-        <div class="border-t border-slate-300 pr-8 text-slate-700 group-hover:text-orange-600 flex items-center py-3">
-          LAMPIRAN 1 APBD 1
-        </div>
-        <div class="border-t border-slate-300 text-slate-700 group-hover:text-orange-600">
-          <div class="flex items-center gap-4 h-fit">
-            <p>BPKAD</p>
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-fit">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div class="contents group">
-        <div class="hidden pr-8 md:flex items-center text-slate-700 group-hover:text-orange-600">
 
-        </div>
-        <div
-          class="hidden border-t border-slate-300 pr-8 md:flex items-center text-slate-700 group-hover:text-orange-600">
-          8 Februari</div>
-        <div class="border-t border-slate-300 pr-8 text-slate-700 group-hover:text-orange-600 flex items-center py-3">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        </div>
-        <div class="border-t border-slate-300 text-slate-700 group-hover:text-orange-600 ">
-          <div class="flex items-center gap-4 h-fit">
-            <p>BPKAD</p>
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-fit">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
-            </svg>
+
+      {{-- +++++++++++++++++++++++++++++++++++++++++++++ --}}
+      @php
+        $prevYear = null;
+        $prevDate = null;
+      @endphp
+
+      @foreach ($documents as $doc)
+        @php
+          $year = $doc->published_at?->year;
+          $date = $doc->published_at?->translatedFormat('j F');
+        @endphp
+
+        <div class="contents group">
+          {{-- TAHUN --}}
+          <div
+            class="hidden pr-8 md:flex items-center text-slate-700 group-hover:text-orange-600 pl-1
+      @if ($prevYear !== $year) border-t border-slate-300 @endif">
+            @if ($prevYear !== $year)
+              {{ $year }}
+              @php $prevYear = $year; @endphp
+            @endif
+          </div>
+
+          {{-- HARI BULAN --}}
+          <div
+            class="hidden pr-8 md:flex items-center text-slate-700 group-hover:text-orange-600
+      @if ($prevDate !== $date) border-t border-slate-300 @endif">
+            @if ($prevDate !== $date)
+              {{ $date }}
+              @php $prevDate = $date; @endphp
+            @endif
+          </div>
+
+          {{-- JUDUL --}}
+          <div class="border-t border-slate-300 pr-8 text-slate-700 group-hover:text-orange-600 flex items-center py-3">
+            {{ $doc->title }}
+          </div>
+
+          {{-- AUTHOR --}}
+          <div class="border-t border-slate-300 text-slate-700 group-hover:text-orange-600 flex items-center pr-2">
+            <div class="flex items-center gap-4 h-fit">
+              <p>{{ $doc->author->name ?? '-' }}</p>
+              <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-fit">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+              </svg>
+            </div>
           </div>
         </div>
-      </div>
+      @endforeach
+
+      {{-- +++++++++++++++++++++++++++++++++++++++++++++ --}}
+
     </div>
     <div
       class="flex items-center gap-4 before:h-px before:flex-1 before:bg-gray-300  before:content-[''] after:h-px after:flex-1 after:bg-gray-300  after:content-['']">

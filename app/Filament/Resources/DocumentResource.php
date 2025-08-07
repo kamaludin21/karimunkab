@@ -63,6 +63,8 @@ class DocumentResource extends Resource
         TextColumn::make('index')
           ->label('No.')
           ->rowIndex(),
+        TextColumn::make('author.name')
+          ->label('Author'),
         TextColumn::make('title')
           ->label('Judul'),
         TextColumn::make('published_at')

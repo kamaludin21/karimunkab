@@ -58,8 +58,7 @@ class NewsResource extends Resource
           ->label('Kategori Tautan'),
         DatePicker::make('published_at')
           ->label('Tanggal Publikasi')
-          ->native(false)
-          ->default(today()),
+          ->native(false),
         Textarea::make('title')
           ->autosize()
           ->rows(1)
@@ -110,7 +109,7 @@ class NewsResource extends Resource
           ->label('Judul'),
         TextColumn::make('published_at')
           ->label('Publikasi')
-          ->formatStateUsing(fn ($state) => \Carbon\Carbon::parse($state)->translatedFormat('d F Y')),
+          ->formatStateUsing(fn($state) => \Carbon\Carbon::parse($state)->translatedFormat('d F Y')),
       ])
       ->actions([
         Tables\Actions\ActionGroup::make([
@@ -118,6 +117,7 @@ class NewsResource extends Resource
           Tables\Actions\DeleteAction::make(),
         ])
       ])
+      ->defaultSort('published_at', 'desc')
       ->filters([
         SelectFilter::make('category')
           ->relationship('category', 'title')

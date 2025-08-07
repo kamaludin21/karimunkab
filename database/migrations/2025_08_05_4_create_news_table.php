@@ -25,7 +25,7 @@ return new class extends Migration
       $table->string('slug')->unique();
       $table->json('images')->nullable();
       $table->longText('content');
-      $table->date('published_at');
+      $table->date('published_at')->nullable();
       $table->timestamps();
     });
   }

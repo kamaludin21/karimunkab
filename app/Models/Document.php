@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Document extends Model
 {
@@ -17,4 +18,9 @@ class Document extends Model
   protected $casts = [
     'published_at' => 'date',
   ];
+
+  public function author(): BelongsTo
+  {
+    return $this->belongsTo(User::class, 'user_id');
+  }
 }

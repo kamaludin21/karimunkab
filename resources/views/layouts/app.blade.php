@@ -36,17 +36,16 @@
       <div class="block md:hidden">
         <button @click="mobileOpen = !mobileOpen"
           class="bg-white hover:bg-slate-800 p-2 active:scale-95 rounded-lg border border-slate-300 group duration-200">
-          <svg x-show="!mobileOpen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" class="text-slate-600 group-hover:text-white h-6 w-6">
+          <svg x-show="!mobileOpen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" class="text-slate-600 group-hover:text-white h-6 w-6">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M4 6l16 0" />
             <path d="M4 12l16 0" />
             <path d="M4 18l16 0" />
           </svg>
           {{-- Switch this icon when reverse status --}}
-          <svg x-show="mobileOpen" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="text-slate-600 group-hover:text-white h-6 w-6">
+          <svg x-show="mobileOpen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" class="text-slate-600 group-hover:text-white h-6 w-6">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M18 6l-12 12" />
             <path d="M6 6l12 12" />
@@ -230,7 +229,7 @@
           </div>
           <div class="absolute right-0 z-0 bottom-0">
             <p
-              class="text-9xl tracking-wide font-bold text-right bg-gradient-to-t bg-slate-900 via-slate-800 to-slate-800 bg-clip-text text-transparent">
+              class="text-9xl tracking-wide font-bold text-right bg-gradient-to-t bg-slate-900 via-slate-800 to-slate-800 bg-clip-text text-transparent opacity-10">
               BUMI
             </p>
           </div>
@@ -241,7 +240,7 @@
             <p class="text-sm font-light">DISKOMINFO</p>
           </div>
           <p
-            class="absolute top-4 right-0 bottom-0 leading-[0.8] text-9xl tracking-wide font-bold text-right bg-gradient-to-b bg-slate-900 via-slate-800 to-slate-800 bg-clip-text text-transparent">
+            class="absolute top-4 right-0 bottom-0 leading-[0.8] text-9xl tracking-wide font-bold text-right bg-gradient-to-b bg-slate-900 via-slate-800 to-slate-800 bg-clip-text text-transparent opacity-10">
             <span class="align-[0px]">BERAZAM</span>
           </p>
         </div>
