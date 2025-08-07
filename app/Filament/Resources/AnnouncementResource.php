@@ -18,6 +18,7 @@ use Illuminate\Support\Str;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
 
 class AnnouncementResource extends Resource
 {
@@ -30,6 +31,12 @@ class AnnouncementResource extends Resource
   {
     return $form
       ->schema([
+        Select::make('user_id')
+          ->label('Author') // opsional, ubah label jika mau
+          ->relationship('author', 'name') // 'author' adalah nama method relasi di model
+          ->searchable()
+          ->preload()
+          ->required(),
         Textarea::make('title')
           ->autosize()
           ->rows(1)
@@ -85,7 +92,8 @@ class AnnouncementResource extends Resource
           ->label('Author'),
         TextColumn::make('title')
           ->label('Judul')
-          ->searchable(),
+          ->searchable()
+          ->wrap(),
         TextColumn::make('published_at')
           ->label('Publikasi')
           ->formatStateUsing(fn($state) => \Carbon\Carbon::parse($state)->translatedFormat('d F Y'))

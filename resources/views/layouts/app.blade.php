@@ -25,8 +25,9 @@
   <nav x-data="{ mobileOpen: false }" class="bg-white sticky top-0 z-50 shadow">
     <div class="max-w-screen-lg px-2 flex items-center justify-between mx-auto w-full py-4">
       <div class="flex gap-6">
-        <img src="{{ asset('assets/images/logo_kab.png') }}" class="w-auto h-12 hover:scale-110 duration-200"
-          alt="logo_kab">
+        <a href="/">
+          <img src="{{ asset('assets/images/logo_kab.png') }}" class="w-auto h-12 hover:scale-110 duration-200"
+            alt="logo_kab"></a>
         <img src="{{ asset('assets/images/logo_hut.png') }}" class="w-auto h-12 hover:scale-110 duration-200"
           alt="logo_hut">
         <img src="{{ asset('assets/images/hutri_80.png') }}" class="w-auto h-12 hover:scale-110 duration-200"
@@ -99,7 +100,7 @@
               </a>
             </div>
             <div class="hover:bg-slate-100 p-2 rounded">
-              <a href="/arsip-dokumen" class="">
+              <a href="/nomor-penting" class="">
                 Nomor Penting
               </a>
             </div>
@@ -116,33 +117,11 @@
             Tautan Aplikasi
           </a>
         </li>
-        <li class="group relative">
-          <a href="javacript:void(0)"
-            class="{{ ($activePage ?? '') === 'ppid' ? 'text-orange-600 border-b-2' : 'hover:text-slate-800 border-transparent border-b-2' }} h-full block hover:border-b-2 py-2 flex items-center gap-1">
-            <span>PPID</span>
-            <x-icons.chevron-down class="h-5 w-5 stroke-2 group-hover:rotate-180 duration-300" />
+        <li>
+          <a href="https://ppid.karimunkab.go.id/" target="blank"
+            class="{{ ($activePage ?? '') === 'tautan-aplikasi' ? 'text-orange-600 border-b-2' : 'hover:text-slate-800 border-transparent border-b-2' }} h-full block hover:border-b-2 py-2 uppercase">
+            PPID
           </a>
-          <div
-            class="hidden group-hover:block bg-white p-1 min-w-40 w-max h-auto rounded absolute top-full ring-1 ring-slate-300 grid">
-            <div class="hover:bg-slate-100 p-2 rounded">
-              <a href="/arsip-dokumen" class="flex gap-2">
-                <span>Permohonan Informasi Publik</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
-                  stroke-linejoin="round" class="h-5 w-5 stroke-[1.7] ">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" />
-                  <path d="M11 13l9 -9" />
-                  <path d="M15 4h5v5" />
-                </svg>
-              </a>
-            </div>
-            <div class="hover:bg-slate-100 p-2 rounded">
-              <a href="/arsip-dokumen" class="">
-                Informasi Publik Berkala
-              </a>
-            </div>
-
-          </div>
         </li>
       </ul>
     </div>
@@ -173,14 +152,28 @@
           <path d="M6 11l6 -6" />
         </svg>
       </a>
-      <a href="" class="w-full text-lg font-base flex justify-between hover:bg-slate-100 p-2 group">
-        <span class="group-hover:text-slate-800">Informasi Publik </span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-          stroke-linejoin="round" class="h-8 w-8 duration-200 text-slate-400 group-hover:text-slate-800">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M6 9l6 6l6 -6" />
-        </svg>
-      </a>
+      <div class="p-2">
+        <a href="javascript:void(0)" class="w-full text-lg font-base flex justify-between hover:bg-slate-100  group">
+          <span class="group-hover:text-slate-800">Informasi Publik </span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" class="h-8 w-8 duration-200 text-slate-400 group-hover:text-slate-800">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M6 9l6 6l6 -6" />
+          </svg>
+        </a>
+        <ul class="text-slate-500 space-y-2 w-full border-l-1 border-slate-200">
+          <li class="p-1 hover:bg-slate-200">
+            <a href="/pengumuman">Pengumuman</a>
+          </li>
+          <li class="p-1 hover:bg-slate-200">
+            <a href="/nomor-penting">Nomor Penting</a>
+          </li>
+          <li class="p-1 hover:bg-slate-200">
+            <a href="/arsip-dokumen">Arsip Dokumen</a>
+          </li>
+        </ul>
+      </div>
+
       <a href="/tautan-aplikasi" class="w-full text-lg font-base flex justify-between hover:bg-slate-100 p-2 group">
         <span class="group-hover:text-slate-800">Tautan Aplikasi</span>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -192,18 +185,22 @@
           <path d="M6 11l6 -6" />
         </svg>
       </a>
-      <a href="" class="w-full text-lg font-base flex justify-between hover:bg-slate-100 p-2">
+      <a href="https://ppid.karimunkab.go.id/" target="_blank"
+        class="w-full text-lg font-base flex justify-between hover:bg-slate-100 p-2 group">
         <span class="group-hover:text-slate-800">PPID</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-          stroke-linejoin="round" class="h-8 w-8 duration-200 text-slate-400 group-hover:text-slate-700">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+          class="h-8 w-8 rotate-45 group-hover:rotate-90 duration-200 text-slate-400 group-hover:text-slate-800">
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M6 9l6 6l6 -6" />
+          <path d="M12 5l0 14" />
+          <path d="M18 11l-6 -6" />
+          <path d="M6 11l6 -6" />
         </svg>
       </a>
       {{-- Mobile Menu List --}}
 
       {{-- Searchbox --}}
-      <div class="bg-white w-full h-10 border border-slate-400 rounded-lg flex p-1 mt-4">
+      {{-- <div class="bg-white w-full h-10 border border-slate-400 rounded-lg flex p-1 mt-4">
         <input type="text" class="flex-1 focus:outline-none pl-2" placeholder="Pencarian">
         <button class="bg-white hover:bg-amber-300 rounded-r-md px-2">
           <svg xmlns="http://www.w3.org/2000/svg" class="text-orange-600 h-6 w-auto" viewBox="0 0 24 24"
@@ -213,7 +210,7 @@
             <path d="M21 21l-6 -6" />
           </svg>
         </button>
-      </div>
+      </div> --}}
       {{-- Menu --}}
     </div>
   </nav>

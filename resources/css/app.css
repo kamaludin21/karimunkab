@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "./grid-pattern.css";
 @import "./dot-pattern.css";
-@import "./nightsky-pattern.css";
+@import "./html-content.css";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';

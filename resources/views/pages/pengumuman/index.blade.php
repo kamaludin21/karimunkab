@@ -1,3 +1,8 @@
+@php
+  $organisasiList = \App\Models\Announcement::with('author')->get()->pluck('author.name')->unique()->filter()->values();
+  $announcements = \App\Models\Announcement::with('author')->latest('published_at')->paginate(5)->withQueryString();
+@endphp
+
 @extends('layouts.app', ['activePage' => 'informasi-publik'])
 
 @section('content')
@@ -12,10 +17,19 @@
         <p class="text-lg font-medium text-slate-600">Organisasi/Lembaga</p>
         <hr class="border-t border-slate-200">
         <ul class="space-y-2 text-slate-500">
-          <li class="bg-orange-600 text-white p-2 rounded-md">Semua</li>
-          <li class="hover:bg-slate-200 hover:px-2 py-2 duration-200 rounded-md">BPKSDM</li>
-          <li class="hover:bg-slate-200 hover:px-2 py-2 duration-200 rounded-md">BPKAD</li>
-          <li class="hover:bg-slate-200 hover:px-2 py-2 duration-200 rounded-md">Bagian Keuangan</li>
+          <li>
+            <a href="javascript:void(0)" class="block hover:px-2 duration-200 py-2 rounded-md hover:bg-slate-200">
+              Semua
+            </a>
+          </li>
+          @foreach ($organisasiList as $org)
+            <li>
+              {{-- /pengumuman/organisasi/nama-organisasi --}}
+              <a href="javascript:void(0)" class="block hover:px-2 duration-200 py-2 rounded-md hover:bg-slate-200">
+                {{ $org }}
+              </a>
+            </li>
+          @endforeach
         </ul>
       </div>
       <div class="w-full md:w-2/3 p-4 border rounded-lg border-slate-200">
@@ -23,15 +37,15 @@
 
         {{-- Data List --}}
         <div class="grid divide-y divide-slate-300 gap-4 border-t border-slate-300">
-          @for ($i = 0; $i < 5; $i++)
-            <div class="gap-2 group duration-200 py-4 w-full">
-              <div class="space-y-1">
-                <a href="/pengumuman/slug" class="hover:underline text-xl font-medium text-slate-700 group-hover:text-slate-800  line-clamp-2">Lorem ipsum dolor
-                  sit amet consectetur adipisicing elit. Natus ab ullam eum reprehenderit rerum provident aut unde
-                  nesciunt. Numquam est laborum eligendi officiis a cupiditate error tempora, exercitationem architecto
-                  earum.</a>
-                <div class="flex gap-2 text-slate-600 items-center justify-between">
-                  <div class="flex items-center gap-2">
+          @forelse ($announcements as $item)
+            <div class="group duration-200  py-4 w-full">
+              <div class="space-y-2">
+                <a href="/pengumuman/{{ $item->slug }}"
+                  class="hover:underline text-xl font-medium text-slate-700 group-hover:text-slate-800 line-clamp-2">
+                  {{ $item->title }}
+                </a>
+                <div class="flex flex-col md:flex-row md:items-center gap-2 text-slate-600">
+                    {{-- Tanggal --}}
                     <div class="flex items-center gap-1">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 stroke-[1.5]">
@@ -42,9 +56,10 @@
                         <path d="M4 11l16 0" />
                         <path d="M8 15h2v2h-2z" />
                       </svg>
-                      <p>12 Januari 2024</p>
+                      <p>{{ $item->published_at->format('d F Y') }}</p>
                     </div>
-                    <x-icons.dot class="h-1 w-1 text-slate-400" />
+                    <x-icons.dot class="hidden md:block h-1 w-1 text-slate-400" />
+                    {{-- Organisasi --}}
                     <div class="flex items-center gap-1">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 stroke-[1.5]">
@@ -61,55 +76,15 @@
                         <path d="M17 12v0" />
                         <path d="M17 16v0" />
                       </svg>
-                      <p>BKPSDM</p>
+                      <p>{{ $item->author->name ?? '-' }}</p>
                     </div>
                   </div>
-                </div>
               </div>
             </div>
-          @endfor
+          @empty
+            <p class="py-4 text-slate-500">Tidak ada pengumuman.</p>
+          @endforelse
         </div>
-
-        {{-- Pagination --}}
-        <div class="flex border-t border-slate-200 pt-6 justify-between items-center">
-          <ul class="flex items-center gap-4 text-lg font-medium">
-            <li class="bg-orange-600 rounded py-0.5 px-2 text-white cursor-pointer" disabled>
-              1</li>
-            <li
-              class="bg-white rounded py-0.5 px-2 ring-1 ring-zinc-200 text-slate-600 cursor-pointer hover:bg-slate-200">
-              2</li>
-            <li
-              class="bg-white rounded py-0.5 px-2 ring-1 ring-zinc-200 text-slate-600 cursor-pointer hover:bg-slate-200">
-              3</li>
-            <li
-              class="bg-white rounded py-0.5 px-2 ring-1 ring-zinc-200 text-slate-600 cursor-pointer hover:bg-slate-200">
-              ...</li>
-            <li
-              class="bg-white rounded py-0.5 px-2 ring-1 ring-zinc-200 text-slate-600 cursor-pointer hover:bg-slate-200">
-              15</li>
-          </ul>
-          <div>
-            <button
-              class="bg-white hover:bg-slate-200 rounded p-1 ring-1 ring-zinc-300 text-slate-500 hover:text-slate-600">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 stroke-2">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M15 6l-6 6l6 6" />
-              </svg>
-            </button>
-            <button
-              class="bg-white hover:bg-slate-200 rounded p-1 ring-1 ring-zinc-300 text-slate-500 hover:text-slate-600">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 stroke-2">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M9 6l6 6l-6 6" />
-              </svg>
-            </button>
-          </div>
-        </div>
-        {{-- Pagination --}}
-
-
 
       </div>
     </div>

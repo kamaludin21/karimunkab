@@ -1,54 +1,69 @@
 @php
-  $news = App\Models\News::with('category', 'author')->where('slug', $slug)->firstOrFail();
+  $announce = \App\Models\Announcement::where('slug', $slug)->firstOrFail();
 @endphp
 
 @extends('layouts.app', ['activePage' => 'berita'])
 
 @section('content')
-  <div class="max-w-screen-lg mx-auto w-full bg-white">
+  <div class=" w-full bg-white">
 
-    <div class="max-w-screen-md mx-auto w-full space-y-6 py-16">
+    <div class="max-w-screen-md mx-auto w-full space-y-6 py-16 px-2">
       {{-- Breadcrumbs --}}
       <ul class="text-center flex gap-2 justify-center">
-        <li class="text-xl font-medium text-slate-600"><a href="/berita" class="hover:underline">
-            Berita</a></li>
+        <li class="text-xl font-medium text-slate-600"><a href="/pengumuman" class="hover:underline">
+            Pengumuman</a></li>
         <li class="text-xl font-medium text-slate-600">/</li>
-        <li class="text-xl font-medium text-orange-600">{{ $news->category->title }}</li>
+        <li class="text-xl font-medium text-orange-600">{{ $announce->author->name }}</li>
       </ul>
       {{-- Breadcrumbs --}}
 
       <div class="grid gap-4 place-content-center">
-        <h1 class="text-center text-5xl leading-16 font-medium text-slate-700">
-          {{ $news->title }}
+        <h1 class="text-center text-2xl md:text-5xl leading-6 md:leading-16 font-medium text-slate-700">
+          {{ $announce->title }}
         </h1>
 
         <div class="flex items-center justify-center gap-2 text-slate-600 h-fit text-lg">
-          <p>{{ $news->published_at->format('d F Y') }}</p>
+          <p>{{ $announce->published_at->format('d F Y') }}</p>
           <x-icons.dot class="w-2 h-2" />
-          <p>{{ $news->category->title }}</p>
+          <p>{{ $announce->author->name }}</p>
         </div>
       </div>
 
-      <div class="grid gap-4">
-        <img class="w-full h-auto max-h-80 object-cover ring-1 ring-zinc-300" src="{{ asset($news->image_url) }}"
-          alt=" {{ $news->title }}">
-
-        @if (!empty($news->images) && count($news->images) > 1)
-          <div class="flex gap-2 overflow-auto no-scrollbar">
-            @foreach ($news->images as $index => $image)
-              <img class="w-1/4 h-28 object-cover saturate-100 {{ $index !== 0 ? 'contrast-50 grayscale' : '' }}"
-                src="{{ asset('storage/' . $image) }}" alt="thumbnail-{{ $index }}">
-            @endforeach
-          </div>
-        @endif
-      </div>
+      @if ($announce->thumbnail)
+        <div class="grid gap-4">
+          <img class="w-full h-auto max-h-80 object-cover ring-1 ring-zinc-300" src="{{ asset($announce->thumbnail) }}"
+            alt="{{ $announce->title }}">
+        </div>
+      @endif
 
 
       {{-- html tags --}}
       <div class="text-xl leading-8 space-y-2 text-slate-700 html-content">
-        {!! $news->content !!}
+        {!! $announce->content !!}
       </div>
       {{-- html tags --}}
+
+      <div class="space-y-2">
+        <p>File Pendukung:</p>
+        <div class="flex flex-grow gap-2">
+          @php $index = 1; @endphp
+          @foreach ($announce->files ?? [] as $file)
+            <a href="{{ asset('storage/' . $file) }}" download
+              class="inline-flex items-center gap-2 text-slate-700 hover:text-orange-600 px-3 py-2 bg-slate-200 rounded-lg">
+
+              <span>Download File {{ $index++ }}</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="h-5 w-5">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+                <path d="M7 11l5 5l5 -5" />
+                <path d="M12 4l0 12" />
+              </svg>
+            </a>
+          @endforeach
+        </div>
+      </div>
+
 
       <hr class="border-t border-slate-400">
 

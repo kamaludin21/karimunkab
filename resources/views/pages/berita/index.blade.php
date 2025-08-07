@@ -1,3 +1,8 @@
+@php
+  $firstNews = App\Models\News::with('category', 'author')->firstOrFail();
+  $otherNews = App\Models\News::with('category', 'author')->where('id', '!=', $firstNews->id)->latest()->paginate(9);
+@endphp
+
 @extends('layouts.app', ['activePage' => 'berita'])
 
 @section('content')
@@ -5,22 +10,23 @@
     {{-- Hero Section --}}
     <section class="flex flex-col md:flex-row gap-8 items-center py-16 px-2">
       <div class="flex-1 md:w-1/2 w-full">
-        <img
-          src="https://medusajs.com/_next/image/?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F5a711ubd%2Fproduction%2F57c48878a2a1d44d37a44bc145200c9402af4fe1-3200x1672.jpg%3Fw%3D1280%26fm%3Dpng&w=3840&q=75"
-          class="w-full h-auto bg-cover rounded-lg ring-1 ring-zinc-300 shadow-md hover:shadow-lg" alt="">
+        <img src="{{ asset($firstNews->image_url) }}"
+          class="w-full h-auto bg-cover rounded-lg ring-1 ring-zinc-300 shadow-md hover:shadow-lg"
+          alt="{{ $firstNews->title }}">
       </div>
       <div class="flex-1 grid gap-4 place-content-center justify-start">
         <div class="flex items-center gap-2 text-slate-600 h-fit">
-          <p>21 Mei 2025</p>
+          <p>{{ $firstNews->published_at->format('d F Y') }}</p>
           <x-icons.dot class="w-2 h-2" />
-          <p>Pemerintahan</p>
+          <p>{{ $firstNews->category->title ?? '-' }}</p>
         </div>
         <h1 class="font-medium text-5xl leading-[1.1] text-slate-600 line-clamp-3">
-          <a href="/berita/slug" class="hover:underline underline-1">Fastest Way to Build and Deploy Medusa
-            Applications</a>
+          <a href="/berita/{{ $firstNews->slug }}" class="hover:underline underline-1">
+            {{ $firstNews->title }}
+          </a>
 
           <!-- Inline action button -->
-          <a href="/berita/slug"
+          <a href="/berita/{{ $firstNews->slug }}"
             class="inline-flex items-center justify-center align-middle
              group rounded-lg
             hover:bg-orange-600 transition duration-200 ml-2">
@@ -32,7 +38,6 @@
               <path d="M13 18l6 -6" />
               <path d="M13 6l6 6" />
             </svg>
-
           </a>
         </h1>
       </div>
@@ -44,7 +49,7 @@
     <section class="w-full slate-100  py-16">
       <div class="max-w-screen-lg px-2 grid gap-8 mx-auto w-full">
         {{-- Header Filter --}}
-        <div class="flex flex-col md:flex-row gap-2 justify-between items-start md:items-center">
+        {{-- <div class="flex flex-col md:flex-row gap-2 justify-between items-start md:items-center">
           <div class="flex gap-4 items-center text-slate-500 font-medium">
             <div
               class="py-1.5 px-3 bg-white border border-slate-200 rounded-full text-orange-600 flex items-center gap-1 hover:bg-slate-200">
@@ -68,69 +73,102 @@
               </svg>
             </button>
           </div>
-        </div>
+        </div> --}}
         {{-- Header Filter --}}
 
 
         <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-14">
-          @for ($i = 0; $i < 9; $i++)
-            <div class="hover:slate-200 rounded-lg duration-200 grid group">
-              <img
-                src="https://medusajs.com/_next/image/?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F5a711ubd%2Fproduction%2F8cc4fc064087bb7539d41e7847b3fe8fd893a5e4-3200x1672.jpg%3Fw%3D600&w=3840&q=75"
-                class="w-full h-auto min-h-32 duration-200 object-cover rounded-lg ring-1 ring-zinc-300 shadow-md hover:shadow-lg"
-                alt="">
+          @forelse ($otherNews as $news)
+            <div class="rounded-lg duration-200 grid group">
+              <img src="{{ asset($news->image_url) }}"
+                class="w-full h-auto min-h-32 max-h-44 duration-200 object-cover rounded-lg ring-1 ring-zinc-300 shadow-md hover:shadow-lg"
+                alt="{{ $news->title }}">
               <div class="text-sm flex items-center gap-2 pt-3 pb-1 text-slate-600 h-fit">
-                <p>21 Mei 2025</p>
+                <p>{{ $news->published_at->format('d M Y') }}</p>
                 <x-icons.dot class="w-1 h-1" />
-                <p>Pemerintahan</p>
+                <p>{{ $news->category->title ?? '-' }}</p>
               </div>
-              <a href="/berita/slug"
+              <a href="/berita/{{ $news->slug }}"
                 class="text-lg font-medium text-slate-600 hover:underline underline-offset-2 cursor-pointer hover:text-orange-600">
-                Lorem ipsum dolor sit amet
-                consectetur adipisicing elit.</a>
+                {{ Str::limit($news->title, 80) }}
+              </a>
             </div>
-          @endfor
+          @empty
+            <p class="col-span-full text-center text-slate-500">Belum ada berita lainnya.</p>
+          @endforelse
         </div>
 
+        {{-- Custom Pagination --}}
+        @if ($otherNews->hasPages())
+          <div class="flex border-t border-slate-200 pt-6 justify-between items-center">
+            <ul class="flex items-center gap-4 text-lg font-medium">
+              {{-- Page Links --}}
+              @php
+                $start = max(1, $otherNews->currentPage() - 2);
+                $end = min($otherNews->lastPage(), $otherNews->currentPage() + 2);
+              @endphp
 
-        {{-- Pagination --}}
-        <div class="flex border-t border-slate-200 pt-6 justify-between items-center">
-          <ul class="flex items-center gap-4 text-lg font-medium">
-            <li class="bg-orange-600 rounded py-0.5 px-2 text-white cursor-pointer" disabled>
-              1</li>
-            <li
-              class="bg-white rounded py-0.5 px-2 ring-1 ring-zinc-200 text-slate-600 cursor-pointer hover:bg-slate-200">
-              2</li>
-            <li
-              class="bg-white rounded py-0.5 px-2 ring-1 ring-zinc-200 text-slate-600 cursor-pointer hover:bg-slate-200">
-              3</li>
-            <li
-              class="bg-white rounded py-0.5 px-2 ring-1 ring-zinc-200 text-slate-600 cursor-pointer hover:bg-slate-200">
-              ...</li>
-            <li
-              class="bg-white rounded py-0.5 px-2 ring-1 ring-zinc-200 text-slate-600 cursor-pointer hover:bg-slate-200">
-              15</li>
-          </ul>
-          <div>
-            <button
-              class="bg-white hover:bg-slate-200 rounded p-1 ring-1 ring-zinc-300 text-slate-500 hover:text-slate-600">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 stroke-2">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M15 6l-6 6l6 6" />
-              </svg>
-            </button>
-            <button
-              class="bg-white hover:bg-slate-200 rounded p-1 ring-1 ring-zinc-300 text-slate-500 hover:text-slate-600">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 stroke-2">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M9 6l6 6l-6 6" />
-              </svg>
-            </button>
+              @if ($start > 1)
+                <li>
+                  <a href="{{ $otherNews->url(1) }}"
+                    class="bg-white rounded py-1 px-2 ring-1 ring-zinc-200 text-slate-600 hover:bg-slate-200">1</a>
+                </li>
+                @if ($start > 2)
+                  <li class="text-slate-400">...</li>
+                @endif
+              @endif
+
+              @for ($i = $start; $i <= $end; $i++)
+                @if ($i == $otherNews->currentPage())
+                  <li>
+                    <a href="javascript:void(0)"
+                      class="bg-orange-600 rounded py-1 px-2 ring-1 ring-zinc-200 text-white">
+                      {{ $i }}
+                    </a>
+                  </li>
+                @else
+                  <li>
+                    <a href="{{ $otherNews->url($i) }}"
+                      class="bg-white rounded py-1 px-2 ring-1 ring-zinc-200 text-slate-600 hover:bg-slate-200">
+                      {{ $i }}
+                    </a>
+                  </li>
+                @endif
+              @endfor
+
+              @if ($end < $otherNews->lastPage())
+                @if ($end < $otherNews->lastPage() - 1)
+                  <li class="text-slate-400">...</li>
+                @endif
+                <li>
+                  <a href="{{ $otherNews->url($otherNews->lastPage()) }}"
+                    class="bg-white rounded py-1 px-2 ring-1 ring-zinc-200 text-slate-600 hover:bg-slate-200">
+                    {{ $otherNews->lastPage() }}
+                  </a>
+                </li>
+              @endif
+            </ul>
+
+            {{-- Arrow buttons (duplicate optional) --}}
+            <div class="flex gap-2">
+              <a href="{{ $otherNews->previousPageUrl() }}"
+                class="{{ $otherNews->onFirstPage() ? 'pointer-events-none text-slate-300' : 'hover:text-slate-600 text-slate-500' }} bg-white hover:bg-slate-200 rounded p-1 ring-1 ring-zinc-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-2" fill="none" stroke="currentColor"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 6l-6 6l6 6" />
+                </svg>
+              </a>
+              <a href="{{ $otherNews->nextPageUrl() }}"
+                class="{{ $otherNews->hasMorePages() ? 'hover:text-slate-600 text-slate-500' : 'pointer-events-none text-slate-300' }} bg-white hover:bg-slate-200 rounded p-1 ring-1 ring-zinc-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-2" fill="none" stroke="currentColor"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 6l6 6l-6 6" />
+                </svg>
+              </a>
+            </div>
           </div>
-        </div>
-        {{-- Pagination --}}
+        @endif
+
 
       </div>
     </section>

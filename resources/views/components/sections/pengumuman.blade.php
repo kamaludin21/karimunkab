@@ -19,9 +19,9 @@
           <div class="flex gap-2 items-center text-sm font-medium text-slate-600">
             <p>{{ \Carbon\Carbon::parse($announcement->published_at)->translatedFormat('d F Y') }}</p>
             <x-icons.dot class="w-1 h-1" />
-            <p>{{ $announcement->user->name ?? 'Admin' }}</p>
+            <p>{{ $announcement->author->name ?? 'Admin' }}</p>
           </div>
-          <p class="text-3xl leading-8 font-bold line-clamp-2 text-slate-700">
+          <p class="text-2xl leading-8 font-bold line-clamp-3 text-slate-700 select-none">
             {{ $announcement->title }}
           </p>
           <a href="{{ url('/pengumuman/' . $announcement->slug) }}"
