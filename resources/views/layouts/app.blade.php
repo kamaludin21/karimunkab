@@ -226,7 +226,7 @@
           </div>
           <div class="absolute right-0 z-0 bottom-0">
             <p
-              class="text-9xl tracking-wide font-bold text-right bg-gradient-to-t bg-slate-900 via-slate-800 to-slate-800 bg-clip-text text-transparent opacity-10">
+              class="text-9xl tracking-wide font-bold text-right bg-gradient-to-t bg-slate-900 via-slate-800 to-slate-800 bg-clip-text text-transparent opacity-50">
               BUMI
             </p>
           </div>
@@ -237,7 +237,7 @@
             <p class="text-sm font-light">DISKOMINFO</p>
           </div>
           <p
-            class="absolute top-4 right-0 bottom-0 leading-[0.8] text-9xl tracking-wide font-bold text-right bg-gradient-to-b bg-slate-900 via-slate-800 to-slate-800 bg-clip-text text-transparent opacity-10">
+            class="absolute top-4 right-0 bottom-0 leading-[0.8] text-9xl tracking-wide font-bold text-right bg-gradient-to-b bg-slate-900 via-slate-800 to-slate-800 bg-clip-text text-transparent opacity-50">
             <span class="align-[0px]">BERAZAM</span>
           </p>
         </div>
