@@ -9,7 +9,7 @@
 
     <div
       class="flex items-center gap-4 before:h-px before:flex-1 before:bg-slate-700 after:h-px after:flex-1 after:bg-slate-700">
-      <button
+      <a href="/nomor-penting"
         class="text-slate-300 hover:text-white hover:bg-slate-600 cursor-pointer border border-slate-300 w-fit mx-auto px-3 py-1 rounded-full flex gap-1 items-center">
         <span>Nomor Lainnya</span>
         <svg viewBox="0 0 24 24" fill="none"
@@ -19,7 +19,7 @@
           <path
             d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
         </svg>
-      </button>
+      </a>
     </div>
 
     <div class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 mt-4 md:mt-8">
