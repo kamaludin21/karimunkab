@@ -12,7 +12,13 @@
       <button
         class="text-slate-300 hover:text-white hover:bg-slate-600 cursor-pointer border border-slate-300 w-fit mx-auto px-3 py-1 rounded-full flex gap-1 items-center">
         <span>Nomor Lainnya</span>
-        <!-- Icon -->
+        <svg viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+          class="h-5 w-5">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path
+            d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+        </svg>
       </button>
     </div>
 
@@ -28,17 +34,17 @@
             </a>
             {{-- if is_whatsapp true --}}
             @if ($phone->is_whatsapp)
-            <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $phone->phone_number) }}" target="_blank"
-              class="flex items-center justify-center gap-1 bg-emerald-700 text-white py-1 px-2 md:py-2 flex-1 rounded-lg active:scale-95">
-              <span>Whatsapp</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                stroke-linejoin="round" class="h-6 w-6">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
-                <path
-                  d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
-              </svg>
-            </a>
+              <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $phone->phone_number) }}" target="_blank"
+                class="flex items-center justify-center gap-1 bg-emerald-700 text-white py-1 px-2 md:py-2 flex-1 rounded-lg active:scale-95">
+                <span>Whatsapp</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" class="h-6 w-6">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+                  <path
+                    d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+                </svg>
+              </a>
             @endif
           </div>
         </div>

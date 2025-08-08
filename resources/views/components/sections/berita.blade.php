@@ -21,7 +21,7 @@
                 </a>
               </div>
               <div class="flex justify-end">
-                <a href="/"
+                <a href="/berita/{{ $first->slug }}"
                   class="ring-2 hover:bg-white ring-white p-2 rounded-full group duration-200 cursor-pointer">
                   <svg xmlns="http://www.w3.org/2000/svg"
                     class="h-6 w-6 text-white group-hover:text-slate-800 group-hover:rotate-45 duration-200"
@@ -49,13 +49,13 @@
                     <div class="w-fit whitespace-nowrap p-0.5 rounded-md text-slate-100 text-sm">
                       <p>{{ $item->published_at->format('d F Y') }} | {{ $item->category->name ?? '-' }}</p>
                     </div>
-                    <a href="/"
+                    <a href="/berita/{{ $first->slug }}"
                       class="hover:underline underline-offset-2 text-xl leading-[1.2] font-light hover:text-white text-slate-50 line-clamp-3">
                       {{ $item->title }}
                     </a>
                   </div>
                   <div class="flex justify-end">
-                    <a href="/"
+                    <a href="/berita/{{ $first->slug }}"
                       class="ring-1 hover:bg-white ring-white p-1.5 rounded-full group duration-200 cursor-pointer">
                       <svg xmlns="http://www.w3.org/2000/svg"
                         class="h-5 w-5 text-white group-hover:text-slate-800 group-hover:rotate-45 duration-200"
@@ -74,13 +74,13 @@
                     <div class="w-fit p-0.5 rounded-md text-slate-100 text-sm">
                       <p>{{ $item->published_at->format('d F Y') }} | {{ $item->category->name ?? '-' }}</p>
                     </div>
-                    <a href="/"
+                    <a href="/berita/{{ $first->slug }}"
                       class="hover:underline underline-offset-2 text-xl leading-[1.2] font-light hover:text-white text-slate-50 line-clamp-3">
                       {{ $item->title }}
                     </a>
                   </div>
                   <div class="flex justify-end">
-                    <a href="/"
+                    <a href="/berita/{{ $first->slug }}"
                       class="ring-1 hover:bg-white ring-white p-1.5 rounded-full group duration-200 cursor-pointer">
                       <svg xmlns="http://www.w3.org/2000/svg"
                         class="h-5 w-5 text-white group-hover:text-slate-800 group-hover:rotate-45 duration-200"

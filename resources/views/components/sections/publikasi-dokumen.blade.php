@@ -11,10 +11,6 @@
       <div class="text-slate-700 hidden bg-slate-100 pr-8 py-3 text-sm font-bold md:block">HARI BULAN</div>
       <div class="text-slate-700 bg-slate-100 pr-8 py-3 text-sm font-bold">JUDUL</div>
       <div class="text-slate-700 bg-slate-100 pr-8 py-3 text-sm font-bold">AUTHOR</div>
-
-
-
-      {{-- +++++++++++++++++++++++++++++++++++++++++++++ --}}
       @php
         $prevYear = null;
         $prevDate = null;
@@ -63,15 +59,12 @@
           </div>
         </div>
       @endforeach
-
-      {{-- +++++++++++++++++++++++++++++++++++++++++++++ --}}
-
     </div>
     <div
       class="flex items-center gap-4 before:h-px before:flex-1 before:bg-gray-300  before:content-[''] after:h-px after:flex-1 after:bg-gray-300  after:content-['']">
-      <button
+      <a href="/arsip-dokumen"
         class="text-slate-600 hover:text-white hover:bg-orange-600 cursor-pointer border border-slate-300 w-fit mx-auto px-3 py-1 rounded-full">Lihat
-        Selengkapnya</button>
+        Selengkapnya</a>
     </div>
   </div>
 </section>
