@@ -52,9 +52,19 @@
           <div class="border-t border-slate-300 text-slate-700 group-hover:text-orange-600 flex items-center pr-2">
             <div class="flex items-center gap-4 h-fit">
               <p>{{ $doc->author->name ?? '-' }}</p>
-              <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-fit">
+              <a href="{{ asset('storage/' . $doc->file) }}" download="">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" class="h-auto w-6">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+                  <path d="M7 11l5 5l5 -5" />
+                  <path d="M12 4l0 12" />
+                </svg>
+              </a>
+              {{-- Disabled until preview page ready --}}
+              {{-- <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-fit">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
-              </svg>
+              </svg> --}}
             </div>
           </div>
         </div>

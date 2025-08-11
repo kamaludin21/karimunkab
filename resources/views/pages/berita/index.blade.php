@@ -16,7 +16,7 @@
       </div>
       <div class="flex-1 grid gap-4 place-content-center justify-start">
         <div class="flex items-center gap-2 text-slate-600 h-fit">
-          <p>{{ $firstNews->published_at->format('d F Y') }}</p>
+          <p>{{ $firstNews->published_at->isoFormat('d MMMM Y') }}</p>
           <x-icons.dot class="w-2 h-2" />
           <p>{{ $firstNews->category->title ?? '-' }}</p>
         </div>
@@ -88,9 +88,9 @@
                 class="w-full h-auto min-h-32 max-h-44 duration-200 object-cover rounded-lg ring-1 ring-zinc-300 shadow-md hover:shadow-lg"
                 alt="{{ $news->title }}">
               <div class="text-sm flex items-center gap-2 pt-3 pb-1 text-slate-600 h-fit">
-                <p>{{ $news->published_at->format('d M Y') }}</p>
-                <x-icons.dot class="w-1 h-1" />
-                <p>{{ $news->category->title ?? '-' }}</p>
+                <p>{{ $news->published_at->isoFormat('d MMMM Y') }}</p>
+                {{-- <x-icons.dot class="w-1 h-1" /> --}}
+                {{-- <p>{{ $news->category->title ?? '-' }}</p> --}}
               </div>
               <a href="/berita/{{ $news->slug }}"
                 class="text-lg font-medium text-slate-600 hover:underline underline-offset-2 cursor-pointer hover:text-orange-600">

@@ -69,7 +69,7 @@
                         <path d="M4 11l16 0" />
                         <path d="M8 15h2v2h-2z" />
                       </svg>
-                      <p>{{ $doc->published_at->format('d F Y') }}</p>
+                      <p>{{ $doc->published_at->isoFormat('d MMMM Y') }}</p>
                     </div>
                     <x-icons.dot class="hidden md:block h-1 w-1 text-slate-400" />
                     <div class="flex items-center gap-1">
@@ -91,7 +91,7 @@
                       <p>{{ $doc->author->name ?? 'Tidak diketahui' }}</p>
                     </div>
                   </div>
-                  <a href="{{ asset('storage/documents/' . $doc->file) }}" download
+                  <a href="{{ asset('storage/' . $doc->file) }}" download
                     class="bg-white border border-slate-400 text-slate-700 hover:bg-slate-800 hover:text-white cursor-pointer rounded px-2 py-1 flex gap-1 active:scale-95">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
                       stroke-linejoin="round" class="h-auto w-5 stroke-[1.5]">

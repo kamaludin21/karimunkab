@@ -23,7 +23,7 @@
         </h1>
 
         <div class="flex items-center justify-center gap-2 text-slate-600 h-fit text-lg">
-          <p>{{ $news->published_at->format('d F Y') }}</p>
+          <p>{{ $news->published_at->isoFormat('d MMMM Y') }}</p>
           <x-icons.dot class="w-2 h-2" />
           <p>{{ $news->category->title }}</p>
         </div>
