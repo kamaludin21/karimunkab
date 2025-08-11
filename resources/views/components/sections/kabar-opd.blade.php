@@ -42,8 +42,6 @@
           }
         }
 
-        console.log(allPosts);
-
         // Sortir tanggal
         return allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
       };

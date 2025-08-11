@@ -23,7 +23,7 @@
 
 <body class="grid bg-slate-100">
   @stack('popup')
-  <x-navigation.nav />
+  <x-navigation.nav :activePage="$activePage" />
   <main class="bg-white">
     @yield('content')
   </main>

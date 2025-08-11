@@ -1,3 +1,5 @@
+@props(['activePage'])
+
 <nav x-data="{ mobileOpen: false }" class="bg-white sticky top-0 z-50 shadow">
     <div class="max-w-screen-lg px-2 flex items-center justify-between mx-auto w-full py-4">
       <div class="flex gap-6">
