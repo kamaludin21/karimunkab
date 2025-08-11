@@ -119,7 +119,7 @@
         </li>
         <li>
           <a href="https://ppid.karimunkab.go.id/" target="blank"
-            class="{{ ($activePage ?? '') === 'tautan-aplikasi' ? 'text-orange-600 border-b-2' : 'hover:text-slate-800 border-transparent border-b-2' }} h-full block hover:border-b-2 py-2 uppercase">
+            class="hover:text-slate-800 border-transparent border-b-2 h-full block hover:border-b-2 py-2 uppercase">
             PPID
           </a>
         </li>

@@ -22,7 +22,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\RichEditor;
-
+use Filament\Tables\Filters\TrashedFilter;
 
 class NewsResource extends Resource
 {
@@ -34,6 +34,20 @@ class NewsResource extends Resource
   {
     return $form
       ->schema([
+        Select::make('user_id')
+          ->label('Author')
+          ->disabled((fn(): bool => !auth()->user()->hasRole('super_admin')))
+          ->default(auth()->id())
+          ->relationship('author', 'name')
+          ->searchable()
+          ->preload()
+          ->required(),
+        DatePicker::make('published_at')
+          ->label('Tanggal Publikasi')
+          ->native(false)
+          ->displayFormat('d F Y')
+          ->default(today())
+          ->required(),
         Select::make('news_category_id')
           ->relationship(name: 'category', titleAttribute: 'title')
           ->native(false)
@@ -52,13 +66,12 @@ class NewsResource extends Resource
               ->unique(ignoreRecord: true)
               ->disabled()
               ->dehydrated()
-              ->readOnly(),
+              ->readOnly()
+              ->required(),
           ])
           ->required()
           ->label('Kategori Tautan'),
-        DatePicker::make('published_at')
-          ->label('Tanggal Publikasi')
-          ->native(false),
+
         Textarea::make('title')
           ->autosize()
           ->rows(1)
@@ -66,17 +79,6 @@ class NewsResource extends Resource
           ->maxLength(250)
           ->live(onBlur: true)
           ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
-          ->required(),
-        TextInput::make('slug')
-          ->label('Slug')
-          ->placeholder('Slug')
-          ->unique(ignoreRecord: true)
-          ->disabled()
-          ->dehydrated()
-          ->readOnly(),
-        RichEditor::make('content')
-          ->label('Konten')
-          ->maxLength(5000)
           ->required(),
         FileUpload::make('images')
           ->label('Gambar')
@@ -86,9 +88,27 @@ class NewsResource extends Resource
           ->maxSize(512)
           ->multiple()
           ->maxFiles(5)
+          ->helperText('Max File: 5, Size: 500KB')
           ->reorderable()
-          ->nullable(),
-
+          ->required(),
+        TextInput::make('slug')
+          ->label('Slug')
+          ->placeholder('Slug')
+          ->unique(ignoreRecord: true)
+          ->disabled()
+          ->dehydrated()
+          ->readOnly()
+          ->required(),
+        RichEditor::make('content')
+          ->label('Konten')
+          ->maxLength(5000)
+          ->disableToolbarButtons([
+            'attachFiles',
+            'blockquote',
+            'codeBlock',
+          ])
+          ->required()
+          ->columnSpanFull(),
       ]);
   }
 
@@ -109,20 +129,25 @@ class NewsResource extends Resource
           ->label('Kategori'),
         TextColumn::make('published_at')
           ->label('Publikasi')
-          ->formatStateUsing(fn($state) => \Carbon\Carbon::parse($state)->translatedFormat('d F Y')),
+          ->date('d F Y')
       ])
       ->actions([
         Tables\Actions\ActionGroup::make([
           Tables\Actions\EditAction::make(),
           Tables\Actions\DeleteAction::make(),
+          Tables\Actions\ForceDeleteAction::make(),
+          Tables\Actions\RestoreAction::make(),
         ])
       ])
       ->defaultSort('published_at', 'desc')
       ->filters([
         SelectFilter::make('category')
           ->relationship('category', 'title')
-          ->native()
-          ->label('Kategori')
+          ->native(false)
+          ->preload()
+          ->label('Kategori'),
+        TrashedFilter::make()
+          ->native(false),
       ]);
   }
 

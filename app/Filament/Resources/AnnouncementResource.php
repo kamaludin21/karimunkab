@@ -32,11 +32,18 @@ class AnnouncementResource extends Resource
     return $form
       ->schema([
         Select::make('user_id')
-          ->label('Author') // opsional, ubah label jika mau
-          ->relationship('author', 'name') // 'author' adalah nama method relasi di model
+          ->label('Author')
+          ->disabled((fn(): bool => !auth()->user()->hasRole('super_admin')))
+          ->default(auth()->id())
+          ->relationship('author', 'name')
           ->searchable()
           ->preload()
           ->required(),
+        DatePicker::make('published_at')
+          ->label('Tanggal Publikasi')
+          ->native(false)
+          ->displayFormat('d F Y')
+          ->default(today()),
         Textarea::make('title')
           ->autosize()
           ->rows(1)
@@ -52,10 +59,6 @@ class AnnouncementResource extends Resource
           ->disabled()
           ->dehydrated()
           ->readOnly(),
-        DatePicker::make('published_at')
-          ->label('Tanggal Publikasi')
-          ->native(false)
-          ->default(today()),
         FileUpload::make('thumbnail')
           ->label('Gambar Cover')
           ->directory('announcement/cover/' . now()->format('Y-m'))
@@ -64,10 +67,6 @@ class AnnouncementResource extends Resource
           ->maxSize(512)
           ->reorderable()
           ->nullable(),
-        RichEditor::make('content')
-          ->label('Konten')
-          ->maxLength(5000)
-          ->required(),
         FileUpload::make('files')
           ->label('File Pendukung')
           ->directory('announcement/files/' . now()->format('Y-m'))
@@ -77,7 +76,11 @@ class AnnouncementResource extends Resource
           ->maxFiles(5)
           ->reorderable()
           ->nullable(),
-
+        RichEditor::make('content')
+          ->label('Konten')
+          ->maxLength(5000)
+          ->required()
+          ->columnSpanFull(),
       ]);
   }
 
@@ -96,7 +99,7 @@ class AnnouncementResource extends Resource
           ->wrap(),
         TextColumn::make('published_at')
           ->label('Publikasi')
-          ->formatStateUsing(fn($state) => \Carbon\Carbon::parse($state)->translatedFormat('d F Y'))
+          ->date('d F Y')
       ])
       ->defaultSort('published_at', 'desc')
       ->actions([

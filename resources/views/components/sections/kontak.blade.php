@@ -59,7 +59,7 @@
          <div class="mb-4">
            <p class="text-xl font-medium text-slate-700">Alamat</p>
            <p class="text-lg font-light text-slate-600">
-             Komplek Perkantoran Bupati, Jl. Jend. Sudirman-Poros Meral, Tj. Balai Karimun, Kecamatan Karimun, Sei Raya
+             Komplek Perkantoran Bupati, Jl. Jend. Sudirman-Poros Meral, Tj. Balai Karimun, Kecamatan Meral, Sei Raya
            </p>
          </div>
          <div class="mb-4 space-y-2">

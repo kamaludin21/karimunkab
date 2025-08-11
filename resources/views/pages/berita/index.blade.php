@@ -1,6 +1,6 @@
 @php
-  $firstNews = App\Models\News::with('category', 'author')->firstOrFail();
-  $otherNews = App\Models\News::with('category', 'author')->where('id', '!=', $firstNews->id)->latest()->paginate(9);
+  // $firstNews = App\Models\News::with('category', 'author')->firstOrFail();
+  $otherNews = App\Models\News::with('category', 'author')->latest()->paginate(9);
 @endphp
 
 @extends('layouts.app', ['activePage' => 'berita'])
@@ -8,7 +8,7 @@
 @section('content')
   <div class="max-w-screen-lg mx-auto w-full">
     {{-- Hero Section --}}
-    <section class="flex flex-col md:flex-row gap-8 items-center py-16 px-2">
+    {{-- <section class="flex flex-col md:flex-row gap-8 items-center py-16 px-2">
       <div class="flex-1 md:w-1/2 w-full">
         <img src="{{ asset($firstNews->image_url) }}"
           class="w-full h-auto bg-cover rounded-lg ring-1 ring-zinc-300 shadow-md hover:shadow-lg"
@@ -41,7 +41,7 @@
           </a>
         </h1>
       </div>
-    </section>
+    </section> --}}
     {{-- Hero Section --}}
 
     <hr class="border-t-1 border-slate-200">
@@ -49,6 +49,10 @@
     <section class="w-full slate-100  py-16">
       <div class="max-w-screen-lg px-2 grid gap-8 mx-auto w-full">
         {{-- Header Filter --}}
+         {{-- Header --}}
+    <div class="pt-4">
+      <p class="text-4xl font-medium text-slate-800">Berita</p>
+    </div>
         {{-- <div class="flex flex-col md:flex-row gap-2 justify-between items-start md:items-center">
           <div class="flex gap-4 items-center text-slate-500 font-medium">
             <div
@@ -79,7 +83,7 @@
 
         <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-14">
           @forelse ($otherNews as $news)
-            <div class="rounded-lg duration-200 grid group">
+            <div class="rounded-lg group">
               <img src="{{ asset($news->image_url) }}"
                 class="w-full h-auto min-h-32 max-h-44 duration-200 object-cover rounded-lg ring-1 ring-zinc-300 shadow-md hover:shadow-lg"
                 alt="{{ $news->title }}">
@@ -121,8 +125,7 @@
               @for ($i = $start; $i <= $end; $i++)
                 @if ($i == $otherNews->currentPage())
                   <li>
-                    <a href="javascript:void(0)"
-                      class="bg-orange-600 rounded py-1 px-2 ring-1 ring-zinc-200 text-white">
+                    <a href="javascript:void(0)" class="bg-orange-600 rounded py-1 px-2 ring-1 ring-zinc-200 text-white">
                       {{ $i }}
                     </a>
                   </li>

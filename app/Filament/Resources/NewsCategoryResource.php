@@ -40,7 +40,8 @@ class NewsCategoryResource extends Resource
           ->unique(ignoreRecord: true)
           ->disabled()
           ->dehydrated()
-          ->readOnly(),
+          ->readOnly()
+          ->required(),
       ]);
   }
 
@@ -54,6 +55,11 @@ class NewsCategoryResource extends Resource
         TextColumn::make('title')
           ->label('Kategori')
           ->searchable(),
+        TextColumn::make('slug')
+          ->label('slug'),
+        TextColumn::make('created_at')
+          ->label('Dibuat')
+          ->date('d F Y'),
       ])
       ->actions([
         Tables\Actions\ActionGroup::make([

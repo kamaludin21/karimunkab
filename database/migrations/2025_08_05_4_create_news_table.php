@@ -27,6 +27,7 @@ return new class extends Migration
       $table->longText('content');
       $table->date('published_at')->nullable();
       $table->timestamps();
+      $table->softDeletes();
     });
   }
 

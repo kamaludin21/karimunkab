@@ -13,6 +13,7 @@ return new class extends Migration
   {
     Schema::create('important_numbers', function (Blueprint $table) {
       $table->id();
+      $table->integer('order');
       $table->string('service_name');      // nama layanan
       $table->string('contact_name');      // nama orang atau instansi
       $table->string('phone_number');      // nomor telp

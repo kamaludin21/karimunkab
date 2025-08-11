@@ -50,7 +50,8 @@ class LinkResource extends Resource
                 ->unique(ignoreRecord: true)
                 ->disabled()
                 ->dehydrated()
-                ->readOnly(),
+                ->readOnly()
+                ->required(),
             ])
             ->required()
             ->label('Kategori Berita'),

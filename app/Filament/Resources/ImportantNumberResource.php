@@ -26,6 +26,11 @@ class ImportantNumberResource extends Resource
   {
     return $form
       ->schema([
+        TextInput::make('order')
+          ->numeric()
+          ->hidden()
+          ->label('Urutan')
+          ->minValue(1),
         TextInput::make('service_name')
           ->label('Nama Layanan')
           ->required(),
@@ -34,13 +39,13 @@ class ImportantNumberResource extends Resource
           ->required(),
         TextInput::make('phone_number')
           ->label('Nomor Telpon')
-          ->type('tel') // input type HTML: <input type="tel">
-          ->inputMode('tel') // mobile keyboard khusus angka
+          ->type('tel')
+          ->inputMode('tel')
           ->required()
           ->minLength(9)
           ->maxLength(16)
           ->helperText('Awali dengan: 628xxx')
-          ->rule('regex:/^[0-9]+$/') // hanya angka (tanpa spasi, tanda)
+          ->rule('regex:/^[0-9]+$/')
           ->placeholder('+6281234567890'),
         Toggle::make('is_whatsapp')
           ->label('Aktif Whatsapp?')
@@ -52,10 +57,10 @@ class ImportantNumberResource extends Resource
   public static function table(Table $table): Table
   {
     return $table
+      ->reorderable('order')
       ->columns([
-        TextColumn::make('index')
-          ->label('No.')
-          ->rowIndex(),
+        TextColumn::make('order')
+          ->label('No.'),
         TextColumn::make('service_name')
           ->label('Layanan')
           ->searchable(),
@@ -69,7 +74,7 @@ class ImportantNumberResource extends Resource
           ->label('Aktif Whatsapp?')
           ->boolean(),
       ])
-      ->defaultSort('created_at', 'desc')
+      ->defaultSort('order', 'asc')
       ->actions([
         Tables\Actions\ActionGroup::make([
           Tables\Actions\EditAction::make(),

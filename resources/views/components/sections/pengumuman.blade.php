@@ -17,7 +17,7 @@
       @forelse ($announcements as $announcement)
         <div class="grid py-4 gap-2 hover:bg-slate-100 group hover:pl-2 duration-300 cursor-pointer">
           <div class="flex gap-2 items-center text-sm font-medium text-slate-600">
-            <p>{{ \Carbon\Carbon::parse($announcement->published_at)->translatedFormat('d F Y') }}</p>
+            <p>{{ \Carbon\Carbon::parse($announcement->published_at)->isoFormat('D MMMM Y') }}</p>
             <x-icons.dot class="w-1 h-1" />
             <p>{{ $announcement->author->name ?? 'Admin' }}</p>
           </div>

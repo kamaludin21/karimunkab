@@ -39,7 +39,8 @@ class LinkCategoryResource extends Resource
           ->unique(ignoreRecord: true)
           ->disabled()
           ->dehydrated()
-          ->readOnly(),
+          ->readOnly()
+          ->required(),
       ]);
   }
 

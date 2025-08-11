@@ -13,6 +13,7 @@ use Filament\Tables\Table;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Set;
 use Illuminate\Support\Str;
 use Filament\Tables\Columns\TextColumn;
@@ -29,6 +30,20 @@ class DocumentResource extends Resource
   {
     return $form
       ->schema([
+        Select::make('user_id')
+          ->label('Author')
+          ->disabled((fn(): bool => !auth()->user()->hasRole('super_admin')))
+          ->default(auth()->id())
+          ->relationship('author', 'name')
+          ->searchable()
+          ->preload()
+          ->required(),
+        DatePicker::make('published_at')
+          ->label('Tanggal Publikasi')
+          ->native(false)
+          ->displayFormat('d F Y')
+          ->default(today())
+          ->required(),
         Textarea::make('title')
           ->autosize()
           ->rows(1)
@@ -43,16 +58,16 @@ class DocumentResource extends Resource
           ->unique(ignoreRecord: true)
           ->disabled()
           ->dehydrated()
-          ->readOnly(),
+          ->readOnly()
+          ->required(),
         FileUpload::make('file')
           ->label('File')
           ->directory('document/' . now()->format('Y-m'))
           ->maxSize(1024)
+          ->downloadable()
+          ->helperText('Maks Size: 1MB')
           ->required(),
-        DatePicker::make('published_at')
-          ->label('Tanggal Publikasi')
-          ->native(false)
-          ->default(today()),
+
       ]);
   }
 
@@ -69,7 +84,7 @@ class DocumentResource extends Resource
           ->label('Judul'),
         TextColumn::make('published_at')
           ->label('Publikasi')
-          ->formatStateUsing(fn($state) => \Carbon\Carbon::parse($state)->translatedFormat('d F Y')),
+          ->date('d F Y')
       ])
       ->defaultSort('published_at', 'desc')
       ->actions([

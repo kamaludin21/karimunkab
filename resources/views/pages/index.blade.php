@@ -1,11 +1,10 @@
 @php
 $links = App\Models\Link::orderBy('order', 'asc')->limit(5)->get();
-$news = App\Models\News::with('category', 'author')
-            ->whereNotNull('published_at')
+$news = App\Models\News::whereNotNull('published_at')
             ->orderBy('published_at', 'desc')
             ->limit(4)
             ->get();
-$phones = App\Models\ImportantNumber::limit(6)->get();
+$phones = App\Models\ImportantNumber::orderBy('order', 'asc')->limit(6)->get();
 $announcements = App\Models\Announcement::orderBy('published_at', 'desc')->limit(3)->get();
 $documents = App\Models\Document::orderBy('published_at', 'desc')->limit(5)->get();
 @endphp

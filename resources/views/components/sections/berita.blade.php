@@ -13,7 +13,7 @@
             <div class="bg-slate-900/50 p-4 h-full flex flex-col gap-2 w-full justify-between">
               <div>
                 <div class="w-fit whitespace-nowrap p-0.5 rounded-md text-slate-100 text-sm">
-                  <p>{{ $first->published_at->format('d F Y') }} | {{ $first->category->name ?? '-' }}</p>
+                  <p>{{ $first->published_at->isoFormat('D MMMM Y') }}</p>
                 </div>
                 <a href="/berita/{{ $first->slug }}"
                   class="hover:underline underline-offset-2 text-3xl leading-[1.2] font-medium hover:text-white text-slate-100 line-clamp-3">
@@ -47,7 +47,7 @@
                 <div class="w-1/2 h-full flex flex-col justify-between p-2 md:p-4 gap-2">
                   <div>
                     <div class="w-fit whitespace-nowrap p-0.5 rounded-md text-slate-100 text-sm">
-                      <p>{{ $item->published_at->format('d F Y') }} | {{ $item->category->name ?? '-' }}</p>
+                      <p>{{ $item->published_at->isoFormat('D MMMM Y') }}</p>
                     </div>
                     <a href="/berita/{{ $item->slug }}"
                       class="hover:underline underline-offset-2 text-xl leading-[1.2] font-light hover:text-white text-slate-50 line-clamp-3">
@@ -72,7 +72,7 @@
                 <div class="bg-slate-800/50 p-2 md:p-4 h-full flex gap-2 flex-col w-full justify-between">
                   <div>
                     <div class="w-fit p-0.5 rounded-md text-slate-100 text-sm">
-                      <p>{{ $item->published_at->format('d F Y') }} | {{ $item->category->name ?? '-' }}</p>
+                      <p>{{ $item->published_at->isoFormat('D MMMM Y') }}</p>
                     </div>
                     <a href="/berita/{{ $item->slug }}"
                       class="hover:underline underline-offset-2 text-xl leading-[1.2] font-light hover:text-white text-slate-50 line-clamp-3">
