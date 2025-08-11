@@ -1,7 +1,7 @@
 @props(['phones'])
 
 <section class="w-full bg-white py-10 md:py-20">
-  <div class="max-w-screen-lg dot-pattern mx-auto grid gap-6 rounded-xl pt-16 pb-2 md:pb-4 px-2 md:px-4">
+  <div class="max-w-screen-lg dot-pattern mx-auto grid gap-6 rounded-none md:rounded-xl pt-16 pb-2 md:pb-4 px-2 md:px-4">
     <p class="text-5xl font-medium text-slate-50 text-center">Nomor Penting</p>
     <p class="text-xl font-light text-white w-2/3 mx-auto text-center">
       Informasi kontak berikut disediakan untuk layanan penting. Pastikan penggunaannya tepat dan bertanggung jawab.

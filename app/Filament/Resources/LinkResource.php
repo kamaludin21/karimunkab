@@ -81,7 +81,7 @@ class LinkResource extends Resource
             ->image()
             ->directory('thumbnails')
             ->imagePreviewHeight('150')
-            ->maxSize(512)
+            ->maxSize(128)
             ->nullable(),
         ]),
       ]);
