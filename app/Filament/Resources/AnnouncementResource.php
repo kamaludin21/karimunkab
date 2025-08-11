@@ -71,6 +71,7 @@ class AnnouncementResource extends Resource
           ->label('File Pendukung')
           ->directory('announcement/files/' . now()->format('Y-m'))
           ->imagePreviewHeight('150')
+          ->downloadable()
           ->maxSize(1024)
           ->multiple()
           ->maxFiles(5)

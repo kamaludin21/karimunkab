@@ -43,10 +43,10 @@ class ImportantNumberResource extends Resource
           ->inputMode('tel')
           ->required()
           ->minLength(9)
-          ->maxLength(16)
-          ->helperText('Awali dengan: 628xxx')
+          ->maxLength(15)
+          ->helperText('Min: 9, Max: 15')
           ->rule('regex:/^[0-9]+$/')
-          ->placeholder('+6281234567890'),
+          ->placeholder('628xxxxxxxxx'),
         Toggle::make('is_whatsapp')
           ->label('Aktif Whatsapp?')
           ->inline(false)
