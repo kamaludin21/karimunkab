@@ -12,9 +12,8 @@
       <a href="/nomor-penting"
         class="text-slate-300 hover:text-white hover:bg-slate-600 cursor-pointer border border-slate-300 w-fit mx-auto px-3 py-1 rounded-full flex gap-1 items-center">
         <span>Nomor Lainnya</span>
-        <svg viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-          class="h-5 w-5">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+          stroke-linejoin="round" class="h-5 w-5">
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
           <path
             d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
@@ -24,9 +23,11 @@
 
     <div class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 mt-4 md:mt-8">
       @foreach ($phones as $phone)
-        <div class="p-2 md:p-4 rounded-lg bg-white space-y-1">
-          <p class="text-lg font-medium text-slate-800 leading-5">{{ $phone->service_name }}</p>
-          <p class="text-base font-light text-slate-600 leading-5">{{ $phone->contact_name }}</p>
+        <div class="p-2 md:p-4 rounded-lg bg-white h-full flex flex-col justify-between">
+          <div>
+            <p class="text-lg font-medium text-slate-800 leading-5">{{ $phone->service_name }}</p>
+            <p class="text-base font-light text-slate-600 leading-5">{{ $phone->contact_name }}</p>
+          </div>
           <div class="flex flex-col md:flex-row gap-2 mt-4 font-medium">
             <a href="tel:{{ $phone->phone_number }}"
               class="text-center text-slate-700 gap-1 border border-slate-400 py-1 md:py-2 px-2 flex-1 rounded-lg active:scale-95">
