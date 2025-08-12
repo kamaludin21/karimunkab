@@ -12,9 +12,11 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 mt-4 md:mt-8">
       @foreach ($phones as $phone)
-        <div class="p-2 md:p-4 rounded-lg bg-white border-1 border-slate-400 space-y-1">
-          <p class="text-lg font-medium text-slate-800 leading-5">{{ $phone->service_name }}</p>
-          <p class="text-base font-light text-slate-600 leading-5">{{ $phone->contact_name }}</p>
+        <div class="p-2 md:p-4 rounded-lg bg-white border-1 border-slate-400 h-full flex flex-col justify-between">
+          <div>
+            <p class="text-lg font-medium text-slate-800 leading-5">{{ $phone->service_name }}</p>
+            <p class="text-base font-light text-slate-600 leading-5">{{ $phone->contact_name }}</p>
+          </div>
           <div class="flex flex-col md:flex-row gap-2 mt-4 font-medium">
             <a href="tel:{{ $phone->phone_number }}"
               class="text-center text-slate-700 gap-1 border border-slate-400 py-1 md:py-2 px-2 flex-1 rounded-lg active:scale-95">

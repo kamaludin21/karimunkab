@@ -22,7 +22,6 @@
   <x-sections.kontak />
 @endsection
 
-
 <x-commons.popup :popup="$popup" />
 
 

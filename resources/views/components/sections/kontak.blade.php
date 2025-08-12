@@ -65,19 +65,19 @@
          <div class="mb-4 space-y-2">
            <p class="text-xl font-medium text-slate-700">Sosial Media</p>
            <div class="flex flex-grow gap-4 items-center text-slate-700">
-             <a href=""
+             <a href="https://www.facebook.com/profile.php?id=61574593601997" target="_blank"
                class="p-2 border-2 border-slate-600 hover:bg-slate-800 hover:text-white duration-200 rounded-lg">
                <x-icons.facebook class="w-5 h-5" />
              </a>
-             <a href=""
+             <a href="https://www.instagram.com/diskominfo_karimun" target="_blank"
                class="p-2 border-2 border-slate-600 hover:bg-slate-800 hover:text-white duration-200 rounded-lg">
                <x-icons.instagram class="w-5 h-5" />
              </a>
-             <a href=""
+             <a href="https://www.tiktok.com/@diskominfo_karimun" target="_blank"
                class="p-2 border-2 border-slate-600 hover:bg-slate-800 hover:text-white duration-200 rounded-lg">
-               <x-icons.twitter class="w-5 h-5" />
+               <x-icons.tiktok class="w-5 h-5" />
              </a>
-             <a href=""
+             <a href="https://www.youtube.com/@pemkabkarimun" target="_blank"
                class="p-2 border-2 border-slate-600 hover:bg-slate-800 hover:text-white duration-200 rounded-lg">
                <x-icons.youtube class="w-5 h-5" />
              </a>
