@@ -3,14 +3,16 @@
 {{-- Publikasi Dokumen --}}
 <section class="w-full bg-white py-20">
   <div class="max-w-screen-lg px-2 bg-white mx-auto grid gap-10">
-    <p class="text-5xl font-medium text-slate-700">Publikasi Dokumen</p>
+    <p class="text-3xl md:text-5xl font-medium text-slate-700">Publikasi Dokumen</p>
 
     <div class="grid w-full grid-cols-[1fr_auto] md:grid-cols-[auto_auto_1fr_auto]">
       <!-- Header Row -->
       <div class="text-slate-700 hidden bg-slate-100 pr-8 py-3 text-sm font-bold md:block pl-1">TAHUN</div>
       <div class="text-slate-700 hidden bg-slate-100 pr-8 py-3 text-sm font-bold md:block">HARI BULAN</div>
-      <div class="text-slate-700 bg-slate-100 pr-8 py-3 text-sm font-bold">JUDUL</div>
-      <div class="text-slate-700 bg-slate-100 pr-8 py-3 text-sm font-bold">AUTHOR</div>
+      <div class="text-slate-700 bg-slate-100 pr-8 py-3 text-sm font-bold pl-1 md:pl-0">
+        DOKUMEN
+      </div>
+      <div class="text-slate-700 py-3 text-sm font-bold text-center w-full bg-slate-100 pr-1">AUTHOR</div>
       @php
         $prevYear = null;
         $prevDate = null;
@@ -44,15 +46,22 @@
           </div>
 
           {{-- JUDUL --}}
-          <div class="border-t border-slate-300 pr-8 text-slate-700 group-hover:text-orange-600 flex items-center py-3">
-            {{ $doc->title }}
+          <div
+            class="border-t border-slate-300 pr-8 text-slate-700 group-hover:text-orange-600 flex items-center py-3 grid">
+            <span class="block md:hidden font-medium ">
+              {{ $doc->author->name ?? '-' }}
+            </span>
+            <span class="text-slate-700 text-sm md:text-base">
+              {{ $doc->title }}
+            </span>
           </div>
 
           {{-- AUTHOR --}}
-          <div class="border-t border-slate-300 text-slate-700 group-hover:text-orange-600 flex items-center pr-2">
-            <div class="flex items-center gap-4 h-fit">
-              <p>{{ $doc->author->name ?? '-' }}</p>
-              <a href="{{ asset('storage/' . $doc->file) }}" download="">
+          <div
+            class="border-t border-slate-300 text-slate-700 group-hover:text-orange-600 flex items-center">
+            <div class="flex items-center gap-4 h-fit w-full">
+              <p class="hidden md:block">{{ $doc->author->name ?? '-' }}</p>
+              <a href="{{ asset('storage/' . $doc->file) }}" download class="hover:bg-slate-200 p-1 mx-auto rounded-md">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                   stroke-linejoin="round" class="h-auto w-6">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
