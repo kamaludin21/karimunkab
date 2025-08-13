@@ -67,7 +67,7 @@
 
           const el = document.createElement('div');
           el.className =
-            "w-full flex flex-col justify-between space-y-2 bg-gray-50 hover:bg-white cursor-pointer rounded-lg p-4 text-slate-600";
+            "w-full flex flex-col justify-between space-y-2 bg-gray-50 hover:bg-white cursor-pointer rounded-lg p-2 md:p-4 text-slate-600";
 
           el.innerHTML = `
             <p class="text-xl font-medium line-clamp-3 text-slate-700 hover:underline hover:text-orange-600">
