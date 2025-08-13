@@ -12,7 +12,10 @@
       <div class="text-slate-700 bg-slate-100 pr-8 py-3 text-sm font-bold pl-1 md:pl-0">
         DOKUMEN
       </div>
-      <div class="text-slate-700 py-3 text-sm font-bold text-center w-full bg-slate-100 pr-1">AUTHOR</div>
+      <div class="text-slate-700 py-3 text-sm font-bold text-center w-full bg-slate-100 pr-1">
+        <p class="block md:hidden">UNDUH</p>
+        <p class="hidden md:block">AUTHOR</p>
+      </div>
       @php
         $prevYear = null;
         $prevDate = null;
