@@ -28,7 +28,7 @@
       </p> --}}
     </div>
     <div
-      class="pl-0 lg:pl-8 flex-0 text-5xl md:text-4xl grid gap-2 font-medium text-slate-100 border-t-2 lg:border-t-0 border-l-0 lg:border-l-2 border-orange-600 pt-4 lg:pt-0">
+      class="pl-0 lg:pl-8 flex-0 text-4xl grid gap-2 font-medium text-slate-100 border-t-2 lg:border-t-0 border-l-0 lg:border-l-2 border-orange-600 pt-4 lg:pt-0">
       <p>Maju</p>
       <p>Sejahtera</p>
       <p>Berbudaya</p>

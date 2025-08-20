@@ -11,7 +11,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
-  <title>Kabupaten Karimun</title>
+  <title>Pemerintah Kabupaten Karimun</title>
 
   @vite(['resources/css/app.css', 'resources/js/app.js'])
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,6 +19,24 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
     rel="stylesheet">
+
+  <link rel="canonical" href="https://karimunkab.go.id/">
+
+  {{-- Seo TAG --}}
+  <meta name="title" content="Pemerintah Kabupaten Karimun - Informasi Resmi & Layanan Publik">
+  <meta name="description"
+    content="Website resmi Pemerintah Kabupaten Karimun. Temukan informasi terbaru seputar pemerintahan, pelayanan publik, berita daerah, pengumuman, serta potensi wisata dan investasi di Kabupaten Karimun.">
+  <meta name="keywords"
+    content="Kabupaten Karimun, Pemerintah Karimun, Pemkab Karimun, Website Resmi Karimun, Berita Karimun, Wisata Karimun, Investasi Karimun, Kepulauan Riau, Layanan Publik Karimun">
+
+
+  {{-- OG:Card --}}
+  <meta property="og:title" content="Pemerintah Kabupaten Karimun - Website Resmi">
+  <meta property="og:description"
+    content="Situs resmi Pemerintah Kabupaten Karimun. Akses informasi, berita, layanan publik, serta potensi daerah Karimun.">
+  <meta property="og:image" content="{{ asset('assets/images/main_og_card.jpg') }}">
+  <meta property="og:url" content="https://www.karimunkab.go.id/">
+  <meta property="og:type" content="website">
 </head>
 
 <body class="grid bg-slate-100">
@@ -55,6 +73,6 @@
     </div>
   </footer>
   <div class="w-full bg-slate-800 py-1">
-    <p class="text-sm text-center font-medium text-slate-100">Copyright &copy; 2025 </p>
+    <p class="text-sm text-center font-ligth text-slate-100">DISKOMINFOTIK &copy; 2025 Seluruh hak cipta dilindungi</p>
   </div>
 </body>
