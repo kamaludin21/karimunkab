@@ -31,7 +31,7 @@
 
 
   {{-- OG:Card --}}
-  <meta property="og:title" content="Pemerintah Kabupaten Karimun - Website Resmi">
+  <meta property="og:title" content="Pemerintah Kabupaten Karimun">
   <meta property="og:description"
     content="Situs resmi Pemerintah Kabupaten Karimun. Akses informasi, berita, layanan publik, serta potensi daerah Karimun.">
   <meta property="og:image" content="{{ asset('assets/images/main_og_card.jpg') }}">
