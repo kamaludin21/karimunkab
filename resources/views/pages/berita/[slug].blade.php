@@ -10,15 +10,19 @@
     <div class="max-w-screen-md mx-auto w-full space-y-6 py-16">
       {{-- Breadcrumbs --}}
       <ul class="text-center flex gap-2 justify-center">
-        <li class="text-xl font-medium text-slate-600"><a href="/berita" class="hover:underline">
-            Berita</a></li>
+        <li class="text-xl font-medium text-slate-600"><a href="/" class="hover:underline">
+            Beranda</a></li>
         <li class="text-xl font-medium text-slate-600">/</li>
-        <li class="text-xl font-medium text-orange-600">{{ $news->category->title }}</li>
+        <li class="text-xl font-medium text-orange-600">
+          <a href="/berita" class="hover:underline cursor-pointer">
+            Berita
+          </a>
+        </li>
       </ul>
       {{-- Breadcrumbs --}}
 
       <div class="grid gap-4 place-content-center">
-        <h1 class="text-center text-5xl leading-16 font-medium text-slate-700">
+        <h1 class="text-center text-4xl leading-14 font-bold text-slate-700">
           {{ $news->title }}
         </h1>
 
@@ -29,9 +33,9 @@
         </div>
       </div>
 
-      <div class="grid gap-4">
-        <img class="w-full h-auto min-h-56 object-cover ring-1 ring-zinc-300" src="{{ asset($news->image_url) }}"
-          alt=" {{ $news->title }}">
+      <div class="grid gap-4 ">
+        <img class="w-full h-auto min-h-56 object-cover ring-1 ring-zinc-200 rounded-sm overflow-hidden"
+          src="{{ asset($news->image_url) }}" alt=" {{ $news->title }}">
 
         @if (!empty($news->images) && count($news->images) > 1)
           <div class="flex gap-2 overflow-auto no-scrollbar">
@@ -45,7 +49,7 @@
 
 
       {{-- html tags --}}
-      <div class="text-xl leading-8 space-y-2 text-slate-700 html-content">
+      <div class="text-xl leading-8 space-y-2 text-slate-700 html-content select-none">
         {!! $news->content !!}
       </div>
       {{-- html tags --}}

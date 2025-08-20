@@ -49,19 +49,19 @@
           </div>
 
           {{-- JUDUL --}}
-          <div
-            class="border-t border-slate-300 pr-8 text-slate-700 group-hover:text-orange-600 flex items-center py-3 grid">
-            <span class="block md:hidden font-medium ">
-              {{ $doc->author->name ?? '-' }}
+          <div class="border-t border-slate-300 pr-8 group-hover:text-orange-600 flex items-center py-3 grid">
+            <span class="block md:hidden font-medium flex items-center gap-2 text-sm text-slate-500">
+              <p>{{ \Carbon\Carbon::parse($doc->published_at)->isoFormat('D MMMM Y') }}</p>
+              <x-icons.dot class="w-1 h-1" />
+              <p>{{ $doc->author->name ?? 'Admin' }}</p>
             </span>
-            <span class="text-slate-700 text-sm md:text-base">
+            <span class="text-slate-700 text-base font-medium line-clamp-2">
               {{ $doc->title }}
             </span>
           </div>
 
           {{-- AUTHOR --}}
-          <div
-            class="border-t border-slate-300 text-slate-700 group-hover:text-orange-600 flex items-center">
+          <div class="border-t border-slate-300 text-slate-700 group-hover:text-orange-600 flex items-center">
             <div class="flex items-center gap-4 h-fit w-full">
               <p class="hidden md:block">{{ $doc->author->name ?? '-' }}</p>
               <a href="{{ asset('storage/' . $doc->file) }}" download class="hover:bg-slate-200 p-1 mx-auto rounded-md">
@@ -85,8 +85,9 @@
     <div
       class="flex items-center gap-4 before:h-px before:flex-1 before:bg-gray-300  before:content-[''] after:h-px after:flex-1 after:bg-gray-300  after:content-['']">
       <a href="/arsip-dokumen"
-        class="text-slate-600 hover:text-white hover:bg-orange-600 cursor-pointer border border-slate-300 w-fit mx-auto px-3 py-1 rounded-full">Lihat
-        Selengkapnya</a>
+        class="text-slate-600 hover:text-white hover:bg-orange-600 cursor-pointer border border-slate-300 w-fit mx-auto px-3 py-1 rounded-full">
+        Dokumen Lainnya
+      </a>
     </div>
   </div>
 </section>

@@ -1,7 +1,7 @@
 @props(['number'])
 
 {{-- Kabar OPD --}}
-<section class="w-full grid-pattern py-28">
+<section class="w-full grid-pattern py-10 md:py-28">
   <div class="max-w-screen-lg px-2 mx-auto grid gap-10">
     <p class="text-3xl md:text-5xl font-medium text-slate-50">Kabar OPD</p>
     <div id="kabar-opd-list" class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
