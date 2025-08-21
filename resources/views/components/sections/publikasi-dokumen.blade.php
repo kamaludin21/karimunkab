@@ -12,7 +12,7 @@
       <div class="text-slate-700 bg-slate-100 pr-8 py-3 text-sm font-bold pl-1 md:pl-0">
         DOKUMEN
       </div>
-      <div class="text-slate-700 py-3 text-sm font-bold text-center w-full bg-slate-100 pr-1">
+      <div class="text-slate-700 py-3 text-sm font-bold text-center md:text-left w-full bg-slate-100 px-1">
         <p class="block md:hidden">UNDUH</p>
         <p class="hidden md:block">AUTHOR</p>
       </div>
@@ -30,7 +30,7 @@
         <div class="contents group">
           {{-- TAHUN --}}
           <div
-            class="hidden pr-8 md:flex items-center text-slate-700 group-hover:text-orange-600 pl-1
+            class="hidden pr-8 md:flex items-center text-slate-700 pl-1
       @if ($prevYear !== $year) border-t border-slate-300 @endif">
             @if ($prevYear !== $year)
               {{ $year }}
@@ -40,7 +40,7 @@
 
           {{-- HARI BULAN --}}
           <div
-            class="hidden pr-8 md:flex items-center text-slate-700 group-hover:text-orange-600
+            class="hidden pr-8 md:flex items-center text-slate-700
       @if ($prevDate !== $date) border-t border-slate-300 @endif">
             @if ($prevDate !== $date)
               {{ $date }}
@@ -49,35 +49,27 @@
           </div>
 
           {{-- JUDUL --}}
-          <div class="border-t border-slate-300 pr-8 group-hover:text-orange-600 flex items-center py-3 grid">
+          <div class="border-t border-slate-300 pr-8 text-slate-700 flex items-center py-3 grid">
             <span class="block md:hidden font-medium flex items-center gap-2 text-sm text-slate-500">
               <p>{{ \Carbon\Carbon::parse($doc->published_at)->isoFormat('D MMMM Y') }}</p>
               <x-icons.dot class="w-1 h-1" />
               <p>{{ $doc->author->name ?? 'Admin' }}</p>
             </span>
-            <span class="text-slate-700 text-base font-medium line-clamp-2">
+            <span class="text-base font-medium line-clamp-2">
               {{ $doc->title }}
             </span>
           </div>
 
           {{-- AUTHOR --}}
-          <div class="border-t border-slate-300 text-slate-700 group-hover:text-orange-600 flex items-center">
-            <div class="flex items-center gap-4 h-fit w-full">
-              <p class="hidden md:block">{{ $doc->author->name ?? '-' }}</p>
-              <a href="{{ asset('storage/' . $doc->file) }}" download class="hover:bg-slate-200 p-1 mx-auto rounded-md">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                  stroke-linejoin="round" class="h-auto w-6">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-                  <path d="M7 11l5 5l5 -5" />
-                  <path d="M12 4l0 12" />
-                </svg>
-              </a>
-              {{-- Disabled until preview page ready --}}
-              {{-- <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-fit">
+          <div class="border-t border-slate-300 text-slate-700 flex gap-2 items-center px-1">
+            <p class="hidden md:block">{{ $doc->author->name ?? '-' }}</p>
+            <a href="/arsip-dokumen/{{ $doc->slug }}"
+              class="text-center hover:bg-slate-100 rounded-sm px-1.5 ring ring-slate-200 cursor-pointer hover:scale-105 hover:text-orange-600 duration-200 mx-auto">
+              <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                class="w-8 h-fit mx-auto">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
-              </svg> --}}
-            </div>
+              </svg>
+            </a>
           </div>
         </div>
       @endforeach
