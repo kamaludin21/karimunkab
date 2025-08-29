@@ -15,10 +15,10 @@
   <x-sections.hero />
   <x-sections.link :links="$links" />
   <x-sections.berita :news="$news" />
-  <x-sections.nomor-penting :phones="$phones" />
   <x-sections.pengumuman :announcements="$announcements" />
-  <x-sections.kabar-opd number="6" />
+  <x-sections.nomor-penting :phones="$phones" />
   <x-sections.publikasi-dokumen :documents="$documents" />
+  <x-sections.kabar-opd number="6" />
   <x-sections.kontak />
 @endsection
 

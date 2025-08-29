@@ -6,12 +6,18 @@ Fullstack situs resmi http://karimunkab.go.id
 
 ## TODO
 
+- Create OG:Card for share placeholder image at this [PLACID](https://placid.app/tools/free-open-graph-image-generator/)
+
 ### Landing
 
 - [❌] functional search box
 - [❌] direct url to main OPD at 'Kabar OPD' section
 - [❌] preview detail document
 - [❌] dynamic popup
+- [❌] Tambahkan Schema.org JSON-LD (supaya Google tahu ini website resmi pemerintah)
+- [❌] https://validator.schema.org/
+- [❌] https://search.google.com/test/rich-results
+- [❌] 
  
 ### Admin
 

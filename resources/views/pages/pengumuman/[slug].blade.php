@@ -2,7 +2,7 @@
   $announce = \App\Models\Announcement::where('slug', $slug)->firstOrFail();
 @endphp
 
-@extends('layouts.app', ['activePage' => 'berita'])
+@extends('layouts.app', ['activePage' => 'informasi-publik'])
 
 @section('content')
   <div class=" w-full bg-white">

@@ -5,18 +5,18 @@
     <div class="max-w-screen-lg px-2 bg-white mx-auto grid gap-6">
       <p class="text-5xl font-medium text-slate-700">Berita Karimun</p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 select-none">
         @if (isset($news[0]))
           @php $first = $news[0]; @endphp
           <div class="h-72 md:h-96 bg-cover grid items-end"
             style="background-image: url('{{ asset($first->image_url) }}')">
-            <div class="bg-slate-900/50 p-4 h-full flex flex-col gap-2 w-full justify-between">
+            <div class="bg-slate-900/80 p-4 h-full flex flex-col gap-2 w-full justify-between">
               <div>
-                <div class="w-fit whitespace-nowrap p-0.5 rounded-md text-slate-100 text-sm">
+                <div class="w-fit whitespace-nowrap p-0.5 rounded-md text-slate-200 text-sm font-light">
                   <p>{{ $first->published_at->isoFormat('D MMMM Y') }}</p>
                 </div>
                 <a href="/berita/{{ $first->slug }}"
-                  class="hover:underline underline-offset-2 text-3xl leading-[1.2] font-medium hover:text-white text-slate-100 line-clamp-3">
+                  class=" text-3xl leading-[1.2] font-bold hover:text-white text-white line-clamp-4">
                   {{ $first->title }}
                 </a>
               </div>
@@ -50,7 +50,7 @@
                       <p>{{ $item->published_at->isoFormat('D MMMM Y') }}</p>
                     </div>
                     <a href="/berita/{{ $item->slug }}"
-                      class="hover:underline underline-offset-2 text-xl leading-[1.2] font-light hover:text-white text-slate-50 line-clamp-3">
+                      class=" text-xl leading-[1.2] font-light hover:text-white text-slate-50 line-clamp-3">
                       {{ $item->title }}
                     </a>
                   </div>
@@ -69,13 +69,13 @@
               </div>
             @else
               <div class="h-full w-full bg-cover grid items-end" style="background-image: url('{{ $image }}')">
-                <div class="bg-slate-800/50 p-2 md:p-4 h-full flex gap-2 flex-col w-full justify-between">
+                <div class="bg-black/70 p-2 md:p-4 h-full flex gap-2 flex-col w-full justify-between">
                   <div>
-                    <div class="w-fit p-0.5 rounded-md text-slate-100 text-sm">
+                    <div class="w-fit p-0.5 rounded-md text-slate-200 text-sm">
                       <p>{{ $item->published_at->isoFormat('D MMMM Y') }}</p>
                     </div>
                     <a href="/berita/{{ $item->slug }}"
-                      class="hover:underline underline-offset-2 text-xl leading-[1.2] font-light hover:text-white text-slate-50 line-clamp-3">
+                      class=" text-xl leading-[1.2] font-light hover:text-white text-white line-clamp-3">
                       {{ $item->title }}
                     </a>
                   </div>

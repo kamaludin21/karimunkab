@@ -1,9 +1,9 @@
  {{-- Kontak Karimun --}}
  <section class="w-full bg-slate-100 py-20">
    <div class="max-w-screen-lg mx-auto grid gap-2 px-2">
-     <div class="pb-8">
+     {{-- <div class="pb-8">
        <p class="text-3xl md:text-5xl font-medium text-slate-700">Lokasi</p>
-     </div>
+     </div> --}}
 
      {{-- Kontak, Sosmed, Survei --}}
      {{-- <div class="grid grid-cols-3 gap-2">
@@ -66,20 +66,20 @@
            <p class="text-xl font-medium text-slate-700">Sosial Media</p>
            <div class="flex flex-grow gap-4 items-center text-slate-700">
              <a href="https://www.facebook.com/profile.php?id=61574593601997" target="_blank"
-               class="p-2 border-2 border-slate-600 hover:bg-slate-800 hover:text-white duration-200 rounded-lg">
-               <x-icons.facebook class="w-5 h-5" />
+               class="p-2 bg-slate-800 text-white duration-200 rounded-lg hover:scale-105">
+               <x-icons.facebook class="w-auto h-6" />
              </a>
              <a href="https://www.instagram.com/diskominfo_karimun" target="_blank"
-               class="p-2 border-2 border-slate-600 hover:bg-slate-800 hover:text-white duration-200 rounded-lg">
-               <x-icons.instagram class="w-5 h-5" />
+               class="p-2 bg-slate-800 text-white duration-200 rounded-lg hover:scale-105">
+               <x-icons.instagram  class="w-auto h-6" />
              </a>
              <a href="https://www.tiktok.com/@diskominfo_karimun" target="_blank"
-               class="p-2 border-2 border-slate-600 hover:bg-slate-800 hover:text-white duration-200 rounded-lg">
-               <x-icons.tiktok class="w-5 h-5" />
+               class="p-2 bg-slate-800 text-white duration-200 rounded-lg hover:scale-105">
+               <x-icons.tiktok  class="w-auto h-6" />
              </a>
              <a href="https://www.youtube.com/@pemkabkarimun" target="_blank"
-               class="p-2 border-2 border-slate-600 hover:bg-slate-800 hover:text-white duration-200 rounded-lg">
-               <x-icons.youtube class="w-5 h-5" />
+               class="p-2 bg-slate-800 text-white duration-200 rounded-lg hover:scale-105">
+               <x-icons.youtube  class="w-auto h-6" />
              </a>
            </div>
          </div>

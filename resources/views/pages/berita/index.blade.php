@@ -6,7 +6,18 @@
 @extends('layouts.app', ['activePage' => 'berita'])
 
 @section('content')
+
+
   <div class="max-w-screen-lg mx-auto w-full">
+
+    {{-- Page Menu  --}}
+    <div class="px-6 rounded-lg my-6 py-8 dot-pattern">
+        <p class="text-5xl font-light text-white">Berita Karimun</p>
+        <p class="text-slate-100 text-lg font-medium">Berita seputar pemerintahan kabupaten karimun</p>
+    </div>
+
+    {{-- Page Menu  --}}
+
     {{-- Hero Section --}}
     {{-- <section class="flex flex-col md:flex-row gap-8 items-center py-16 px-2">
       <div class="flex-1 md:w-1/2 w-full">

@@ -27,7 +27,7 @@
     radial-gradient(#94a3b8 35%, #f1f5f9 37%) 0 0/69px 69px;
 }
 
-/* .bg-box {
+.bg-box {
   --s: 300px;
   --c1: #334155;
   --c2: #1e293b;
@@ -39,7 +39,7 @@
   background-size:
     var(--s) var(--s),
     calc(var(--s) / 5) calc(var(--s) / 5);
-} */
+}
 
 .font-inter {
   font-family:

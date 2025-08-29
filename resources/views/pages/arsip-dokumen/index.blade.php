@@ -39,26 +39,14 @@
         <div class="pt-4 border-t border-slate-300 space-y-4">
           @forelse ($documents as $doc)
             <div
-              class="p-2 flex items-start h-full border border-slate-300 hover:border-slate-400 gap-2 rounded-lg h-min group duration-200">
-              <div class="hidden md:block bg-slate-100 rounded p-4">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                  class="h-12 w-auto flex-none text-slate-500 group-hover:text-slate-600">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-                  <path d="M5 12v-7a2 2 0 0 1 2 -2h7l5 5v4" />
-                  <path d="M5 18h1.5a1.5 1.5 0 0 0 0 -3h-1.5v6" />
-                  <path d="M17 18h2" />
-                  <path d="M20 15h-3v6" />
-                  <path d="M11 15v6h1a2 2 0 0 0 2 -2v-2a2 2 0 0 0 -2 -2h-1z" />
-                </svg>
-              </div>
+              class="p-2 flex items-start h-full border border-slate-200 hover:border-slate-300 gap-2 rounded-lg h-min group duration-200">
+
               <div class="space-y-2 flex flex-col justify-between h-full w-full">
-                <p class="text-xl font-medium text-slate-700 group-hover:text-slate-800  line-clamp-2">
+                <a href="/arsip-dokumen/{{ $doc->slug }}" class="hover:underline text-lg font-semibold text-slate-600 line-clamp-2">
                   {{ $doc->title }}
-                </p>
-                <div class="flex gap-2 text-slate-600 items-center justify-between">
-                  <div class="flex  flex-col md:flex-row md:items-center gap-2">
+                </a>
+                <div x-data="{ open: false }"  class="flex gap-2 text-slate-600 items-center justify-between">
+                  <div class="flex flex-col md:flex-row md:items-center gap-2">
                     <div class="flex items-center gap-1">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 stroke-[1.5]">
@@ -91,7 +79,15 @@
                       <p>{{ $doc->author->name ?? 'Tidak diketahui' }}</p>
                     </div>
                   </div>
-                  <a href="{{ asset('storage/' . $doc->file) }}" download
+
+                  {{-- <a href="/arsip-dokumen/{{ $doc->slug }}"
+                    class="text-center hover:bg-slate-100 rounded-sm px-1.5 ring ring-slate-200 cursor-pointer hover:scale-105 hover:text-orange-600 duration-200 mx-auto">
+                    <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                      class="w-8 h-fit mx-auto">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                    </svg>
+                  </a> --}}
+                  {{-- <a href="{{ asset('storage/' . $doc->file) }}" download
                     class="bg-white border border-slate-400 text-slate-700 hover:bg-slate-800 hover:text-white cursor-pointer rounded px-2 py-1 flex gap-1 active:scale-95">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
                       stroke-linejoin="round" class="h-auto w-5 stroke-[1.5]">
@@ -101,7 +97,7 @@
                       <path d="M12 4l0 12" />
                     </svg>
                     <span class="text-sm">Unduh</span>
-                  </a>
+                  </a> --}}
                 </div>
               </div>
             </div>
