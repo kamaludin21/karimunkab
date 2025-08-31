@@ -34,12 +34,12 @@
   <meta property="og:title" content="Pemerintah Kabupaten Karimun">
   <meta property="og:description"
     content="Situs resmi Pemerintah Kabupaten Karimun. Akses informasi, berita, layanan publik, serta potensi daerah Karimun.">
-  <meta property="og:image" content="{{ asset('assets/images/main_og_card.jpg') }}">
+  <meta property="og:image" content="{{ asset('assets/images/main_og_card.webp') }}">
   <meta property="og:url" content="https://www.karimunkab.go.id/">
   <meta property="og:type" content="website">
 
   <!-- Google tag (gtag.js) -->
-  {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0M07HYF89"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0M07HYF89"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -48,7 +48,7 @@
     }
     gtag('js', new Date());
     gtag('config', 'G-S0M07HYF89');
-  </script> --}}
+  </script>
 
 </head>
 
