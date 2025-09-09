@@ -1,0 +1,137 @@
+/* Geist */
+/* Geist Thin */
+@font-face {
+  font-family: "Geist";
+  src: url("~font/geist/Geist-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+}
+
+/* Geist ExtraLight */
+@font-face {
+  font-family: "Geist";
+  src: url("~font/geist/Geist-ExtraLight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+}
+
+/* Geist Light */
+@font-face {
+  font-family: "Geist";
+  src: url("~font/geist/Geist-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Geist Regular */
+@font-face {
+  font-family: "Geist";
+  src: url("~font/geist/Geist-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Geist Medium */
+@font-face {
+  font-family: "Geist";
+  src: url("~font/geist/Geist-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Geist SemiBold */
+@font-face {
+  font-family: "Geist";
+  src: url("~font/geist/Geist-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Geist Bold */
+@font-face {
+  font-family: "Geist";
+  src: url("~font/geist/Geist-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Geist ExtraBold */
+@font-face {
+  font-family: "Geist";
+  src: url("~font/geist/Geist-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* Geist Black */
+@font-face {
+  font-family: "Geist";
+  src: url("~font/geist/Geist-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* Sora */
+/* Sora Thin */
+@font-face {
+  font-family: "Sora";
+  src: url("~font/sora/Sora-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+}
+
+/* Sora ExtraLight */
+@font-face {
+  font-family: "Sora";
+  src: url("~font/sora/Sora-ExtraLight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+}
+
+/* Sora Light */
+@font-face {
+  font-family: "Sora";
+  src: url("~font/sora/Sora-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Sora Regular */
+@font-face {
+  font-family: "Sora";
+  src: url("~font/sora/Sora-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Sora Medium */
+@font-face {
+  font-family: "Sora";
+  src: url("~font/sora/Sora-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Sora SemiBold */
+@font-face {
+  font-family: "Sora";
+  src: url("~font/sora/Sora-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Sora Bold */
+@font-face {
+  font-family: "Sora";
+  src: url("~font/sora/Sora-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Sora ExtraBold */
+@font-face {
+  font-family: "Sora";
+  src: url("~font/sora/Sora-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+}
