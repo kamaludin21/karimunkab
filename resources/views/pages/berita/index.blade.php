@@ -1,6 +1,6 @@
 @php
   // $firstNews = App\Models\News::with('category', 'author')->firstOrFail();
-  $otherNews = App\Models\News::with('category', 'author')->latest()->paginate(9);
+  $otherNews = App\Models\News::with('category', 'author')->orderBy('published_at', 'desc')->paginate(9);
 @endphp
 
 @extends('layouts.app', ['activePage' => 'berita'])
@@ -27,7 +27,7 @@
       </div>
       <div class="flex-1 grid gap-4 place-content-center justify-start">
         <div class="flex items-center gap-2 text-slate-600 h-fit">
-          <p>{{ $firstNews->published_at->isoFormat('d MMMM Y') }}</p>
+          <p>{{ $firstNews->published_at->isoFormat('D MMMM Y') }}</p>
           <x-icons.dot class="w-2 h-2" />
           <p>{{ $firstNews->category->title ?? '-' }}</p>
         </div>
@@ -93,19 +93,19 @@
 
 
         <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-14">
-          @forelse ($otherNews as $news)
+          @forelse ($otherNews as $item)
             <div class="rounded-lg group">
-              <img src="{{ asset($news->image_url) }}"
+              <img src="{{ asset($item->image_url) }}"
                 class="w-full h-auto min-h-32 max-h-44 duration-200 object-cover rounded-lg ring-1 ring-zinc-300 shadow-md hover:shadow-lg"
-                alt="{{ $news->title }}">
+                alt="{{ $item->title }}">
               <div class="text-sm flex items-center gap-2 pt-3 pb-1 text-slate-600 h-fit">
-                <p>{{ $news->published_at->isoFormat('d MMMM Y') }}</p>
+                <p>{{ $item->published_at->isoFormat('D MMMM Y') }}</p>
                 {{-- <x-icons.dot class="w-1 h-1" /> --}}
-                {{-- <p>{{ $news->category->title ?? '-' }}</p> --}}
+                {{-- <p>{{ $item->category->title ?? '-' }}</p> --}}
               </div>
-              <a href="/berita/{{ $news->slug }}"
+              <a href="/berita/{{ $item->slug }}"
                 class="text-lg font-medium text-slate-600 hover:underline underline-offset-2 cursor-pointer hover:text-orange-600">
-                {{ Str::limit($news->title, 80) }}
+                {{ Str::limit($item->title, 80) }}
               </a>
             </div>
           @empty
