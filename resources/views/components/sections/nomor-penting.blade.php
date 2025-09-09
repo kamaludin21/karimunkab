@@ -2,7 +2,7 @@
 
 <section class="w-full bg-white pb-10 pt-0 md:pt-20">
   <div class="max-w-screen-lg dot-pattern mx-auto grid gap-6 rounded-none md:rounded-xl pt-16 pb-6 px-2 md:px-4">
-    <p class="text-3xl md:text-5xl font-medium text-slate-50 text-center">Nomor Penting</p>
+    <p class="text-4xl font-semibold font-heading text-slate-50 text-center">Nomor Penting</p>
     <p class="text-xl font-light text-white w-full md:w-2/3 mx-auto text-center">
       Informasi kontak berikut disediakan untuk layanan penting. Pastikan penggunaannya tepat dan bertanggung jawab.
     </p>

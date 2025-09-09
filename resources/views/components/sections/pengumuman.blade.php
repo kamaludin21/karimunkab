@@ -3,7 +3,7 @@
 <section class="w-full bg-white py-10 md:py-20">
   <div class="max-w-screen-lg px-2 bg-white mx-auto gap-2 grid grid-cols-1 lg:grid-cols-2 gap-8">
     <div class="space-y-2">
-      <p class="text-3xl md:text-5xl font-medium text-slate-700">Pengumuman</p>
+      <p class="text-4xl font-semibold font-heading text-slate-700">Pengumuman</p>
       <a href="/pengumuman"
         class="text-lg hover:text-orange-600 font-medium text-slate-700 flex items-center gap-1 hover:gap-2 duration-200">
         <span class="group-hover:text-white">Lihat lainnya</span>

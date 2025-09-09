@@ -3,7 +3,7 @@
 {{-- Publikasi Dokumen --}}
 <section class="w-full bg-white py-20">
   <div class="max-w-screen-lg px-2 bg-white mx-auto grid gap-10">
-    <p class="text-3xl md:text-5xl font-medium text-slate-700">Publikasi Dokumen</p>
+    <p class="text-4xl font-semibold font-heading text-slate-700">Publikasi Dokumen</p>
 
     <div class="grid w-full grid-cols-[1fr_auto] md:grid-cols-[auto_auto_1fr_auto]">
       <!-- Header Row -->

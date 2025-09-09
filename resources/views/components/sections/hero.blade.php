@@ -7,7 +7,7 @@
     class="relative z-10 flex flex-col lg:flex-row items-start lg:items-center px-2 justify-between max-w-screen-lg mx-auto w-full gap-4 bg-transparent">
     <div class="flex-1 w-full">
       <p
-        class="w-full text-[18vw] lg:text-[9rem] font-extrabold bg-clip-text text-transparent bg-[conic-gradient(from_90deg_at_0%_50%,_white,_red)] tracking-wider leading-none flex justify-between">
+        class="font-heading w-full text-[18vw] lg:text-[9rem] font-extrabold bg-clip-text text-transparent bg-[conic-gradient(from_90deg_at_0%_50%,_white,_red)] tracking-wider leading-none flex justify-between">
         <span>K</span>
         <span>A</span>
         <span>R</span>
@@ -17,7 +17,7 @@
         <span>N</span>
       </p>
       {{-- <p
-        class="w-full text-[18vw] lg:text-[9rem] font-extrabold bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.orange.600),theme(colors.orange.200),theme(colors.orange.600),theme(colors.amber.600),theme(colors.orange.600),theme(colors.orange.200),theme(colors.orange.600))] bg-[length:200%_auto] animate-gradient tracking-wider leading-none flex justify-between">
+        class="font-heading w-full text-[18vw] lg:text-[9rem] font-extrabold bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.orange.600),theme(colors.orange.200),theme(colors.orange.600),theme(colors.amber.600),theme(colors.orange.600),theme(colors.orange.200),theme(colors.orange.600))] bg-[length:200%_auto] animate-gradient tracking-wider leading-none flex justify-between">
         <span>K</span>
         <span>A</span>
         <span>R</span>
