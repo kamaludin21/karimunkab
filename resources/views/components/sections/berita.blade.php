@@ -3,20 +3,21 @@
 @if ($news->count() >= 4)
   <section class="w-full bg-white py-10 md:py-20">
     <div class="max-w-screen-lg px-2 bg-white mx-auto grid gap-6">
-      <p class="text-5xl font-medium text-slate-700">Berita Karimun</p>
+      <p class="text-4xl font-semibold font-heading text-slate-700">Berita Karimun</p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 select-none">
         @if (isset($news[0]))
           @php $first = $news[0]; @endphp
-          <div class="h-72 md:h-96 bg-cover grid items-end"
+          <div class="h-72 md:h-96 bg-contain rounded-l-xl relative overflow-hidden"
             style="background-image: url('{{ asset($first->image_url) }}')">
-            <div class="bg-slate-900/80 p-4 h-full flex flex-col gap-2 w-full justify-between">
+            <div class="absolute inset-0 bg-black/70"></div>
+            <div class="relative duration-200 p-4 h-full flex flex-col gap-2 w-full justify-between">
               <div>
                 <div class="w-fit whitespace-nowrap p-0.5 rounded-md text-slate-200 text-sm font-light">
                   <p>{{ $first->published_at->isoFormat('D MMMM Y') }}</p>
                 </div>
                 <a href="/berita/{{ $first->slug }}"
-                  class=" text-3xl leading-[1.2] font-bold hover:text-white text-white line-clamp-4">
+                  class="text-3xl leading-[1.2] font-bold group-hover:text-white text-slate-100 line-clamp-4">
                   {{ $first->title }}
                 </a>
               </div>
@@ -42,7 +43,7 @@
             @endphp
 
             @if ($isSecond)
-              <div class="bg-slate-800 {{ $colSpan }} h-full w-full">
+              <div class="bg-slate-800 {{ $colSpan }} h-full w-full rounded-tr-xl">
                 <div class="w-1/2 bg-cover h-full" style="background-image: url('{{ $image }}')"></div>
                 <div class="w-1/2 h-full flex flex-col justify-between p-2 md:p-4 gap-2">
                   <div>
@@ -68,7 +69,8 @@
                 </div>
               </div>
             @else
-              <div class="h-full w-full bg-cover grid items-end" style="background-image: url('{{ $image }}')">
+              <div class="h-full w-full bg-cover grid items-end last:rounded-br-xl overflow-hidden"
+                style="background-image: url('{{ $image }}')">
                 <div class="bg-black/70 p-2 md:p-4 h-full flex gap-2 flex-col w-full justify-between">
                   <div>
                     <div class="w-fit p-0.5 rounded-md text-slate-200 text-sm">

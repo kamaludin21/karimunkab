@@ -39,7 +39,7 @@
   <meta property="og:type" content="website">
 
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0M07HYF89"></script>
+  {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0M07HYF89"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -48,11 +48,11 @@
     }
     gtag('js', new Date());
     gtag('config', 'G-S0M07HYF89');
-  </script>
+  </script> --}}
 
 </head>
 
-<body class="grid bg-slate-100">
+<body class="grid bg-slate-100 font-sans">
   @stack('popup')
   <x-navigation.nav :activePage="$activePage" />
   <main class="bg-white">

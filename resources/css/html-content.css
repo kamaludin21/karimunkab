@@ -1,5 +1,5 @@
 .html-content {
-  @apply space-y-2
+  @apply space-y-4;
 }
 
 .html-content a {
@@ -20,4 +20,24 @@
 
 .html-content ol {
   @apply marker:text-slate-600 list-decimal list-outside pl-8;
+}
+
+/* figcaption */
+.html-content figcaption {
+  @apply text-sm text-slate-500 italic mt-1;
+}
+
+/* khusus caption yang diedit */
+.html-content .attachment__caption--edited {
+  @apply text-left font-medium;
+}
+
+/* reset link di dalam figure supaya tidak ikut underline global */
+.html-content figure a {
+  @apply no-underline text-inherit font-normal;
+}
+
+/* blockquote */
+.html-content blockquote {
+  @apply border-l-4 border-slate-300 pl-4 italic text-slate-600;
 }

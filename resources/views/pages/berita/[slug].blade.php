@@ -34,7 +34,8 @@
       </div>
 
       <div class="grid gap-4 ">
-        <img class="w-full h-auto min-h-56 object-cover ring-1 ring-zinc-200 rounded-sm overflow-hidden"
+        <img
+          class="w-full h-auto min-h-56 max-h-96 object-contain ring-1 bg-slate-200 ring-zinc-200 rounded-lg overflow-hidden"
           src="{{ asset($news->image_url) }}" alt=" {{ $news->title }}">
 
         @if (!empty($news->images) && count($news->images) > 1)
