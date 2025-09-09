@@ -8,7 +8,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 select-none">
         @if (isset($news[0]))
           @php $first = $news[0]; @endphp
-          <div class="h-72 md:h-96 bg-contain rounded-l-xl relative overflow-hidden"
+          <div class="h-72 md:h-96 bg-contain sm:rounded-none md:rounded-l-xl relative overflow-hidden"
             style="background-image: url('{{ asset($first->image_url) }}')">
             <div class="absolute inset-0 bg-black/70"></div>
             <div class="relative duration-200 p-4 h-full flex flex-col gap-2 w-full justify-between">
@@ -34,7 +34,7 @@
             </div>
           </div>
         @endif
-        <div class="h-full w-full grid grid-cols-2 gap-2 md:gap-4 auto-rows-fr">
+        <div class="h-full w-full grid grid-cols-2 gap-4 auto-rows-fr">
           @foreach ($news->slice(1)->values() as $index => $item)
             @php
               $isSecond = $index === 0;
@@ -43,7 +43,7 @@
             @endphp
 
             @if ($isSecond)
-              <div class="bg-slate-800 {{ $colSpan }} h-full w-full rounded-tr-xl">
+              <div class="bg-slate-800 {{ $colSpan }} h-full w-full sm:rounded-none md:rounded-tr-xl">
                 <div class="w-1/2 bg-cover h-full" style="background-image: url('{{ $image }}')"></div>
                 <div class="w-1/2 h-full flex flex-col justify-between p-2 md:p-4 gap-2">
                   <div>
@@ -69,7 +69,7 @@
                 </div>
               </div>
             @else
-              <div class="h-full w-full bg-cover grid items-end last:rounded-br-xl overflow-hidden"
+              <div class="h-full w-full bg-cover grid items-end md:last:rounded-br-xl sm:last:rounded-br-none overflow-hidden"
                 style="background-image: url('{{ $image }}')">
                 <div class="bg-black/70 p-2 md:p-4 h-full flex gap-2 flex-col w-full justify-between">
                   <div>
