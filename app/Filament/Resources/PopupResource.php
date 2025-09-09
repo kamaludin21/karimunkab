@@ -58,16 +58,17 @@ class PopupResource extends Resource
           ->image()
           ->directory('popup/' . now()->format('Y-m'))
           ->imagePreviewHeight('150')
-          ->maxSize(2048)
-          ->helperText('Max Size: 2MB')
-          ->nullable(),
+          ->maxSize(512)
+          ->helperText('Max Size: 500KB')
+          ->required(),
         Toggle::make('is_active')
           ->label('Aktif')
           ->inline(false)
           ->default(true),
         RichEditor::make('description')
           ->label('Konten')
-          ->maxLength(5000)
+          ->helperText('Maks 2000 Karakter')
+          ->maxLength(2000)
           ->disableToolbarButtons([
             'attachFiles',
             'blockquote',
@@ -84,7 +85,11 @@ class PopupResource extends Resource
       ->reorderable('order')
       ->columns([
         TextColumn::make('order')
-          ->label('No.'),
+          ->label('Urutan'),
+        TextColumn::make('created_at')
+          ->label('Dibuat Pada')
+          ->date('d F Y')
+          ->sortable(),
         TextColumn::make('title')
           ->label('Judul')
           ->searchable(),
