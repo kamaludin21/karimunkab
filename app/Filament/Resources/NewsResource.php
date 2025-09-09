@@ -23,6 +23,7 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\RichEditor;
 use Filament\Tables\Filters\TrashedFilter;
+use Filament\Tables\Actions\BulkAction;
 
 class NewsResource extends Resource
 {
@@ -70,13 +71,14 @@ class NewsResource extends Resource
               ->required(),
           ])
           ->required()
-          ->label('Kategori Tautan'),
+          ->label('Kategori Berita'),
 
         Textarea::make('title')
           ->autosize()
           ->rows(1)
           ->label('Judul')
           ->maxLength(250)
+          ->helperText('Maksimal 250 Karakter')
           ->live(onBlur: true)
           ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
           ->required(),
@@ -103,8 +105,6 @@ class NewsResource extends Resource
           ->label('Konten')
           ->maxLength(5000)
           ->disableToolbarButtons([
-            'attachFiles',
-            'blockquote',
             'codeBlock',
           ])
           ->required()
@@ -119,17 +119,22 @@ class NewsResource extends Resource
         TextColumn::make('index')
           ->label('No.')
           ->rowIndex(),
-        TextColumn::make('author.name')
-          ->label('Author')
-          ->searchable(),
+        TextColumn::make('published_at')
+          ->label('Tanggal Publikasi')
+          ->date('d F Y')
+          ->toggleable(),
         TextColumn::make('title')
           ->label('Judul')
+          ->wrap()
+          ->lineClamp(2)
           ->searchable(),
+        TextColumn::make('author.name')
+          ->label('Author')
+          ->searchable()
+          ->toggleable(isToggledHiddenByDefault: true),
         TextColumn::make('category.title')
-          ->label('Kategori'),
-        TextColumn::make('published_at')
-          ->label('Publikasi')
-          ->date('d F Y')
+          ->label('Kategori')
+          ->toggleable(),
       ])
       ->actions([
         Tables\Actions\ActionGroup::make([
