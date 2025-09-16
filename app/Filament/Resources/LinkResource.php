@@ -26,6 +26,7 @@ class LinkResource extends Resource
   protected static ?int $navigationSort = 5;
   protected static ?string $model = Link::class;
   protected static ?string $navigationIcon = 'heroicon-o-arrow-up-right';
+  protected static ?string $navigationLabel = 'Tautan';
 
   public static function form(Form $form): Form
   {

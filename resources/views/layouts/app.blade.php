@@ -86,6 +86,6 @@
     </div>
   </footer>
   <div class="w-full bg-slate-800 py-1">
-    <p class="text-sm text-center font-ligth text-slate-100">DISKOMINFOTIK &copy; 2025 Seluruh hak cipta dilindungi</p>
+    <p class="text-sm text-center font-ligth text-slate-100">DISKOMINFOTIK &copy; 2025 Hak cipta dilindungi</p>
   </div>
 </body>

@@ -8,12 +8,12 @@
 @section('content')
 
 
-  <div class="max-w-screen-lg mx-auto w-full">
+  <div class="max-w-screen-lg mx-auto w-full px-2 md:px-0">
 
     {{-- Page Menu  --}}
-    <div class="px-6 rounded-lg my-6 py-8 dot-pattern">
-        <p class="text-5xl font-light text-white">Berita Karimun</p>
-        <p class="text-slate-100 text-lg font-medium">Berita seputar pemerintahan kabupaten karimun</p>
+    <div class="px-4 md:px-6 rounded-lg my-6 py-6 md:py-8 dot-pattern">
+      <p class="text-3xl md:text-5xl font-light text-white">Berita Karimun</p>
+      <p class="text-slate-100 text-base md:text-lg font-medium leading-5">Berita seputar pemerintahan kabupaten karimun</p>
     </div>
 
     {{-- Page Menu  --}}
@@ -57,13 +57,9 @@
 
     <hr class="border-t-1 border-slate-200">
 
-    <section class="w-full slate-100  py-16">
-      <div class="max-w-screen-lg px-2 grid gap-8 mx-auto w-full">
+    <section class="w-full slate-100 py-16">
+      <div class="max-w-screen-lg grid gap-8 mx-auto w-full">
         {{-- Header Filter --}}
-         {{-- Header --}}
-    <div class="pt-4">
-      <p class="text-4xl font-medium text-slate-800">Berita</p>
-    </div>
         {{-- <div class="flex flex-col md:flex-row gap-2 justify-between items-start md:items-center">
           <div class="flex gap-4 items-center text-slate-500 font-medium">
             <div
@@ -92,7 +88,7 @@
         {{-- Header Filter --}}
 
 
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-14">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-14">
           @forelse ($otherNews as $item)
             <div class="rounded-lg group">
               <img src="{{ asset($item->image_url) }}"

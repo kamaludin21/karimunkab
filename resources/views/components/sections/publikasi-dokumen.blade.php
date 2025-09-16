@@ -3,7 +3,7 @@
 {{-- Publikasi Dokumen --}}
 <section class="w-full bg-white py-20">
   <div class="max-w-screen-lg px-2 bg-white mx-auto grid gap-10">
-    <p class="text-4xl font-semibold font-heading text-slate-700">Publikasi Dokumen</p>
+    <x-commons.section-header title="Publikasi Dokumen" link="/publikasi-dokumen" buttonText="Lihat Semua" />
 
     <div class="grid w-full grid-cols-[1fr_auto] md:grid-cols-[auto_auto_1fr_auto]">
       <!-- Header Row -->
@@ -61,10 +61,10 @@
           </div>
 
           {{-- AUTHOR --}}
-          <div class="border-t border-slate-300 text-slate-700 flex gap-2 items-center px-1">
-            <p class="hidden md:block">{{ $doc->author->name ?? '-' }}</p>
-            <a href="/arsip-dokumen/{{ $doc->slug }}"
-              class="text-center hover:bg-slate-100 rounded-sm px-1.5 ring ring-slate-200 cursor-pointer hover:scale-105 hover:text-orange-600 duration-200 mx-auto">
+          <div class="border-t border-slate-300 text-slate-700 flex gap-2 items-center justify-between w-full px-1">
+            <p class="hidden md:block line-clamp-1">{{ $doc->author->name ?? '-' }}</p>
+            <a href="/publikasi-dokumen/{{ $doc->slug }}"
+              class="text-center hover:bg-slate-100 rounded-sm px-1.5 ring ring-slate-200 cursor-pointer hover:scale-105 hover:text-orange-600 duration-200 mx-auto md:mx-0">
               <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                 class="w-8 h-fit mx-auto">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
@@ -76,7 +76,7 @@
     </div>
     <div
       class="flex items-center gap-4 before:h-px before:flex-1 before:bg-gray-300  before:content-[''] after:h-px after:flex-1 after:bg-gray-300  after:content-['']">
-      <a href="/arsip-dokumen"
+      <a href="/publikasi-dokumen"
         class="text-slate-600 hover:text-white hover:bg-orange-600 cursor-pointer border border-slate-300 w-fit mx-auto px-3 py-1 rounded-full">
         Dokumen Lainnya
       </a>

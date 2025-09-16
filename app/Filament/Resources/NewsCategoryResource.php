@@ -20,7 +20,8 @@ use Filament\Tables\Columns\TextColumn;
 class NewsCategoryResource extends Resource
 {
   protected static ?string $model = NewsCategory::class;
-  protected static ?string $navigationParentItem = 'News';
+  protected static ?string $navigationParentItem = 'Berita';
+  protected static ?string $navigationLabel = 'Kategori Berita';
 
   public static function form(Form $form): Form
   {

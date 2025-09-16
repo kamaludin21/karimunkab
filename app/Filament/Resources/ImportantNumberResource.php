@@ -21,6 +21,7 @@ class ImportantNumberResource extends Resource
   protected static ?int $navigationSort = 4;
   protected static ?string $model = ImportantNumber::class;
   protected static ?string $navigationIcon = 'heroicon-o-phone';
+  protected static ?string $navigationLabel = 'Nomor Penting';
 
   public static function form(Form $form): Form
   {

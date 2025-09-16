@@ -8,7 +8,7 @@
 @section('content')
   <section class="max-w-screen-lg px-2 mx-auto w-full">
     <div class="pt-10">
-      <p class="text-4xl font-medium text-slate-800">Arsip Dokumen</p>
+      <p class="text-4xl font-medium text-slate-800">Publikasi Dokumen</p>
     </div>
 
     <div class="flex flex-col md:flex-row gap-2 py-16">
@@ -42,7 +42,7 @@
               class="p-2 flex items-start h-full border border-slate-200 hover:border-slate-300 gap-2 rounded-lg h-min group duration-200">
 
               <div class="space-y-2 flex flex-col justify-between h-full w-full">
-                <a href="/arsip-dokumen/{{ $doc->slug }}" class="hover:underline text-lg font-semibold text-slate-600 line-clamp-2">
+                <a href="/publikasi-dokumen/{{ $doc->slug }}" class="hover:underline text-lg font-semibold text-slate-600 line-clamp-2">
                   {{ $doc->title }}
                 </a>
                 <div x-data="{ open: false }"  class="flex gap-2 text-slate-600 items-center justify-between">
@@ -80,7 +80,7 @@
                     </div>
                   </div>
 
-                  {{-- <a href="/arsip-dokumen/{{ $doc->slug }}"
+                  {{-- <a href="/publikasi-dokumen/{{ $doc->slug }}"
                     class="text-center hover:bg-slate-100 rounded-sm px-1.5 ring ring-slate-200 cursor-pointer hover:scale-105 hover:text-orange-600 duration-200 mx-auto">
                     <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                       class="w-8 h-fit mx-auto">

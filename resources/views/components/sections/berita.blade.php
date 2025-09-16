@@ -3,7 +3,7 @@
 @if ($news->count() >= 4)
   <section class="w-full bg-white py-10 md:py-20">
     <div class="max-w-screen-lg px-2 bg-white mx-auto grid gap-6">
-      <p class="text-4xl font-semibold font-heading text-slate-700">Berita Karimun</p>
+      <x-commons.section-header title="Berita" link="/berita" buttonText="Lihat Semua" />
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 select-none">
         @if (isset($news[0]))
@@ -69,7 +69,8 @@
                 </div>
               </div>
             @else
-              <div class="h-full w-full bg-cover grid items-end md:last:rounded-br-xl sm:last:rounded-br-none overflow-hidden"
+              <div
+                class="h-full w-full bg-cover grid items-end md:last:rounded-br-xl sm:last:rounded-br-none overflow-hidden"
                 style="background-image: url('{{ $image }}')">
                 <div class="bg-black/70 p-2 md:p-4 h-full flex gap-2 flex-col w-full justify-between">
                   <div>

@@ -25,6 +25,7 @@ class DocumentResource extends Resource
   protected static ?int $navigationSort = 2;
   protected static ?string $model = Document::class;
   protected static ?string $navigationIcon = 'heroicon-o-document';
+  protected static ?string $navigationLabel = 'Publikasi Dokumen';
 
   public static function form(Form $form): Form
   {
@@ -63,9 +64,9 @@ class DocumentResource extends Resource
         FileUpload::make('file')
           ->label('File')
           ->directory('document/' . now()->format('Y-m'))
-          ->maxSize(1024)
+          ->maxSize(5024)
           ->downloadable()
-          ->helperText('Maks Size: 1MB')
+          ->helperText('Maks Size: 5MB')
           ->required(),
 
       ]);

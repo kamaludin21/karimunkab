@@ -146,8 +146,9 @@
         <li class="text-xl font-medium text-slate-600"><a href="/" class="hover:underline">
             Beranda</a></li>
         <li class="text-xl font-medium text-slate-600">/</li>
-        <li class="text-xl font-medium text-slate-600 whitespace-nowrap"><a href="/arsip-dokumen" class="hover:underline">
-            Arsip Dokumen</a></li>
+        <li class="text-xl font-medium text-slate-600 whitespace-nowrap"><a href="/publikasi-dokumen"
+            class="hover:underline">
+            Publikasi Dokumen</a></li>
         <li class="text-xl font-medium text-slate-600">/</li>
         <li class="text-xl font-medium text-orange-600 truncate">{{ $document->title }}</li>
       </ul>
@@ -214,16 +215,25 @@
         </div>
         <div class="w-2/3 h-auto bg-slate-200 rounded-lg p-4 gap-2 relative flex justify-center items-center">
           <div class="h-96 flex items-center justify-center">
-            <canvas id="the-canvas" class="w-auto mx-auto"></canvas>
+            <div class="text-slate-600 flex items-center justify-center flex-col gap-2">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12 ">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path
+                  d="M12 2l.117 .007a1 1 0 0 1 .876 .876l.007 .117v4l.005 .15a2 2 0 0 0 1.838 1.844l.157 .006h4l.117 .007a1 1 0 0 1 .876 .876l.007 .117v9a3 3 0 0 1 -2.824 2.995l-.176 .005h-10a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-14a3 3 0 0 1 2.824 -2.995l.176 -.005zm2.571 15.18a4.5 4.5 0 0 0 -5.142 0a1 1 0 1 0 1.142 1.64a2.5 2.5 0 0 1 2.858 0a1 1 0 0 0 1.142 -1.64m-4.565 -5.18h-.011a1 1 0 0 0 0 2h.01a1 1 0 0 0 0 -2m4 0h-.011a1 1 0 0 0 0 2h.01a1 1 0 0 0 0 -2" />
+                <path d="M19 7h-4l-.001 -4.001z" />
+              </svg>
+              <p>Tidak bisa menampilkan dokumen</p>
+            </div>
+            {{-- <canvas id="the-canvas" class="w-auto mx-auto"></canvas> --}}
           </div>
-          <div class="absolute bg-white px-2 py-1 rounded-t-md mx-auto bottom-0">
+          {{-- <div class="absolute bg-white px-2 py-1 rounded-t-md mx-auto bottom-0">
             <button id="prev">Previous</button>
             <span><span id="page_num"></span> / <span id="page_count"></span></span>
             <button id="next">Next</button>
             &nbsp; &nbsp;
             <button id="zoomIn">Zoom In</button>
             <button id="zoomOut">Zoom Out</button>
-          </div>
+          </div> --}}
         </div>
       </div>
     </div>
