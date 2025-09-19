@@ -35,7 +35,6 @@ class AnnouncementResource extends Resource
         Select::make('user_id')
           ->label('Author')
           ->disabled((fn(): bool => !auth()->user()->hasRole('super_admin')))
-          ->default(auth()->id())
           ->relationship('author', 'name')
           ->searchable()
           ->preload()

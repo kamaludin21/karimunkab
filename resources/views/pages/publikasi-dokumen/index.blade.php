@@ -57,7 +57,8 @@
                         <path d="M4 11l16 0" />
                         <path d="M8 15h2v2h-2z" />
                       </svg>
-                      <p>{{ $doc->published_at->isoFormat('d MMMM Y') }}</p>
+                      <p>
+                        {{ $doc->published_at->isoFormat('D MMMM Y') }}</p>
                     </div>
                     <x-icons.dot class="hidden md:block h-1 w-1 text-slate-400" />
                     <div class="flex items-center gap-1">

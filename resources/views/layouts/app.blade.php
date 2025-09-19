@@ -55,12 +55,12 @@
 <body class="grid bg-slate-100 font-sans">
   @stack('popup')
   <x-navigation.nav :activePage="$activePage" />
-  <main class="bg-white">
+  <main class="bg-white w-full">
     @yield('content')
   </main>
   <footer class="w-full bg-slate-900 pt-10 pb-20">
     <div class="max-w-screen-lg px-2 mx-auto text-slate-300">
-      <div class="overflow-hidden">
+      <div class="">
         <div class="flex py-8 relative border-b border-slate-700">
           <div class="flex-1 space-y-2 z-10">
             <img src="{{ asset('assets/images/logo_kab.png') }}" class="w-32 h-auto" alt="">

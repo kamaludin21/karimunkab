@@ -40,8 +40,8 @@ class NewsResource extends Resource
           ->label('Author')
           ->disabled((fn(): bool => !auth()->user()->hasRole('super_admin')))
           ->default(auth()->id())
+          ->native(false)
           ->relationship('author', 'name')
-          ->searchable()
           ->preload()
           ->required(),
         DatePicker::make('published_at')

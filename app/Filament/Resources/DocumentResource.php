@@ -34,9 +34,8 @@ class DocumentResource extends Resource
         Select::make('user_id')
           ->label('Author')
           ->disabled((fn(): bool => !auth()->user()->hasRole('super_admin')))
-          ->default(auth()->id())
           ->relationship('author', 'name')
-          ->searchable()
+          ->native(false)
           ->preload()
           ->required(),
         DatePicker::make('published_at')

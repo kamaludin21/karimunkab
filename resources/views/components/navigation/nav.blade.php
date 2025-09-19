@@ -1,7 +1,7 @@
 @props(['activePage'])
 
 <nav x-data="{ mobileOpen: false }" class="bg-white sticky top-0 z-50 shadow">
-  <div class="max-w-screen-lg px-2 flex items-center justify-between mx-auto w-full py-4">
+  <div class="max-w-screen-lg px-2 lg:px-0 flex items-center justify-between mx-auto w-full py-4">
     <div class="">
       <a href="/" class="flex gap-6">
         <img src="{{ asset('assets/images/logo_kab.png') }}" class="w-auto h-12 hover:scale-110 duration-200"
@@ -46,7 +46,7 @@
     </div>
   </div>
   {{-- Menu navigator --}}
-  <div class="hidden md:block max-w-screen-lg px-2 mx-auto w-full border-t-1 border-slate-200">
+  <div class="hidden md:block max-w-screen-lg px-2 lg:px-0 mx-auto w-full border-t-1 border-slate-200">
     <ul class="text-sm font-medium uppercase flex gap-4 text-slate-600">
       <li class="h-full">
         <a href="/"
