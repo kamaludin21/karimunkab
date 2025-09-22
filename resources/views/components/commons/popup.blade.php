@@ -26,8 +26,6 @@
           </button>
         </div>
         <img :src="resolveImageUrl(items[currentIndex].image)" alt="" class="w-full h-auto" />
-
-
         <div class="flex justify-between items-center p-4 border-t border-slate-300" x-show="items.length > 1">
           <button @click="prev()" :disabled="currentIndex === 0"
             class="px-3 py-1 rounded bg-slate-200 text-slate-700 disabled:opacity-50 disabled:cursor-not-allowed">
