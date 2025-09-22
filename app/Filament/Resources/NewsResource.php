@@ -38,12 +38,13 @@ class NewsResource extends Resource
       ->schema([
         Select::make('user_id')
           ->label('Author')
-          ->disabled((fn(): bool => !auth()->user()->hasRole('super_admin')))
-          ->default(auth()->id())
-          ->native(false)
           ->relationship('author', 'name')
+          ->native(false)
           ->preload()
-          ->required(),
+          ->default(fn() => auth()->user()->hasRole('super_admin') ? null : auth()->id())
+          ->required()
+          ->disabled(fn() => ! auth()->user()->hasRole('super_admin'))
+          ->dehydrated(),
         DatePicker::make('published_at')
           ->label('Tanggal Publikasi')
           ->native(false)
@@ -120,10 +121,6 @@ class NewsResource extends Resource
         TextColumn::make('index')
           ->label('No.')
           ->rowIndex(),
-        TextColumn::make('published_at')
-          ->label('Tanggal Publikasi')
-          ->date('d F Y')
-          ->toggleable(),
         TextColumn::make('title')
           ->label('Judul')
           ->wrap()
@@ -136,6 +133,21 @@ class NewsResource extends Resource
         TextColumn::make('category.title')
           ->label('Kategori')
           ->toggleable(),
+        TextColumn::make('published_at')
+          ->label('Publikasi')
+          ->date('d F Y')
+          ->sortable()
+          ->toggleable(isToggledHiddenByDefault: true),
+        TextColumn::make('created_at')
+          ->label('Dibuat')
+          ->date('d F Y')
+          ->sortable()
+          ->toggleable(isToggledHiddenByDefault: true),
+        TextColumn::make('updated_at')
+          ->label('Diperbarui')
+          ->date('d F Y')
+          ->sortable()
+          ->toggleable(isToggledHiddenByDefault: true),
       ])
       ->actions([
         Tables\Actions\ActionGroup::make([

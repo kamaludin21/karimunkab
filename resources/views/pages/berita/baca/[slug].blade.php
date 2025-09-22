@@ -11,13 +11,13 @@
 
     <div class="w-full md:w-2/3 space-y-2">
       {{-- Breadcrumbs --}}
-      <div class="px-2 lg:px-0 py-2 w-full flex gap-0.5 items-center text-slate-500">
+      <div class="px-2 lg:px-0 py-2 w-full flex gap-0.5 items-center text-slate-500 overflow-hidden text-sm">
         <a href="/" class="flex gap-1 items-center hover:underline cursor-pointer">
           <span>Beranda</span>
         </a>
         <div>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" class="w-5 h-5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" class="w-4 h-4">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M9 6l6 6l-6 6" />
           </svg>
@@ -26,8 +26,8 @@
           <span>Berita</span>
         </a>
         <div>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" class="w-5 h-5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" class="w-4 h-4">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M9 6l6 6l-6 6" />
           </svg>
@@ -36,8 +36,8 @@
           <span>{{ $news->category->title }}</span>
         </a>
         <div>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" class="w-5 h-5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" class="w-4 h-4">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M9 6l6 6l-6 6" />
           </svg>
@@ -50,10 +50,10 @@
 
       {{-- Header --}}
       <div class="px-2 lg:px-0 space-y-4">
-        <h1 class="text-2xl md:text-3xl leading-8 md:leading-9 font-bold text-slate-700">
+        <h1 class="text-2xl md:text-3xl leading-8 md:leading-9 font-bold text-slate-600">
           {{ $news->title }}
         </h1>
-        <div class="bg-slate-100 rounded-lg p-2 text-slate-600 flex items-center gap-2">
+        <div class="bg-slate-100 rounded-lg p-2 text-slate-500 flex items-center gap-2">
           <div class="grid flex-1">
             <div class="flex gap-1 items-center">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -99,13 +99,13 @@
         <img
           class="w-full h-auto min-h-56 max-h-96 object-cover duration-200 ring-1 bg-slate-200 ring-zinc-200 rounded-none md:rounded-lg "
           src="{{ asset($news->image_url) }}" alt=" {{ $news->title }}">
-        <p class="text-sm text-slate-500 px-2 lg:px-0 leading-4">Bupati Karimun Hadiri Pisah Sambut Komandan Kodim
-          0317/TBK dari Letkol Inf Ida
-          Bagus Putu Mudita kepada Letkol Inf Andit Franata, S.I.P</p>
+        {{-- <p class="text-sm text-slate-500 px-2 lg:px-0 leading-4">Bupati Karimun Hadiri Pisah Sambut Komandan Kodim
+          0317 / TBK dari Letkol Inf Ida
+          Bagus Putu Mudita kepada Letkol Inf Andit Franata, S.I.P</p> --}}
       </div>
       {{-- Image Cover --}}
 
-      <div class="text-lg leading-8 space-y-2 text-slate-700 html-content select-none px-2 lg:px-0">
+      <div class="text-lg leading-7 space-y-2 text-slate-700 html-content select-none px-2 lg:px-0">
         {!! $news->content !!}
       </div>
 
@@ -135,7 +135,7 @@
           @foreach ($otherNews as $item)
             <div class="flex gap-2 items-center">
               <img class="w-2/5 rounded-lg  h-22 object-cover" src="{{ asset($item->image_url) }}"
-                alt=" {{ $item->title }}">
+                alt="{{ $item->title }}">
               <div class="w-3/5 flex-1">
                 <p class="text-sm line-clamp-1 font-light text-slate-500">
                   {{ $news->published_at->isoFormat('dddd, D MMMM Y') }}</p>

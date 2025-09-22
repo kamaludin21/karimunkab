@@ -1,7 +1,6 @@
 @php
-  // $firstNews = App\Models\News::with('category', 'author')->firstOrFail();
-  $news = App\Models\News::orderBy('published_at', 'desc')->paginate(9);
-  $category = App\Models\NewsCategory::limit(6)->get();
+    $news = App\Models\News::orderBy('published_at', 'desc')->paginate(9);
+    $category = App\Models\NewsCategory::limit(6)->get();
 @endphp
 
 @extends('layouts.app', ['activePage' => 'berita'])
@@ -11,9 +10,9 @@
     <div class="px-2 md:px-6 rounded-none md:rounded-lg my-0 md:my-6 py-4 md:py-8 dot-pattern">
       <p class="text-3xl md:text-5xl font-semibold text-slate-100 font-header">Berita Karimun</p>
     </div>
-    <section class=" space-y-4 py-4 md:py-2 px-2 lg:px-0">
+    <section class=" space-y-4 py-4 md:py-2 px-2 lg:px-0 overflow-hidden">
       <x-commons.category-tabs :categories="$category" />
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-14 w-full">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         @forelse ($news as $item)
           <div class="rounded-lg group">
             <img src="{{ asset($item->image_url) }}"
@@ -31,12 +30,9 @@
           <p class="col-span-full py-10 text-center text-slate-500">Belum ada berita</p>
         @endforelse
       </div>
-
-      {{-- Custom Pagination --}}
       @if ($news->hasPages())
         <div class="flex border-t border-slate-200 pt-6 justify-between items-center">
           <ul class="flex items-center gap-4 text-lg font-medium">
-            {{-- Page Links --}}
             @php
               $start = max(1, $news->currentPage() - 2);
               $end = min($news->lastPage(), $news->currentPage() + 2);
@@ -81,8 +77,6 @@
               </li>
             @endif
           </ul>
-
-          {{-- Arrow buttons (duplicate optional) --}}
           <div class="flex gap-2">
             <a href="{{ $news->previousPageUrl() }}"
               class="{{ $news->onFirstPage() ? 'pointer-events-none text-slate-300' : 'hover:text-slate-600 text-slate-500' }} bg-white hover:bg-slate-200 rounded p-1 ring-1 ring-zinc-300">
@@ -102,74 +96,5 @@
         </div>
       @endif
     </section>
-
   </div>
 @endsection
-
-
-{{-- Page Menu  --}}
-
-{{-- Hero Section --}}
-{{-- <section class="flex flex-col md:flex-row gap-8 items-center py-16 px-2">
-      <div class="flex-1 md:w-1/2 w-full">
-        <img src="{{ asset($firstNews->image_url) }}"
-          class="w-full h-auto bg-cover rounded-lg ring-1 ring-zinc-300 shadow-md hover:shadow-lg"
-          alt="{{ $firstNews->title }}">
-      </div>
-      <div class="flex-1 grid gap-4 place-content-center justify-start">
-        <div class="flex items-center gap-2 text-slate-600 h-fit">
-          <p>{{ $firstNews->published_at->isoFormat('D MMMM Y') }}</p>
-          <x-icons.dot class="w-2 h-2" />
-          <p>{{ $firstNews->category->title ?? '-' }}</p>
-        </div>
-        <h1 class="font-medium text-5xl leading-[1.1] text-slate-600 line-clamp-3">
-          <a href="/berita/{{ $firstNews->slug }}" class="hover:underline underline-1">
-            {{ $firstNews->title }}
-          </a>
-
-          <!-- Inline action button -->
-          <a href="/berita/{{ $firstNews->slug }}"
-            class="inline-flex items-center justify-center align-middle
-             group rounded-lg
-            hover:bg-orange-600 transition duration-200 ml-2">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="h-10 w-10 text-slate-600 group-hover:text-slate-100 group-hover:-rotate-45 transition duration-200">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M5 12l14 0" />
-              <path d="M13 18l6 -6" />
-              <path d="M13 6l6 6" />
-            </svg>
-          </a>
-        </h1>
-      </div>
-    </section> --}}
-
-{{-- Header Filter --}}
-{{-- <div class="flex flex-col md:flex-row gap-2 justify-between items-start md:items-center">
-          <div class="flex gap-4 items-center text-slate-500 font-medium">
-            <div
-              class="py-1.5 px-3 bg-white border border-slate-200 rounded-full text-orange-600 flex items-center gap-1 hover:bg-slate-200">
-              <span>Semua Berita</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M6 9l6 6l6 -6" />
-              </svg>
-            </div>
-          </div>
-          <div class="bg-white w-full md:w-1/3 h-10 border border-slate-400 rounded-lg flex p-1">
-            <input type="text" class="flex-1 focus:outline-none pl-2" placeholder="Pencarian">
-            <button class="bg-white hover:bg-amber-300 rounded-r-md px-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="text-slate-600 h-6 w-auto" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
-                <path d="M21 21l-6 -6" />
-              </svg>
-            </button>
-          </div>
-        </div> --}}
-{{-- Header Filter --}}
-{{-- Hero Section --}}
