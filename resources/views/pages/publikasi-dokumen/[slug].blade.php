@@ -142,21 +142,36 @@
   <div class=" w-full bg-white">
     <div class="max-w-screen-lg mx-auto w-full space-y-6 py-16 px-2">
       {{-- Breadcrumbs --}}
-      <ul class="text-center w-1/2 flex gap-2 justify-start">
-        <li class="text-xl font-medium text-slate-600"><a href="/" class="hover:underline">
-            Beranda</a></li>
-        <li class="text-xl font-medium text-slate-600">/</li>
-        <li class="text-xl font-medium text-slate-600 whitespace-nowrap"><a href="/publikasi-dokumen"
-            class="hover:underline">
-            Publikasi Dokumen</a></li>
-        <li class="text-xl font-medium text-slate-600">/</li>
-        <li class="text-xl font-medium text-orange-600 truncate">{{ $document->title }}</li>
-      </ul>
+      <div class="px-2 lg:px-0 py-2 w-full flex gap-0.5 items-center text-slate-500 overflow-hidden text-sm">
+        <a href="/" class="flex gap-1 items-center hover:underline cursor-pointer">
+          <span>Beranda</span>
+        </a>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" class="w-4 h-4">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M9 6l6 6l-6 6" />
+          </svg>
+        </div>
+        <a href="/berita" class="flex gap-1 items-center hover:underline cursor-pointer">
+          <span>Publikasi Dokumen</span>
+        </a>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" class="w-4 h-4">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M9 6l6 6l-6 6" />
+          </svg>
+        </div>
+        <a href="javascript:void(0)" class="flex gap-1 items-center hover:underline cursor-pointer text-slate-700">
+          <span class="line-clamp-1">{{ substr($document->title, 0, 25) }}...</span>
+        </a>
+      </div>
       {{-- Breadcrumbs --}}
 
-      <div class="flex gap-2 ring ring-slate-200 rounded-lg overflow-hidden p-0.5">
+      <div class="flex flex-col md:flex-row gap-2 ring ring-slate-200 rounded-lg overflow-hidden p-0.5">
 
-        <div class="w-1/3 p-4 h-auto flex flex-col">
+        <div class="w-full md:w-1/3 p-4 h-auto flex flex-col">
           <div class="space-y-3 flex-1">
             <p class="text-lg text-slate-600">Informasi Dokumen</p>
             <hr class="border-t border-slate-200">
@@ -213,7 +228,7 @@
             </a>
           </div>
         </div>
-        <div class="w-2/3 h-auto bg-slate-200 rounded-lg p-4 gap-2 relative flex justify-center items-center">
+        <div class="w-full md:w-2/3 h-auto bg-slate-200 rounded-lg p-4 gap-2 relative flex justify-center items-center">
           <div class="h-96 flex items-center justify-center">
             <div class="text-slate-600 flex items-center justify-center flex-col gap-2">
               <svg viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12 ">
