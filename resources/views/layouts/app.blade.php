@@ -14,21 +14,14 @@
   <title>Pemerintah Kabupaten Karimun</title>
 
   @vite(['resources/css/app.css', 'resources/js/app.js'])
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-    rel="stylesheet">
-
   <link rel="canonical" href="https://karimunkab.go.id/">
 
-  {{-- Seo TAG --}}
+  {{-- Meta --}}
   <meta name="title" content="Pemerintah Kabupaten Karimun - Informasi Resmi & Layanan Publik">
   <meta name="description"
     content="Website resmi Pemerintah Kabupaten Karimun. Temukan informasi terbaru seputar pemerintahan, pelayanan publik, berita daerah, pengumuman, serta potensi wisata dan investasi di Kabupaten Karimun.">
   <meta name="keywords"
     content="Kabupaten Karimun, Pemerintah Karimun, Pemkab Karimun, Website Resmi Karimun, Berita Karimun, Wisata Karimun, Investasi Karimun, Kepulauan Riau, Layanan Publik Karimun">
-
 
   {{-- OG:Card --}}
   <meta property="og:title" content="Pemerintah Kabupaten Karimun">
@@ -52,14 +45,14 @@
 
 </head>
 
-<body class="grid bg-slate-100 font-sans">
+<body class="bg-white font-sans antialiased">
   @stack('popup')
   <x-navigation.nav :activePage="$activePage" />
   <main class="bg-white w-full">
     @yield('content')
   </main>
   <footer class="w-full bg-slate-900 pt-10 pb-20">
-    <div class="max-w-screen-lg px-2 mx-auto text-slate-300">
+    <div class="max-w-screen-lg overflow-hidden px-2 mx-auto text-slate-300">
       <div class="">
         <div class="flex py-8 relative border-b border-slate-700">
           <div class="flex-1 space-y-2 z-10">
