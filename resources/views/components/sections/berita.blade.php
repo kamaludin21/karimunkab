@@ -3,8 +3,7 @@
 @if ($news->count() >= 4)
   <section class="w-full bg-white py-10 md:py-20">
     <div class="max-w-screen-lg px-2 lg:px-0 bg-white mx-auto grid gap-6">
-      <x-commons.section-header title="Berita" link="/berita" buttonText="Lihat Semua" />
-
+      <x-commons.section-header title="Berita" link="/berita" buttonText="Berita Lainnya" />
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 select-none">
         @if (isset($news[0]))
           @php $first = $news[0]; @endphp
@@ -99,6 +98,13 @@
           @endforeach
         </div>
       </div>
+      <div
+      class="flex md:hidden items-center before:h-px before:flex-1 before:bg-gray-300  before:content-[''] after:h-px after:flex-1 after:bg-gray-300  after:content-['']">
+      <a href="/berita"
+        class="text-slate-600 hover:text-white hover:bg-orange-600 cursor-pointer border border-slate-300 w-fit mx-auto px-3 py-1 rounded-full">
+        Berita Lainnya
+      </a>
+    </div>
     </div>
   </section>
 @endif
