@@ -10,12 +10,4 @@ use Illuminate\Support\Facades\Auth;
 class CreateNews extends CreateRecord
 {
   protected static string $resource = NewsResource::class;
-
-  protected function mutateFormDataBeforeCreate(array $data): array
-  {
-    if (!Auth::user()->hasRole('admin')) {
-      $data['user_id'] = Auth::id();
-    }
-    return $data;
-  }
 }
