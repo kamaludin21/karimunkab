@@ -16,7 +16,7 @@
                   <p>{{ $first->published_at->isoFormat('D MMMM Y') }}</p>
                 </div>
                 <a href="/berita/baca/{{ $first->slug }}"
-                  class="text-3xl leading-[1.2] font-bold group-hover:text-white text-slate-100 line-clamp-4">
+                  class="text-2xl md:text-3xl leading-[1.2] font-bold group-hover:text-white text-slate-100 line-clamp-4">
                   {{ $first->title }}
                 </a>
               </div>

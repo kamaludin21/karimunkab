@@ -13,7 +13,7 @@
         DOKUMEN
       </div>
       <div class="text-slate-700 py-3 text-sm font-bold text-center md:text-left w-full bg-slate-100 px-1">
-        <p class="block md:hidden">UNDUH</p>
+        <p class="block md:hidden">DETAIL</p>
         <p class="hidden md:block">AUTHOR</p>
       </div>
       @php
@@ -61,7 +61,7 @@
           </div>
 
           {{-- AUTHOR --}}
-          <div class="border-t border-slate-300 text-slate-700 flex gap-2 items-start justify-between w-full px-1 py-3">
+          <div class="border-t border-slate-300 text-slate-700 flex gap-2 items-center md:items-start justify-between w-full px-1 py-3">
             <p class="hidden md:block line-clamp-1">{{ $doc->author->name ?? '-' }}</p>
             <a href="/publikasi-dokumen/{{ $doc->slug }}"
               class="text-center hover:bg-slate-100 rounded-sm px-1.5 cursor-pointer hover:scale-105 hover:text-orange-600 duration-200 mx-auto md:mx-0">
