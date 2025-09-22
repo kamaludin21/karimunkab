@@ -12,16 +12,6 @@
     <div class="w-full md:w-2/3 space-y-2">
       {{-- Breadcrumbs --}}
       <div class="px-2 lg:px-0 py-2 w-full flex gap-0.5 items-center text-slate-500 overflow-hidden text-sm">
-        <a href="/" class="flex gap-1 items-center hover:underline cursor-pointer">
-          <span>Beranda</span>
-        </a>
-        <div>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-            stroke-linejoin="round" class="w-4 h-4">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M9 6l6 6l-6 6" />
-          </svg>
-        </div>
         <a href="/berita" class="flex gap-1 items-center hover:underline cursor-pointer">
           <span>Berita</span>
         </a>
@@ -32,7 +22,7 @@
             <path d="M9 6l6 6l-6 6" />
           </svg>
         </div>
-        <a href="/berita/{{ $news->category->slug }}" class="flex gap-1 items-center hover:underline cursor-pointer">
+        <a href="/berita/{{ $news->category->slug }}" class="flex gap-1 items-center hover:underline cursor-pointer whitespace-nowrap">
           <span>{{ $news->category->title }}</span>
         </a>
         <div>

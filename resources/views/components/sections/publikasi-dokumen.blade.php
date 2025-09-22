@@ -30,7 +30,7 @@
         <div class="contents group">
           {{-- TAHUN --}}
           <div
-            class="hidden pr-8 md:flex items-center text-slate-700 pl-1
+            class="hidden pr-8 md:flex items-start py-3 text-slate-700 pl-1
       @if ($prevYear !== $year) border-t border-slate-300 @endif">
             @if ($prevYear !== $year)
               {{ $year }}
@@ -40,7 +40,7 @@
 
           {{-- HARI BULAN --}}
           <div
-            class="hidden pr-8 md:flex items-center text-slate-700
+            class="hidden pr-8 md:flex items-start py-3 text-slate-700
       @if ($prevDate !== $date) border-t border-slate-300 @endif">
             @if ($prevDate !== $date)
               {{ $date }}
@@ -49,7 +49,7 @@
           </div>
 
           {{-- JUDUL --}}
-          <div class="border-t border-slate-300 pr-8 text-slate-700 flex items-center py-3 grid">
+          <div class="border-t border-slate-300 pr-8 text-slate-700 flex items-start py-3 grid">
             <span class="block md:hidden font-medium flex items-center gap-2 text-sm text-slate-500">
               <p>{{ \Carbon\Carbon::parse($doc->published_at)->isoFormat('D MMMM Y') }}</p>
               <x-icons.dot class="w-1 h-1" />
@@ -61,7 +61,7 @@
           </div>
 
           {{-- AUTHOR --}}
-          <div class="border-t border-slate-300 text-slate-700 flex gap-2 items-center justify-between w-full px-1">
+          <div class="border-t border-slate-300 text-slate-700 flex gap-2 items-start justify-between w-full px-1 py-3">
             <p class="hidden md:block line-clamp-1">{{ $doc->author->name ?? '-' }}</p>
             <a href="/publikasi-dokumen/{{ $doc->slug }}"
               class="text-center hover:bg-slate-100 rounded-sm px-1.5 cursor-pointer hover:scale-105 hover:text-orange-600 duration-200 mx-auto md:mx-0">
