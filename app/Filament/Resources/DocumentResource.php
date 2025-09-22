@@ -18,7 +18,7 @@ use Filament\Forms\Set;
 use Illuminate\Support\Str;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\RichEditor;
+use Illuminate\Database\Eloquent\Builder;
 
 class DocumentResource extends Resource
 {
@@ -33,11 +33,13 @@ class DocumentResource extends Resource
       ->schema([
         Select::make('user_id')
           ->label('Author')
-          ->disabled((fn(): bool => !auth()->user()->hasRole('super_admin')))
           ->relationship('author', 'name')
           ->native(false)
           ->preload()
-          ->required(),
+          ->default(fn() => auth()->user()->hasRole('super_admin') ? null : auth()->id())
+          ->required()
+          ->disabled(fn() => ! auth()->user()->hasRole('super_admin'))
+          ->dehydrated(),
         DatePicker::make('published_at')
           ->label('Tanggal Publikasi')
           ->native(false)
@@ -49,6 +51,7 @@ class DocumentResource extends Resource
           ->rows(1)
           ->label('Judul')
           ->maxLength(250)
+          ->helperText('Maksimal 250 Karakter')
           ->live(onBlur: true)
           ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
           ->required(),
@@ -63,10 +66,22 @@ class DocumentResource extends Resource
         FileUpload::make('file')
           ->label('File')
           ->directory('document/' . now()->format('Y-m'))
-          ->maxSize(5024)
           ->downloadable()
-          ->helperText('Maks Size: 5MB')
-          ->required(),
+          ->maxSize(fn() => auth()->user()->hasRole('super_admin') ? 51200 : 5024)
+          ->helperText(fn() => auth()->user()->hasRole('super_admin')
+            ? 'Maks Size: 50MB'
+            : 'Maks Size: 5MB')
+          ->required()
+          ->getUploadedFileNameForStorageUsing(function ($file, $record, $livewire) {
+            $random = \Illuminate\Support\Str::random(4);
+            $slug   = \Illuminate\Support\Str::slug($livewire->data['slug'] ?? $record?->slug ?? 'file');
+            $ext    = $file->getClientOriginalExtension();
+
+            return "{$slug}-{$random}.{$ext}";
+          })
+          ->visible(fn($livewire) => filled($livewire->data['slug'] ?? null)),
+
+
 
       ]);
   }
@@ -74,24 +89,58 @@ class DocumentResource extends Resource
   public static function table(Table $table): Table
   {
     return $table
+      ->modifyQueryUsing(function (Builder $query) {
+        $user = auth()->user();
+        if (! $user->hasRole('super_admin')) {
+          $query->where('user_id', $user->id);
+        }
+      })
       ->columns([
         TextColumn::make('index')
           ->label('No.')
           ->rowIndex(),
         TextColumn::make('author.name')
-          ->label('Author'),
+          ->label('Author')
+          ->toggleable(),
         TextColumn::make('title')
-          ->label('Judul'),
+          ->label('Judul')
+          ->wrap()
+          ->lineClamp(2),
+        TextColumn::make('published_at')
+          ->label('Publikasi')
+          ->date('d F Y'),
         TextColumn::make('published_at')
           ->label('Publikasi')
           ->date('d F Y')
+          ->sortable()
+          ->toggleable(isToggledHiddenByDefault: true),
+        TextColumn::make('created_at')
+          ->label('Dibuat')
+          ->date('d F Y')
+          ->sortable()
+          ->toggleable()
+          ->toggleable(isToggledHiddenByDefault: true),
+        TextColumn::make('updated_at')
+          ->label('Diperbarui')
+          ->date('d F Y')
+          ->sortable()
+          ->toggleable()
+          ->toggleable(isToggledHiddenByDefault: true),
       ])
       ->defaultSort('published_at', 'desc')
+      ->filters([
+        Tables\Filters\SelectFilter::make('author')
+          ->relationship('author', 'name')
+          ->native(false)
+          ->multiple()
+          ->preload()
+          ->hidden(fn() => ! auth()->user()->hasRole('super_admin')),
+      ])
       ->actions([
         Tables\Actions\ActionGroup::make([
           Tables\Actions\EditAction::make(),
           Tables\Actions\DeleteAction::make(),
-        ])
+        ]),
       ]);
   }
 
