@@ -48,30 +48,29 @@
 <body class="bg-white font-sans antialiased">
   @stack('popup')
   <x-navigation.nav :activePage="$activePage" />
-  <main class="bg-white w-full">
+  <main class="bg-white">
     @yield('content')
   </main>
   <footer class="w-full bg-slate-900 pt-10 pb-20">
-    <div class="max-w-screen-lg overflow-hidden px-2 mx-auto text-slate-300">
+    <div class="mx-auto max-w-screen-lg overflow-hidden px-2 text-slate-300">
       <div class="">
-        <div class="flex py-8 relative border-b border-slate-700">
-          <div class="flex-1 space-y-2 z-10">
-            <img src="{{ asset('assets/images/logo_kab.png') }}" class="w-32 h-auto" alt="">
+        <div class="relative flex border-b border-slate-700 py-8">
+          <div class="z-10 flex-1 space-y-2">
+            <img src="{{ asset('assets/images/logo_kab.png') }}" class="h-auto w-32" alt="" />
           </div>
-          <div class="absolute right-0 z-0 bottom-0">
+          <div class="absolute right-0 bottom-0 z-0">
             <p
-              class="text-9xl tracking-wide font-bold text-right bg-gradient-to-t bg-slate-900 via-slate-800 to-slate-800 bg-clip-text text-transparent opacity-50">
-              BUMI
-            </p>
+              class="bg-slate-900 bg-gradient-to-t via-slate-800 to-slate-800 bg-clip-text text-right text-9xl font-bold tracking-wide text-transparent opacity-50">
+              BUMI</p>
           </div>
         </div>
-        <div class="flex py-8 items-end relative">
-          <div class="flex-1 z-10">
-            <p class="text-slate-200 text-base font-normal">KABUPATEN KARIMUN</p>
+        <div class="relative flex items-end py-8">
+          <div class="z-10 flex-1">
+            <p class="text-base font-normal text-slate-200">KABUPATEN KARIMUN</p>
             <p class="text-sm font-light">DISKOMINFO</p>
           </div>
           <p
-            class="absolute top-4 right-0 bottom-0 leading-[0.8] text-9xl tracking-wide font-bold text-right bg-gradient-to-b bg-slate-900 via-slate-800 to-slate-800 bg-clip-text text-transparent opacity-50">
+            class="absolute top-4 right-0 bottom-0 bg-slate-900 bg-gradient-to-b via-slate-800 to-slate-800 bg-clip-text text-right text-9xl leading-[0.8] font-bold tracking-wide text-transparent opacity-50">
             <span class="align-[0px]">BERAZAM</span>
           </p>
         </div>
@@ -79,6 +78,6 @@
     </div>
   </footer>
   <div class="w-full bg-slate-800 py-1">
-    <p class="text-sm text-center font-ligth text-slate-100">DISKOMINFOTIK &copy; 2025 Hak cipta dilindungi</p>
+    <p class="font-light text-center text-sm text-slate-100">DISKOMINFO &copy; 2025 Hak cipta dilindungi</p>
   </div>
 </body>
