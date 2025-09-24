@@ -24,6 +24,7 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\RichEditor;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Actions\BulkAction;
+use Illuminate\Database\Eloquent\Builder;
 
 class NewsResource extends Resource
 {
@@ -103,6 +104,41 @@ class NewsResource extends Resource
           ->dehydrated()
           ->readOnly()
           ->required(),
+        Select::make('tags')
+          ->searchable()
+          ->preload()
+          ->label('Topik')
+          ->helperText('Max: 5 Tag')
+          ->multiple()
+          ->maxItems(5)
+          ->relationship(
+            name: 'tags',
+            titleAttribute: 'name',
+          )
+          ->createOptionForm([
+            TextInput::make('name')
+              ->label('Tag')
+              ->placeholder('Tag')
+              ->maxLength(30)
+              ->helperText('Max: 30 Karakter')
+              ->live(onBlur: true)
+              ->unique()
+              ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
+            TextInput::make('slug')
+              ->label('Slug')
+              ->placeholder('Slug')
+              ->unique(ignoreRecord: true)
+              ->disabled()
+              ->dehydrated()
+              ->readOnly()
+              ->required(),
+          ])
+          ->createOptionAction(function (Forms\Components\Actions\Action $action) {
+            return $action
+              ->modalHeading('Create Tag')
+              ->modalWidth('lg');
+          })
+          ->columnSpanFull(),
         RichEditor::make('content')
           ->label('Konten')
           ->maxLength(5000)
@@ -111,6 +147,7 @@ class NewsResource extends Resource
           ])
           ->required()
           ->columnSpanFull(),
+
       ]);
   }
 
@@ -148,6 +185,12 @@ class NewsResource extends Resource
           ->date('d F Y')
           ->sortable()
           ->toggleable(isToggledHiddenByDefault: true),
+        TextColumn::make('tags.name')
+          ->label('Topik')
+          ->badge()
+          ->separator(', ')
+          ->toggleable(isToggledHiddenByDefault: true),
+
       ])
       ->actions([
         Tables\Actions\ActionGroup::make([
@@ -156,6 +199,14 @@ class NewsResource extends Resource
           Tables\Actions\ForceDeleteAction::make(),
           Tables\Actions\RestoreAction::make(),
         ])
+      ])
+      ->groups([
+        Tables\Grouping\Group::make('created_at')
+          ->label('Tanggal Buat')
+          ->collapsible(),
+        Tables\Grouping\Group::make('published_at')
+          ->label('Tanggal Publikasi')
+          ->collapsible(),
       ])
       ->defaultSort('published_at', 'desc')
       ->filters([

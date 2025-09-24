@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class News extends Model
 {
@@ -36,6 +36,12 @@ class News extends Model
   public function author(): BelongsTo
   {
     return $this->belongsTo(User::class, 'user_id');
+  }
+
+  // Relasi ke Tag
+  public function tags(): BelongsToMany
+  {
+    return $this->belongsToMany(Tag::class);
   }
 
   public function getImageUrlAttribute()

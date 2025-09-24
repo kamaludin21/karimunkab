@@ -23,14 +23,7 @@
   <meta name="keywords"
     content="Kabupaten Karimun, Pemerintah Karimun, Pemkab Karimun, Website Resmi Karimun, Berita Karimun, Wisata Karimun, Investasi Karimun, Kepulauan Riau, Layanan Publik Karimun">
 
-  {{-- OG:Card --}}
-  <meta property="og:title" content="Pemerintah Kabupaten Karimun">
-  <meta property="og:description"
-    content="Situs resmi Pemerintah Kabupaten Karimun. Akses informasi, berita, layanan publik, serta potensi daerah Karimun.">
-  <meta property="og:image" content="{{ asset('assets/images/main_og_card.webp') }}">
-  <meta property="og:url" content="https://www.karimunkab.go.id/">
-  <meta property="og:type" content="website">
-
+  @yield('ogcard', view('components.partials.og-card'))
   <!-- Google tag (gtag.js) -->
   {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0M07HYF89"></script>
   <script>

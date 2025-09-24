@@ -6,6 +6,10 @@
 
 @extends('layouts.app', ['activePage' => 'berita'])
 
+@section('ogcard')
+  <x-partials.og-card :url="url('/berita/baca/' . $news->slug)" :title="$news->title" :description="Str::limit(strip_tags($news->content), 160)" :image="$news->image_url ? asset($news->image_url) : asset('assets/images/main_og_card.webp')" />
+@endsection
+
 @section('content')
   <div class="max-w-screen-lg mx-auto w-full bg-white py-6 md:py-10 flex flex-col md:flex-row items-start gap-8">
 
@@ -22,7 +26,8 @@
             <path d="M9 6l6 6l-6 6" />
           </svg>
         </div>
-        <a href="/berita/{{ $news->category->slug }}" class="flex gap-1 items-center hover:underline cursor-pointer whitespace-nowrap">
+        <a href="/berita/{{ $news->category->slug }}"
+          class="flex gap-1 items-center hover:underline cursor-pointer whitespace-nowrap">
           <span>{{ $news->category->title }}</span>
         </a>
         <div>
@@ -65,8 +70,9 @@
               <p class="text-sm line-clamp-1">{{ $news->published_at->isoFormat('dddd, D MMMM Y') }}</p>
             </div>
           </div>
-          {{-- <div class="gap-1 hover:bg-slate-800 hover:text-white cursor-pointer p-1 rounded select-none">
-            <button id="shareBtn" class="flex items-center gap-1">
+          <div class="gap-1 hover:bg-slate-800 hover:text-white cursor-pointer p-1 rounded select-none">
+            <button id="shareBtns" onclick="shareFacebook('{{ url('/berita/baca/' . $news->slug) }}')"
+              class="flex items-center gap-1">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="icon icon-tabler icons-tabler-outline icon-tabler-share">
@@ -79,7 +85,7 @@
               </svg>
               <span class="text-sm font-light">Bagikan</span>
             </button>
-          </div> --}}
+          </div>
         </div>
       </div>
       {{-- Header --}}
@@ -90,22 +96,28 @@
           class="w-full h-auto min-h-56 max-h-96 object-cover duration-200 ring-1 bg-slate-200 ring-zinc-200 rounded-none md:rounded-lg "
           src="{{ asset($news->image_url) }}" alt=" {{ $news->title }}">
         {{-- <p class="text-sm text-slate-500 px-2 lg:px-0 leading-4">Bupati Karimun Hadiri Pisah Sambut Komandan Kodim
-          0317 / TBK dari Letkol Inf Ida
-          Bagus Putu Mudita kepada Letkol Inf Andit Franata, S.I.P</p> --}}
+        0317 / TBK dari Letkol Inf Ida
+        Bagus Putu Mudita kepada Letkol Inf Andit Franata, S.I.P</p> --}}
       </div>
       {{-- Image Cover --}}
 
-      <div class="text-lg leading-7 space-y-2 text-slate-700 html-content select-none px-2 lg:px-0">
+      <div
+        class="text-lg leading-7 space-y-2 text-slate-700 html-content select-none px-2 lg:px-0 pb-6 border-b border-slate-300">
         {!! $news->content !!}
       </div>
 
-      {{-- <div class="px-2 lg:px-0 py-6 border-t border-slate-200">
-        <p class="text-slate-700 font-medium">Topik:</p>
-        <div class="flex flex-grow gap-2 text-sm text-slate-600">
-          <p class="p-1 hover:bg-slate-200 cursor-pointer hover:underline underline-offset-2">#Bupati</p>
-          <p class="p-1 hover:bg-slate-200 cursor-pointer hover:underline underline-offset-2">#WakilBupati</p>
+      @if ($news->tags->isNotEmpty())
+        <div class="px-2 lg:px-0">
+          <p class="text-slate-700 font-medium">Topik:</p>
+          <div class="flex flex-grow gap-2 text-sm text-slate-600">
+            @foreach ($news->tags as $tag)
+              <p class="p-1 hover:bg-slate-200 cursor-pointer hover:underline underline-offset-2 capitalize">
+                <span class="font-medium">#</span>{{ strtolower($tag->name) }}
+              </p>
+            @endforeach
+          </div>
         </div>
-      </div> --}}
+      @endif
     </div>
 
     <div class="w-full md:w-1/3 px-2 lg:px-0 sticky top-32">
@@ -161,37 +173,37 @@
 @endsection
 
 {{-- <div class="max-w-screen-md mx-auto w-full space-y-6 py-16">
-      <hr class="border-t border-slate-400">
-      <div class="space-y-2 ">
-        <p class="text-slate-700 text-lg">Bagikan:</p>
-        <div class="flex gap-4 items-center">
-          <button
-            class="bg-slate-200 p-1 rounded-md  text-slate-600 hover:text-slate-700  cursor-pointer border-2 border-transparent hover:border-slate-600">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-linecap="round" stroke-linejoin="round" class="h-6 w-auto stroke-2">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M9 15l6 -6" />
-              <path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" />
-              <path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" />
-            </svg>
-          </button>
-          <button
-            class="bg-slate-200 p-1 rounded-md  text-slate-600 hover:text-slate-700  cursor-pointer hover:ring-2 ring-0">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor"stroke-linecap="round" stroke-linejoin="round" class="h-6 w-auto stroke-2">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
-            </svg>
-          </button>
-          <button
-            class="bg-slate-200 p-1 rounded-md  text-slate-600 hover:text-slate-700  cursor-pointer hover:ring-2 ring-0">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-linecap="round" stroke-linejoin="round" class="h-6 w-auto stroke-2">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
-              <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div> --}}
+  <hr class="border-t border-slate-400">
+  <div class="space-y-2 ">
+    <p class="text-slate-700 text-lg">Bagikan:</p>
+    <div class="flex gap-4 items-center">
+      <button
+        class="bg-slate-200 p-1 rounded-md  text-slate-600 hover:text-slate-700  cursor-pointer border-2 border-transparent hover:border-slate-600">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-linecap="round" stroke-linejoin="round" class="h-6 w-auto stroke-2">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M9 15l6 -6" />
+          <path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" />
+          <path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" />
+        </svg>
+      </button>
+      <button
+        class="bg-slate-200 p-1 rounded-md  text-slate-600 hover:text-slate-700  cursor-pointer hover:ring-2 ring-0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-linecap="round" stroke-linejoin="round" class="h-6 w-auto stroke-2">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
+        </svg>
+      </button>
+      <button
+        class="bg-slate-200 p-1 rounded-md  text-slate-600 hover:text-slate-700  cursor-pointer hover:ring-2 ring-0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-linecap="round" stroke-linejoin="round" class="h-6 w-auto stroke-2">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+          <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div> --}}
