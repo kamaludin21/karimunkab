@@ -13,9 +13,9 @@ export const share = {
     const navUrl = api + params.toString();
     popupCenter(navUrl, "X Share", 580, 400);
   },
-  whatsapp(pageUrl, message = "") {
+  whatsapp(pageUrl) {
     const api = "https://api.whatsapp.com/send?";
-    const text = message ? `${message}\n\n${pageUrl}` : pageUrl;
+    const text = pageUrl;
     const params = new URLSearchParams({ text });
     const navUrl = api + params.toString();
     popupCenter(navUrl, "WhatsApp Share", 580, 400);

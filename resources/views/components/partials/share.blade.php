@@ -24,7 +24,7 @@
       class="p-1.5 rounded-md bg-sky-500 active:scale-95">
       <x-icons.twitter class="w-7 h-auto text-white stroke-[1.5]" />
     </button>
-    <button type="button" onclick="share.whatsapp('{{ $url }}', '{{ $title }}')"
+    <button type="button" onclick="share.whatsapp('{{ $url }}')"
       class="p-1.5 rounded-md bg-green-500 active:scale-95">
       <x-icons.whatsapp class="w-7 h-auto text-white stroke-[1.5]" />
     </button>
