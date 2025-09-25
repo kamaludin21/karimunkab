@@ -84,22 +84,8 @@
               <span class="text-sm font-light">Bagikan</span>
             </button>
           </div>
-          <x-commons.modal id="shareModal" title="Contoh Modal" :show="false">
-            <div class="space-y-2  p-6">
-              <p class="text-base font-medium text-slate-500">Bagikan:</p>
-              <p class="text-lg font-semibold text-slate-600">{{ $news->title }}</p>
-              <div class="flex gap-4 justify-center">
-                <button type="button" onclick="share.facebook(location.href)"
-                  class="p-1.5 rounded-md bg-blue-500 active:scale-95">
-                  <x-icons.facebook class="w-7 h-auto text-white" />
-                </button>
-                <button type="button" onclick="share.x(location.href)"
-                  class="p-1.5 rounded-md bg-sky-500 active:scale-95">
-                  <x-icons.twitter class="w-7 h-auto text-white" />
-                </button>
-              </div>
-
-            </div>
+          <x-commons.modal id="shareModal" title="Bagikan Berita" :show="false">
+            <x-partials.share :url="url()->current()" :title="$news->title" />
           </x-commons.modal>
         </div>
       </div>
@@ -153,11 +139,11 @@
             <div class="flex gap-2 items-center">
               <img class="w-2/5 rounded-lg  h-22 object-cover" src="{{ asset($item->image_url) }}"
                 alt="{{ $item->title }}">
-              <div class="w-3/5 flex-1">
-                <p class="text-sm line-clamp-1 font-light text-slate-500">
+              <div class="w-3/5 flex-1 text-slate-500">
+                <p class="text-sm line-clamp-1 font-light">
                   {{ $news->published_at->isoFormat('dddd, D MMMM Y') }}</p>
                 <a href="/berita/baca/{{ $item->slug }}"
-                  class="text-base line-clamp-3 font-medium text-slate-600 hover:underline">{{ $item->title }}</a>
+                  class="text-base line-clamp-2 font-medium hover:text-slate-600 hover:underline">{{ $item->title }}</a>
               </div>
             </div>
           @endforeach
