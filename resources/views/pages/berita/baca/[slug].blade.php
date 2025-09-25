@@ -88,18 +88,13 @@
             <div class="space-y-2  p-6">
               <p class="text-base font-medium text-slate-500">Bagikan:</p>
               <p class="text-lg font-semibold text-slate-600">{{ $news->title }}</p>
-              {{-- <button >
-                Facebook
-              </button> --}}
-
               <div class="flex gap-4 justify-center">
-
-                <button type="button" onclick="shareFacebook('{{ url('/berita/baca/' . $news->slug) }}')"
-                  class="p-1.5 rounded-md bg-blue-500">
+                <button type="button" onclick="share.facebook(location.href)"
+                  class="p-1.5 rounded-md bg-blue-500 active:scale-95">
                   <x-icons.facebook class="w-7 h-auto text-white" />
                 </button>
-                <button type="button"
-                  class="p-1.5 rounded-md bg-sky-500">
+                <button type="button" onclick="share.x(location.href)"
+                  class="p-1.5 rounded-md bg-sky-500 active:scale-95">
                   <x-icons.twitter class="w-7 h-auto text-white" />
                 </button>
               </div>
@@ -168,62 +163,6 @@
           @endforeach
         </div>
       </div>
-
     </div>
   </div>
-
-  <script>
-    document.getElementById("shareBtn").addEventListener("click", async () => {
-      if (navigator.share) {
-        try {
-          await navigator.share({
-            title: "{{ $news->title }}",
-            text: "Lihat halaman ini, menarik banget!",
-            url: window.location.href
-          });
-          console.log("Berhasil dibagikan!");
-        } catch (err) {
-          console.error("Gagal membagikan:", err);
-        }
-      } else {
-        alert("Fitur share tidak tersedia di browser ini.");
-      }
-    });
-  </script>
 @endsection
-
-{{-- <div class="max-w-screen-md mx-auto w-full space-y-6 py-16">
-  <hr class="border-t border-slate-400">
-  <div class="space-y-2 ">
-    <p class="text-slate-700 text-lg">Bagikan:</p>
-    <div class="flex gap-4 items-center">
-      <button
-        class="bg-slate-200 p-1 rounded-md  text-slate-600 hover:text-slate-700  cursor-pointer border-2 border-transparent hover:border-slate-600">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-linecap="round" stroke-linejoin="round" class="h-6 w-auto stroke-2">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M9 15l6 -6" />
-          <path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" />
-          <path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" />
-        </svg>
-      </button>
-      <button
-        class="bg-slate-200 p-1 rounded-md  text-slate-600 hover:text-slate-700  cursor-pointer hover:ring-2 ring-0">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-linecap="round" stroke-linejoin="round" class="h-6 w-auto stroke-2">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
-        </svg>
-      </button>
-      <button
-        class="bg-slate-200 p-1 rounded-md  text-slate-600 hover:text-slate-700  cursor-pointer hover:ring-2 ring-0">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-linecap="round" stroke-linejoin="round" class="h-6 w-auto stroke-2">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
-          <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
-        </svg>
-      </button>
-    </div>
-  </div>
-</div> --}}

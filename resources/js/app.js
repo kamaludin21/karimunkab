@@ -1,9 +1,9 @@
 import Alpine from 'alpinejs'
 import focus from '@alpinejs/focus'
 import './modal.js';
-import { shareFacebook } from './share';
+import { share } from './share'
 
-window.shareFacebook = shareFacebook;
+window.share = share
 Alpine.plugin(focus)
 window.Alpine = Alpine
 Alpine.start()

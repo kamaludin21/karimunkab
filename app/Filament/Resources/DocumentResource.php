@@ -67,7 +67,7 @@ class DocumentResource extends Resource
           ->label('File')
           ->directory('document/' . now()->format('Y-m'))
           ->downloadable()
-          ->maxSize(fn() => auth()->user()->hasRole('super_admin') ? 51200 : 5024)
+          ->maxSize(fn() => auth()->user()->hasRole('super_admin') ? 50000 : 5024)
           ->helperText(fn() => auth()->user()->hasRole('super_admin')
             ? 'Maks Size: 50MB'
             : 'Maks Size: 5MB')
