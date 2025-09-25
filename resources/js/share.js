@@ -9,6 +9,6 @@ export const share = {
   x(pageUrl) {
     const api = "https://x.com/intent/post?url=";
     const navUrl = api + encodeURIComponent(pageUrl);
-    popupCenter(navUrl, "X Share", 480, 320);
+    popupCenter(navUrl, "X Share", 600, 400);
   },
 };

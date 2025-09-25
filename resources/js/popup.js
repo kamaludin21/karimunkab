@@ -4,31 +4,15 @@ export const popupCenter = (url, title, w, h) => {
   const dualScreenTop =
     window.screenTop !== undefined ? window.screenTop : window.screenY;
 
-  const width = window.innerWidth
-    ? window.innerWidth
-    : document.documentElement.clientWidth
-      ? document.documentElement.clientWidth
-      : screen.width;
+  const availWidth = window.screen.availWidth;
+  const availHeight = window.screen.availHeight;
 
-  const height = window.innerHeight
-    ? window.innerHeight
-    : document.documentElement.clientHeight
-      ? document.documentElement.clientHeight
-      : screen.height;
-
-  const systemZoom = width / window.screen.availWidth;
-  const left = (width - w) / 2 / systemZoom + dualScreenLeft;
-  const top = (height - h) / 2 / systemZoom + dualScreenTop;
+  const left = dualScreenLeft + (availWidth - w) / 2;
+  const top = dualScreenTop + (availHeight - h) / 2;
 
   window.open(
     url,
     title,
-    `
-        scrollbars=yes,
-        width=${w / systemZoom},
-        height=${h / systemZoom},
-        top=${top},
-        left=${left}
-        `,
+    `scrollbars=yes,width=${w},height=${h},top=${top},left=${left}`,
   );
 };
