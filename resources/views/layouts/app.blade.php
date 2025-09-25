@@ -11,21 +11,12 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="canonical" href="https://karimunkab.go.id/">
   <title>Pemerintah Kabupaten Karimun</title>
 
   @vite(['resources/css/app.css', 'resources/js/app.js'])
-  <link rel="canonical" href="https://karimunkab.go.id/">
-
-  {{-- Meta --}}
-  <meta name="title" content="Pemerintah Kabupaten Karimun - Informasi Resmi & Layanan Publik">
-  <meta name="description"
-    content="Website resmi Pemerintah Kabupaten Karimun. Temukan informasi terbaru seputar pemerintahan, pelayanan publik, berita daerah, pengumuman, serta potensi wisata dan investasi di Kabupaten Karimun.">
-  <meta name="keywords"
-    content="Kabupaten Karimun, Pemerintah Karimun, Pemkab Karimun, Website Resmi Karimun, Berita Karimun, Wisata Karimun, Investasi Karimun, Kepulauan Riau, Layanan Publik Karimun">
-
-  @yield('ogcard', view('components.partials.og-card'))
   <!-- Google tag (gtag.js) -->
-  {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0M07HYF89"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0M07HYF89"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -34,8 +25,15 @@
     }
     gtag('js', new Date());
     gtag('config', 'G-S0M07HYF89');
-  </script> --}}
+  </script>
 
+  {{-- Meta --}}
+  <meta name="title" content="Pemerintah Kabupaten Karimun - Informasi Resmi & Layanan Publik">
+  <meta name="description"
+    content="Website resmi Pemerintah Kabupaten Karimun. Temukan informasi terbaru seputar pemerintahan, pelayanan publik, berita daerah, pengumuman, serta potensi wisata dan investasi di Kabupaten Karimun.">
+  <meta name="keywords"
+    content="Kabupaten Karimun, Pemerintah Karimun, Pemkab Karimun, Website Resmi Karimun, Berita Karimun, Wisata Karimun, Investasi Karimun, Kepulauan Riau, Layanan Publik Karimun">
+  @yield('ogcard', view('components.partials.og-card'))
 </head>
 
 <body class="bg-white font-sans antialiased">
