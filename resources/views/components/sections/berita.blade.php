@@ -7,7 +7,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 select-none">
         @if (isset($news[0]))
           @php $first = $news[0]; @endphp
-          <div class="h-72 md:h-96 bg-contain sm:rounded-none md:rounded-l-xl relative overflow-hidden"
+          <div class="h-72 md:h-96 bg-cover sm:rounded-none md:rounded-l-xl relative overflow-hidden"
             style="background-image: url('{{ asset($first->image_url) }}')">
             <div class="absolute inset-0 bg-black/70"></div>
             <div class="relative duration-200 p-4 h-full flex flex-col gap-2 w-full justify-between">
