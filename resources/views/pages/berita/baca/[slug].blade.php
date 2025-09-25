@@ -12,7 +12,6 @@
 
 @section('content')
   <div class="max-w-screen-lg mx-auto w-full bg-white py-6 md:py-10 flex flex-col md:flex-row items-start gap-8">
-
     <div class="w-full md:w-2/3 space-y-2">
       {{-- Breadcrumbs --}}
       <div class="px-2 lg:px-0 py-2 w-full flex gap-0.5 items-center text-slate-500 overflow-hidden text-sm">
@@ -71,8 +70,7 @@
             </div>
           </div>
           <div class="gap-1 hover:bg-slate-800 hover:text-white cursor-pointer p-1 rounded select-none">
-            <button id="shareBtns" onclick="shareFacebook('{{ url('/berita/baca/' . $news->slug) }}')"
-              class="flex items-center gap-1">
+            <button onclick="openModal('shareModal')" class="flex items-center gap-1">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="icon icon-tabler icons-tabler-outline icon-tabler-share">
@@ -86,6 +84,28 @@
               <span class="text-sm font-light">Bagikan</span>
             </button>
           </div>
+          <x-commons.modal id="shareModal" title="Contoh Modal" :show="false">
+            <div class="space-y-2  p-6">
+              <p class="text-base font-medium text-slate-500">Bagikan:</p>
+              <p class="text-lg font-semibold text-slate-600">{{ $news->title }}</p>
+              {{-- <button >
+                Facebook
+              </button> --}}
+
+              <div class="flex gap-4 justify-center">
+
+                <button type="button" onclick="shareFacebook('{{ url('/berita/baca/' . $news->slug) }}')"
+                  class="p-1.5 rounded-md bg-blue-500">
+                  <x-icons.facebook class="w-7 h-auto text-white" />
+                </button>
+                <button type="button"
+                  class="p-1.5 rounded-md bg-sky-500">
+                  <x-icons.twitter class="w-7 h-auto text-white" />
+                </button>
+              </div>
+
+            </div>
+          </x-commons.modal>
         </div>
       </div>
       {{-- Header --}}

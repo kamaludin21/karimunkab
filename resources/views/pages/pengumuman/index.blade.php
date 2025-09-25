@@ -1,6 +1,9 @@
 @php
   $organisasiList = \App\Models\Announcement::with('author')->get()->pluck('author.name')->unique()->filter()->values();
-  $announcements = \App\Models\Announcement::with('author')->latest('published_at')->paginate(5)->withQueryString();
+  $announcements = \App\Models\Announcement::with('author')
+      ->orderBy('published_at', 'desc')
+      ->paginate(5)
+      ->withQueryString();
 @endphp
 
 @extends('layouts.app', ['activePage' => 'informasi-publik'])
@@ -45,40 +48,40 @@
                   {{ $item->title }}
                 </a>
                 <div class="flex flex-col md:flex-row md:items-center gap-2 text-slate-600">
-                    {{-- Tanggal --}}
-                    <div class="flex items-center gap-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 stroke-[1.5]">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
-                        <path d="M16 3l0 4" />
-                        <path d="M8 3l0 4" />
-                        <path d="M4 11l16 0" />
-                        <path d="M8 15h2v2h-2z" />
-                      </svg>
-                      <p>{{ $item->published_at->isoFormat('d MMMM Y') }}</p>
-                    </div>
-                    <x-icons.dot class="hidden md:block h-1 w-1 text-slate-400" />
-                    {{-- Organisasi --}}
-                    <div class="flex items-center gap-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 stroke-[1.5]">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M4 21v-15c0 -1 1 -2 2 -2h5c1 0 2 1 2 2v15" />
-                        <path d="M16 8h2c1 0 2 1 2 2v11" />
-                        <path d="M3 21h18" />
-                        <path d="M10 12v0" />
-                        <path d="M10 16v0" />
-                        <path d="M10 8v0" />
-                        <path d="M7 12v0" />
-                        <path d="M7 16v0" />
-                        <path d="M7 8v0" />
-                        <path d="M17 12v0" />
-                        <path d="M17 16v0" />
-                      </svg>
-                      <p>{{ $item->author->name ?? '-' }}</p>
-                    </div>
+                  {{-- Tanggal --}}
+                  <div class="flex items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 stroke-[1.5]">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+                      <path d="M16 3l0 4" />
+                      <path d="M8 3l0 4" />
+                      <path d="M4 11l16 0" />
+                      <path d="M8 15h2v2h-2z" />
+                    </svg>
+                    <p>{{ $item->published_at->isoFormat('d MMMM Y') }}</p>
                   </div>
+                  <x-icons.dot class="hidden md:block h-1 w-1 text-slate-400" />
+                  {{-- Organisasi --}}
+                  <div class="flex items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 stroke-[1.5]">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M4 21v-15c0 -1 1 -2 2 -2h5c1 0 2 1 2 2v15" />
+                      <path d="M16 8h2c1 0 2 1 2 2v11" />
+                      <path d="M3 21h18" />
+                      <path d="M10 12v0" />
+                      <path d="M10 16v0" />
+                      <path d="M10 8v0" />
+                      <path d="M7 12v0" />
+                      <path d="M7 16v0" />
+                      <path d="M7 8v0" />
+                      <path d="M17 12v0" />
+                      <path d="M17 16v0" />
+                    </svg>
+                    <p>{{ $item->author->name ?? '-' }}</p>
+                  </div>
+                </div>
               </div>
             </div>
           @empty

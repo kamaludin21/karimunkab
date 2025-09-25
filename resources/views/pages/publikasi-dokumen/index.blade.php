@@ -1,6 +1,6 @@
 @php
   $organisasiList = \App\Models\Document::with('author')->get()->pluck('author.name')->unique()->filter()->values();
-  $documents = \App\Models\Document::with('author')->latest()->paginate(10);
+  $documents = \App\Models\Document::with('author')->orderBy('published_at', 'desc')->paginate(10);
 @endphp
 
 @extends('layouts.app', ['activePage' => 'informasi-publik'])
@@ -42,10 +42,11 @@
               class="p-2 flex items-start h-full border border-slate-200 hover:border-slate-300 gap-2 rounded-lg h-min group duration-200">
 
               <div class="space-y-2 flex flex-col justify-between h-full w-full">
-                <a href="/publikasi-dokumen/{{ $doc->slug }}" class="hover:underline text-lg font-semibold text-slate-600 line-clamp-2">
+                <a href="/publikasi-dokumen/{{ $doc->slug }}"
+                  class="hover:underline text-lg font-semibold text-slate-600 line-clamp-2">
                   {{ $doc->title }}
                 </a>
-                <div x-data="{ open: false }"  class="flex gap-2 text-slate-600 items-center justify-between">
+                <div x-data="{ open: false }" class="flex gap-2 text-slate-600 items-center justify-between">
                   <div class="flex flex-col md:flex-row md:items-center gap-2">
                     <div class="flex items-center gap-1">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
