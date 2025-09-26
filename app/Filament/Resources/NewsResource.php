@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\FileUpload;
@@ -37,108 +38,122 @@ class NewsResource extends Resource
   {
     return $form
       ->schema([
-        Select::make('user_id')
-          ->label('Author')
-          ->relationship('author', 'name')
-          ->native(false)
-          ->preload()
-          ->default(fn() => auth()->user()->hasRole('super_admin') ? null : auth()->id())
-          ->required()
-          ->disabled(fn() => ! auth()->user()->hasRole('super_admin'))
-          ->dehydrated(),
-        DatePicker::make('published_at')
-          ->label('Tanggal Publikasi')
-          ->native(false)
-          ->displayFormat('d F Y')
-          ->default(today())
-          ->required(),
-        Select::make('news_category_id')
-          ->relationship(name: 'category', titleAttribute: 'title')
-          ->native(false)
-          ->createOptionForm([
-            Textarea::make('title')
-              ->autosize()
-              ->rows(1)
-              ->label('Judul')
-              ->maxLength(250)
-              ->live(onBlur: true)
-              ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
-              ->required(),
-            TextInput::make('slug')
-              ->label('Slug')
-              ->placeholder('Slug')
-              ->unique(ignoreRecord: true)
-              ->disabled()
-              ->dehydrated()
-              ->readOnly()
-              ->required(),
-          ])
-          ->required()
-          ->label('Kategori Berita'),
-
-        Textarea::make('title')
-          ->autosize()
-          ->rows(1)
-          ->label('Judul')
-          ->maxLength(250)
-          ->helperText('Maksimal 250 Karakter')
-          ->live(onBlur: true)
-          ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
-          ->required(),
-        FileUpload::make('images')
-          ->label('Gambar')
-          ->image()
-          ->directory('news/' . now()->format('Y-m'))
-          ->imagePreviewHeight('150')
-          ->maxSize(512)
-          ->multiple()
-          ->maxFiles(5)
-          ->helperText('Max File: 5, Size: 500KB')
-          ->reorderable()
-          ->required(),
-        TextInput::make('slug')
-          ->label('Slug')
-          ->placeholder('Slug')
-          ->unique(ignoreRecord: true)
-          ->disabled()
-          ->dehydrated()
-          ->readOnly()
-          ->required(),
-        Select::make('tags')
-          ->searchable()
-          ->preload()
-          ->label('Topik')
-          ->helperText('Max: 5 Tag')
-          ->multiple()
-          ->maxItems(5)
-          ->relationship(
-            name: 'tags',
-            titleAttribute: 'name',
-          )
-          ->createOptionForm([
-            TextInput::make('name')
-              ->label('Tag')
-              ->placeholder('Tag')
-              ->maxLength(30)
-              ->helperText('Max: 30 Karakter')
-              ->live(onBlur: true)
-              ->unique()
-              ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
-            TextInput::make('slug')
-              ->label('Slug')
-              ->placeholder('Slug')
-              ->unique(ignoreRecord: true)
-              ->disabled()
-              ->dehydrated()
-              ->readOnly()
-              ->required(),
-          ])
-          ->createOptionAction(function (Forms\Components\Actions\Action $action) {
-            return $action
-              ->modalHeading('Create Tag')
-              ->modalWidth('lg');
-          })
-          ->columnSpanFull(),
+        Grid::make(2)
+          ->schema([
+            Grid::make()
+              ->schema([
+                Select::make('user_id')
+                  ->label('Author')
+                  ->relationship('author', 'name')
+                  ->native(false)
+                  ->preload()
+                  ->default(fn() => auth()->user()->hasRole('super_admin') ? null : auth()->id())
+                  ->required()
+                  ->disabled(fn() => ! auth()->user()->hasRole('super_admin'))
+                  ->dehydrated(),
+                Select::make('news_category_id')
+                  ->relationship(name: 'category', titleAttribute: 'title')
+                  ->native(false)
+                  ->createOptionForm([
+                    Textarea::make('title')
+                      ->autosize()
+                      ->rows(1)
+                      ->label('Judul')
+                      ->maxLength(250)
+                      ->live(onBlur: true)
+                      ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                      ->required(),
+                    TextInput::make('slug')
+                      ->label('Slug')
+                      ->placeholder('Slug')
+                      ->unique(ignoreRecord: true)
+                      ->disabled()
+                      ->dehydrated()
+                      ->readOnly()
+                      ->required(),
+                  ])
+                  ->required()
+                  ->label('Kategori Berita'),
+                DatePicker::make('published_at')
+                  ->label('Tanggal Publikasi')
+                  ->native(false)
+                  ->displayFormat('d F Y')
+                  ->default(today())
+                  ->required(),
+                Textarea::make('title')
+                  ->autosize()
+                  ->rows(1)
+                  ->label('Judul')
+                  ->maxLength(250)
+                  ->helperText('Maksimal 250 Karakter')
+                  ->live(onBlur: true)
+                  ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                  ->required(),
+                TextInput::make('slug')
+                  ->label('Slug')
+                  ->placeholder('Slug')
+                  ->unique(ignoreRecord: true)
+                  ->disabled()
+                  ->dehydrated()
+                  ->readOnly()
+                  ->required(),
+                Select::make('tags')
+                  ->searchable()
+                  ->preload()
+                  ->label('Topik')
+                  ->helperText('Max: 5 Tag')
+                  ->multiple()
+                  ->maxItems(5)
+                  ->relationship(
+                    name: 'tags',
+                    titleAttribute: 'name',
+                  )
+                  ->createOptionForm([
+                    TextInput::make('name')
+                      ->label('Tag')
+                      ->placeholder('Tag')
+                      ->maxLength(30)
+                      ->helperText('Max: 30 Karakter')
+                      ->live(onBlur: true)
+                      ->unique()
+                      ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
+                    TextInput::make('slug')
+                      ->label('Slug')
+                      ->placeholder('Slug')
+                      ->unique(ignoreRecord: true)
+                      ->disabled()
+                      ->dehydrated()
+                      ->readOnly()
+                      ->required(),
+                  ])
+              ])
+              ->columnSpan(1)
+              ->columns(1),
+            Grid::make()
+              ->schema([
+                Repeater::make('images')
+                  ->label('Gambar Sampul')
+                  ->schema([
+                    FileUpload::make('file_images')
+                      ->label('Gambar')
+                      ->maxSize(500)
+                      ->directory('news/' . now()->format('Y-m'))
+                      ->image()
+                      ->imageEditor()
+                      ->openable()
+                      ->downloadable()
+                      ->helperText('Maks Size: 500KB')
+                      ->required(),
+                    Textarea::make('description')
+                      ->label('Deskripsi')
+                      ->autosize()->rows(1),
+                  ])
+                  ->reorderable()
+                  ->required(),
+              ])
+              ->columnSpan(1)
+              ->columns(1),
+          ]),
         RichEditor::make('content')
           ->label('Konten')
           ->maxLength(5000)
@@ -148,7 +163,140 @@ class NewsResource extends Resource
           ->required()
           ->columnSpanFull(),
 
+
       ]);
+    // return $form
+    //   ->schema([
+    //     Select::make('user_id')
+    //       ->label('Author')
+    //       ->relationship('author', 'name')
+    //       ->native(false)
+    //       ->preload()
+    //       ->default(fn() => auth()->user()->hasRole('super_admin') ? null : auth()->id())
+    //       ->required()
+    //       ->disabled(fn() => ! auth()->user()->hasRole('super_admin'))
+    //       ->dehydrated(),
+    //     DatePicker::make('published_at')
+    //       ->label('Tanggal Publikasi')
+    //       ->native(false)
+    //       ->displayFormat('d F Y')
+    //       ->default(today())
+    //       ->required(),
+    //     Select::make('news_category_id')
+    //       ->relationship(name: 'category', titleAttribute: 'title')
+    //       ->native(false)
+    //       ->createOptionForm([
+    //         Textarea::make('title')
+    //           ->autosize()
+    //           ->rows(1)
+    //           ->label('Judul')
+    //           ->maxLength(250)
+    //           ->live(onBlur: true)
+    //           ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
+    //           ->required(),
+    //         TextInput::make('slug')
+    //           ->label('Slug')
+    //           ->placeholder('Slug')
+    //           ->unique(ignoreRecord: true)
+    //           ->disabled()
+    //           ->dehydrated()
+    //           ->readOnly()
+    //           ->required(),
+    //       ])
+    //       ->required()
+    //       ->label('Kategori Berita'),
+
+    //     Textarea::make('title')
+    //       ->autosize()
+    //       ->rows(1)
+    //       ->label('Judul')
+    //       ->maxLength(250)
+    //       ->helperText('Maksimal 250 Karakter')
+    //       ->live(onBlur: true)
+    //       ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
+    //       ->required(),
+    //     Repeater::make('images')
+    //       ->label('Gambar Sampul')
+    //       ->schema([
+    //         FileUpload::make('file_images')
+    //           ->label('Gambar')
+    //           ->maxSize(500)
+    //           ->directory('news/' . now()->format('Y-m'))
+    //           ->image()
+    //           ->imageEditor()
+    //           ->openable()
+    //           ->downloadable()
+    //           ->helperText('Maks Size: 500KB')
+    //           ->required(),
+    //         Textarea::make('description')
+    //           ->label('Deskripsi')
+    //           ->autosize()->rows(1),
+    //       ])
+    //       ->required(),
+    //     // FileUpload::make('images')
+    //     //   ->label('Gambar')
+    //     //   ->image()
+    //     //   ->directory('news/' . now()->format('Y-m'))
+    //     //   ->imagePreviewHeight('150')
+    //     //   ->maxSize(512)
+    //     //   ->multiple()
+    //     //   ->maxFiles(5)
+    //     //   ->helperText('Max File: 5, Size: 500KB')
+    //     //   ->reorderable()
+    //     //   ->required(),
+    //     TextInput::make('slug')
+    //       ->label('Slug')
+    //       ->placeholder('Slug')
+    //       ->unique(ignoreRecord: true)
+    //       ->disabled()
+    //       ->dehydrated()
+    //       ->readOnly()
+    //       ->required(),
+    //     Select::make('tags')
+    //       ->searchable()
+    //       ->preload()
+    //       ->label('Topik')
+    //       ->helperText('Max: 5 Tag')
+    //       ->multiple()
+    //       ->maxItems(5)
+    //       ->relationship(
+    //         name: 'tags',
+    //         titleAttribute: 'name',
+    //       )
+    //       ->createOptionForm([
+    //         TextInput::make('name')
+    //           ->label('Tag')
+    //           ->placeholder('Tag')
+    //           ->maxLength(30)
+    //           ->helperText('Max: 30 Karakter')
+    //           ->live(onBlur: true)
+    //           ->unique()
+    //           ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
+    //         TextInput::make('slug')
+    //           ->label('Slug')
+    //           ->placeholder('Slug')
+    //           ->unique(ignoreRecord: true)
+    //           ->disabled()
+    //           ->dehydrated()
+    //           ->readOnly()
+    //           ->required(),
+    //       ])
+    //       ->createOptionAction(function (Forms\Components\Actions\Action $action) {
+    //         return $action
+    //           ->modalHeading('Create Tag')
+    //           ->modalWidth('lg');
+    //       })
+    //       ->columnSpanFull(),
+    //     RichEditor::make('content')
+    //       ->label('Konten')
+    //       ->maxLength(5000)
+    //       ->disableToolbarButtons([
+    //         'codeBlock',
+    //       ])
+    //       ->required()
+    //       ->columnSpanFull(),
+
+    //   ]);
   }
 
   public static function table(Table $table): Table
