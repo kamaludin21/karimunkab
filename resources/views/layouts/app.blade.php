@@ -12,7 +12,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="canonical" href="https://karimunkab.go.id/">
-  <title>Pemerintah Kabupaten Karimun | Berhasil</title>
+  <title>Pemerintah Kabupaten Karimun</title>
 
   @vite(['resources/css/app.css', 'resources/js/app.js'])
   <!-- Google tag (gtag.js) -->
