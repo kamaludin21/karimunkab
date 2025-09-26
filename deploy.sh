@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 APP_DIR="/var/www/karimunkab"
 
 cd $APP_DIR || exit
