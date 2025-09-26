@@ -24,7 +24,8 @@ class DeployController extends Controller
     Log::info('GitHub Webhook Triggered', $request->all());
 
     // Jalankan script deploy (asynchronous via queue / job lebih bagus)
-    shell_exec('/var/www/karimunkab/deploy.sh > /dev/null 2>&1 &');
+    // shell_exec('/var/www/karimunkab/deploy.sh > /dev/null 2>&1 &');
+    shell_exec('/var/www/karimunkab/deploy.sh >> /var/www/karimunkab/deploy.log 2>&1 &');
 
     return response()->json(['status' => 'deploy started']);
   }
