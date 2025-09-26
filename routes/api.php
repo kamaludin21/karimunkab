@@ -7,4 +7,4 @@ use App\Http\Controllers\DeployController;
 //     return phpinfo();
 // });
 
-// Route::post('/webhook/deploy', [DeployController::class, 'handle']);
+Route::post('/webhook/deploy', [DeployController::class, 'handle']);
