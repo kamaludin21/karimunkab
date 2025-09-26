@@ -46,6 +46,7 @@ class News extends Model
 
   public function getImageUrlAttribute()
   {
-    return asset('storage/' . ($this->images[0] ?? 'img/default.jpg'));
+    $firstImage = $this->images[0]['file_images'] ?? null;
+    return asset('storage/' . ($firstImage ?: 'img/default.jpg'));
   }
 }
