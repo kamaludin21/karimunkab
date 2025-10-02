@@ -9,7 +9,7 @@
     <div class="max-w-screen-lg mx-auto w-full space-y-6 py-6 md:py-10">
       {{-- Breadcrumbs --}}
       <div class="px-2 lg:px-0 py-2 w-full flex gap-0.5 items-center text-slate-500 overflow-hidden text-sm">
-        <a href="/publikasi-dokumen" class="flex gap-1 items-center hover:underline cursor-pointer">
+        <a href="/publikasi-dokumen" class="flex gap-1 items-center hover:underline cursor-pointer whitespace-nowrap">
           <span>Publikasi Dokumen</span>
         </a>
         <div>
