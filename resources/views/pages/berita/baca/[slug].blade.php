@@ -37,7 +37,7 @@
           </svg>
         </div>
         <a href="javascript:void(0)" class="flex gap-1 items-center hover:underline cursor-pointer text-slate-700">
-          <span class="line-clamp-1">{{ substr($news->title, 0, 25) }}...</span>
+          <span class="line-clamp-1">{{ $news->title }}</span>
         </a>
       </div>
       {{-- Breadcrumbs --}}
@@ -69,22 +69,23 @@
               <p class="text-sm line-clamp-1">{{ $news->published_at->isoFormat('dddd, D MMMM Y') }}</p>
             </div>
           </div>
-          <div class="gap-1 hover:bg-slate-800 hover:text-white cursor-pointer p-1 rounded select-none">
-            <button onclick="openModal('shareModal')" class="flex items-center gap-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-share">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M6 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-                <path d="M18 6m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-                <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-                <path d="M8.7 10.7l6.6 -3.4" />
-                <path d="M8.7 13.3l6.6 3.4" />
-              </svg>
-              <span class="text-sm font-light">Bagikan</span>
-            </button>
-          </div>
-          <x-commons.modal id="shareModal" title="Bagikan Berita" :show="false">
+          <button onclick="openModal('shareNews')" aria-label="Bagikan"
+            class="flex items-center gap-1 py-1 px-1.5 rounded-lg text-sm font-light cursor-pointer select-none
+         hover:bg-slate-800 hover:text-white transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="w-5 h-5">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M6 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+              <path d="M18 6m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+              <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+              <path d="M8.7 10.7l6.6 -3.4" />
+              <path d="M8.7 13.3l6.6 3.4" />
+            </svg>
+            <span>Bagikan</span>
+          </button>
+
+          <x-commons.modal id="shareNews" title="Bagikan Berita" :show="false">
             <x-partials.share :url="url()->current()" :title="$news->title" />
           </x-commons.modal>
         </div>

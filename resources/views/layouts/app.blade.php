@@ -15,17 +15,7 @@
   <title>Pemerintah Kabupaten Karimun</title>
 
   @vite(['resources/css/app.css', 'resources/js/app.js'])
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0M07HYF89"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'G-S0M07HYF89');
-  </script>
-
+  <x-partials.gtag />
   {{-- Meta --}}
   <meta name="title" content="Pemerintah Kabupaten Karimun - Informasi Resmi & Layanan Publik">
   <meta name="description"
@@ -70,4 +60,5 @@
   <div class="w-full bg-slate-800 py-1">
     <p class="font-light text-center text-sm text-slate-100">DISKOMINFO &copy; 2025 Hak cipta dilindungi</p>
   </div>
+  @stack('scripts')
 </body>

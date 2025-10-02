@@ -5,18 +5,16 @@
   $categoryList = NewsCategory::get();
   $category = NewsCategory::where('slug', $category)->firstOrFail();
   $news = News::where('news_category_id', $category->id)->orderBy('published_at', 'desc')->paginate(9);
-
 @endphp
 
 @extends('layouts.app', ['activePage' => 'berita'])
-
 
 @section('content')
   <div class="max-w-screen-lg mx-auto w-full mb-16">
     <div class="px-2 md:px-6 rounded-none md:rounded-lg my-0 md:my-6 py-4 md:py-8 dot-pattern">
       <p class="text-3xl md:text-5xl font-semibold text-slate-100 font-header">Berita Karimun</p>
     </div>
-    <section class=" space-y-4 py-4 md:py-2 px-2 lg:px-0">
+    <section class="space-y-4 py-4 md:py-2 px-2 lg:px-0">
       <x-commons.category-tabs :categories="$categoryList" />
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-14 w-full">
         @forelse ($news as $item)
@@ -34,15 +32,13 @@
           </div>
         @empty
             <p class="col-span-full py-10 text-center text-slate-500">Belum ada berita</p>
-
         @endforelse
       </div>
 
-      {{-- Custom Pagination --}}
+      {{-- Pagination --}}
       @if ($news->hasPages())
         <div class="flex border-t border-slate-200 pt-6 justify-between items-center">
           <ul class="flex items-center gap-4 text-lg font-medium">
-            {{-- Page Links --}}
             @php
               $start = max(1, $news->currentPage() - 2);
               $end = min($news->lastPage(), $news->currentPage() + 2);
@@ -87,8 +83,6 @@
               </li>
             @endif
           </ul>
-
-          {{-- Arrow buttons (duplicate optional) --}}
           <div class="flex gap-2">
             <a href="{{ $news->previousPageUrl() }}"
               class="{{ $news->onFirstPage() ? 'pointer-events-none text-slate-300' : 'hover:text-slate-600 text-slate-500' }} bg-white hover:bg-slate-200 rounded p-1 ring-1 ring-zinc-300">
@@ -107,8 +101,6 @@
           </div>
         </div>
       @endif
-
     </section>
-
   </div>
 @endsection
