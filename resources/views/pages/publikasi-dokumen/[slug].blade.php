@@ -68,7 +68,10 @@
           </div>
 
           <div class="flex flex-col md:flex-row gap-2 font-medium pt-4">
-            <a href="javascript:void(0)"
+            <x-commons.modal id="shareDocument" title="Bagikan Berita" :show="false">
+              <x-partials.share :url="url()->current()" :title="$document->title" />
+            </x-commons.modal>
+            <button onclick="openModal('shareDocument')"
               class="text-white gap-1 bg-orange-600 p-2 flex-0 rounded-lg active:scale-95 flex items-center justify-center">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round" class="h-6 w-auto">
@@ -79,7 +82,7 @@
                 <path d="M8.7 10.7l6.6 -3.4" />
                 <path d="M8.7 13.3l6.6 3.4" />
               </svg>
-            </a>
+            </button>
             <a href="{{ asset('storage/' . $document->file) }}" download
               class="flex items-center justify-center gap-1 border border-slate-400 text-slate-600 py-1.5 px-2 flex-1 rounded-lg active:scale-95 hover:bg-slate-200 duration-200">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
