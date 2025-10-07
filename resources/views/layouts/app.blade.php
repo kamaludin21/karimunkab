@@ -35,9 +35,8 @@
   @yield('ogcard', view('components.partials.og-card'))
 </head>
 
-<body class="bg-white font-sans antialiased">
-  @stack('popup')
-  <x-navigation.nav :activePage="$activePage" />
+<body class="font-sans antialiased">
+  <x-navigation.nav :activePage="$activePage ?? null" />
   <main class="bg-white">
     @yield('content')
   </main>

@@ -10,6 +10,9 @@
 @extends('layouts.app', ['activePage' => 'beranda'])
 
 @section('content')
+  <x-commons.modal id="popup" title="Bagikan Berita" :show="$popup->count()">
+    <x-commons.popup :popup="$popup" />
+  </x-commons.modal>
   <x-sections.hero />
   <x-sections.link :links="$links" />
   <x-sections.berita :news="$news" />
@@ -19,5 +22,3 @@
   <x-sections.kabar-opd number="6" />
   <x-sections.kontak />
 @endsection
-
-<x-commons.popup :popup="$popup" />
