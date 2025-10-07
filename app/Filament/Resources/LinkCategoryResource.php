@@ -21,6 +21,7 @@ class LinkCategoryResource extends Resource
   protected static ?string $model = LinkCategory::class;
   protected static ?string $navigationParentItem = 'Tautan';
   protected static ?string $navigationLabel = 'Kategori Tautan';
+  protected static ?string $navigationGroup = 'Rilis Informasi';
 
   public static function form(Form $form): Form
   {

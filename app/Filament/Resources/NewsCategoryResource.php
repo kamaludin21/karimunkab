@@ -22,6 +22,7 @@ class NewsCategoryResource extends Resource
   protected static ?string $model = NewsCategory::class;
   protected static ?string $navigationParentItem = 'Berita';
   protected static ?string $navigationLabel = 'Kategori Berita';
+  protected static ?string $navigationGroup = 'Rilis Informasi';
 
   public static function form(Form $form): Form
   {

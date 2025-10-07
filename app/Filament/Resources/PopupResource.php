@@ -27,6 +27,7 @@ class PopupResource extends Resource
   protected static ?int $navigationSort = 6;
   protected static ?string $model = Popup::class;
   protected static ?string $navigationIcon = 'heroicon-o-hand-raised';
+  protected static ?string $navigationGroup = 'Rilis Informasi';
 
   public static function form(Form $form): Form
   {
