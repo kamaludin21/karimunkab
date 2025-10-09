@@ -68,6 +68,12 @@ class AdminPanelProvider extends PanelProvider
           ->shouldShowEmailForm()
           ->shouldShowDeleteAccountForm(false)
           ->shouldShowBrowserSessionsForm()
-      ]);
+      ])
+      ->navigationGroups([
+        'Rilis Informasi',
+        'Data Master',
+        'User Management',
+      ])
+      ->sidebarCollapsibleOnDesktop();
   }
 }
