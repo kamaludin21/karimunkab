@@ -23,6 +23,7 @@ class InstituteResource extends Resource
 
   protected static ?string $navigationIcon = 'heroicon-o-building-library';
   protected static ?string $navigationLabel = 'Institusi/Lembaga';
+  protected static ?string $navigationGroup = 'Data Master';
 
   public static function form(Form $form): Form
   {
