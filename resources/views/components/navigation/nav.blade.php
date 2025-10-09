@@ -1,4 +1,4 @@
-@props(['activePage'])
+@props(['activePage' => null])
 
 <nav x-data="{ mobileOpen: false }" class="bg-white sticky top-0 z-50 shadow">
   <div class="max-w-screen-lg px-2 lg:px-0 flex items-center justify-between mx-auto w-full py-2">
@@ -23,7 +23,6 @@
           <path d="M4 12l16 0" />
           <path d="M4 18l16 0" />
         </svg>
-        {{-- Switch this icon when reverse status --}}
         <svg x-show="mobileOpen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round" class="text-slate-600 group-hover:text-white h-6 w-6">
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -182,76 +181,5 @@
         </svg>
       </a>
     </div>
-
-
   </div>
 </nav>
-
-{{-- <a href="/" class="w-full text-lg font-base flex justify-between hover:bg-slate-100 p-2 group">
-      <span class="group-hover:text-slate-800">Beranda</span>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-        class="h-8 w-8 rotate-45 group-hover:rotate-90 duration-200 text-slate-400 group-hover:text-slate-800">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path d="M12 5l0 14" />
-        <path d="M18 11l-6 -6" />
-        <path d="M6 11l6 -6" />
-      </svg>
-    </a>
-    <a href="/berita" class="w-full text-lg font-base flex justify-between hover:bg-slate-100 p-2 group">
-      <span class="group-hover:text-slate-800">Berita</span>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-        class="h-8 w-8 rotate-45 group-hover:rotate-90 duration-200 text-slate-400 group-hover:text-slate-800">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path d="M12 5l0 14" />
-        <path d="M18 11l-6 -6" />
-        <path d="M6 11l6 -6" />
-      </svg>
-    </a>
-    <div class="p-2">
-      <a href="javascript:void(0)" class="w-full text-lg font-base flex justify-between hover:bg-slate-100  group">
-        <span class="group-hover:text-slate-800">Informasi Publik </span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-          stroke-linejoin="round" class="h-8 w-8 duration-200 text-slate-400 group-hover:text-slate-800">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M6 9l6 6l6 -6" />
-        </svg>
-      </a>
-      <ul class="text-slate-500 space-y-2 w-full border-l-1 border-slate-200">
-        <a href="/pengumuman" class="active:scale-95">
-          <li class="p-1 hover:bg-slate-200">
-            Pengumuman
-          </li>
-        </a>
-        <li class="p-1 hover:bg-slate-200">
-          <a href="/nomor-penting">Nomor Penting</a>
-        </li>
-        <li class="p-1 hover:bg-slate-200">
-          <a href="/publikasi-dokumen">Publikasi Dokumen</a>
-        </li>
-      </ul>
-    </div>
-    <a href="/tautan-aplikasi" class="w-full text-lg font-base flex justify-between hover:bg-slate-100 p-2 group">
-      <span class="group-hover:text-slate-800">Tautan Aplikasi</span>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-        class="h-8 w-8 rotate-45 group-hover:rotate-90 duration-200 text-slate-400 group-hover:text-slate-800">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path d="M12 5l0 14" />
-        <path d="M18 11l-6 -6" />
-        <path d="M6 11l6 -6" />
-      </svg>
-    </a>
-    <a href="https://ppid.karimunkab.go.id/" target="_blank"
-      class="w-full text-lg font-base flex justify-between hover:bg-slate-100 p-2 group">
-      <span class="group-hover:text-slate-800">PPID</span>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-        class="h-8 w-8 rotate-45 group-hover:rotate-90 duration-200 text-slate-400 group-hover:text-slate-800">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path d="M12 5l0 14" />
-        <path d="M18 11l-6 -6" />
-        <path d="M6 11l6 -6" />
-      </svg>
-    </a> --}}
