@@ -10,18 +10,18 @@
     <div class="px-2 md:px-6 rounded-none md:rounded-lg my-0 md:my-6 py-4 md:py-8 dot-pattern">
       <p class="text-3xl md:text-5xl font-semibold text-slate-100 font-header">Berita Karimun</p>
     </div>
-    <section class=" space-y-4 py-4 md:py-2 px-2 lg:px-0 overflow-hidden">
+    <section class=" space-y-4 py-4 md:py-2 px-2 lg:px-0">
       <x-commons.category-tabs :categories="$category" />
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         @forelse ($news as $item)
-          <div class="rounded-lg group space-y-2">
+          <div class="rounded-lg group space-y-3">
             <img src="{{ asset($item->image_url) }}"
-              class="w-full min-h-32 h-44 duration-200 object-cover rounded-lg ring-1 ring-zinc-300 shadow-md hover:shadow-lg"
+              class="w-full min-h-32 h-44 duration-200 object-cover rounded-lg ring-1 ring-zinc-300 hover:shadow-lg"
               alt="{{ $item->title }}">
-            <div class="space-y-0">
-              <p class="text-slate-600 text-sm">{{ $item->published_at->isoFormat('D MMMM Y') }}</p>
+            <div class="space-y-1">
+              <p class="text-slate-600 text-sm ">{{ $item->published_at->isoFormat('D MMMM Y') }}</p>
               <a href="/berita/baca/{{ $item->slug }}"
-                class="text-lg font-medium text-slate-600 hover:underline underline-offset-2 cursor-pointer hover:text-orange-600 line-clamp-3">
+                class="text-lg font-medium text-slate-700 hover:underline underline-offset-2 cursor-pointer hover:text-orange-600 line-clamp-3">
                 {{ $item->title }}
               </a>
             </div>

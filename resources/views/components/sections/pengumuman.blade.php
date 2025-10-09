@@ -1,7 +1,7 @@
 @props(['announcements'])
 
 <section class="w-full bg-white py-10 md:py-20">
-  <div class="max-w-screen-lg px-2 bg-white mx-auto gap-2 grid grid-cols-1 lg:grid-cols-2 gap-8">
+  <div class="max-w-screen-lg px-2 lg:px-0 bg-white mx-auto gap-2 grid grid-cols-1 lg:grid-cols-2 gap-8">
     <div class="space-y-2">
       <p class="text-3xl md:text-4xl font-semibold font-heading text-slate-700">Pengumuman</p>
       <a href="/pengumuman"

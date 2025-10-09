@@ -1,6 +1,6 @@
  {{-- Kontak Karimun --}}
  <section class="w-full bg-slate-100 py-20">
-   <div class="max-w-screen-lg mx-auto grid gap-2 px-2">
+   <div class="max-w-screen-lg mx-auto grid gap-2 px-2 lg:px-0">
      {{-- <div class="pb-8">
        <p class="text-3xl md:text-5xl font-medium text-slate-700">Lokasi</p>
      </div> --}}

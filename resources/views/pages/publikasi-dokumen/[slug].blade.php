@@ -13,7 +13,7 @@
 @extends('layouts.app', ['activePage' => 'informasi-publik'])
 
 @section('content')
-  <section class="max-w-screen-lg mx-auto w-full py-0 lg:py-6 space-y-6 ">
+  <section class="max-w-screen-lg mx-auto w-full py-0 lg:py-6 space-y-6 mb-16">
     <div class="px-2 md:px-6 rounded-none lg:rounded-lg py-4 md:py-8 dot-pattern">
       <p class="text-3xl md:text-5xl font-semibold text-slate-100 font-header">Publikasi Dokumen</p>
     </div>

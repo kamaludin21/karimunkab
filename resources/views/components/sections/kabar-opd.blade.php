@@ -2,7 +2,7 @@
 
 {{-- Kabar OPD --}}
 <section class="w-full grid-pattern py-10 md:py-28">
-  <div class="max-w-screen-lg px-2 mx-auto grid gap-10">
+  <div class="max-w-screen-lg px-2 lg:px-0 mx-auto grid gap-10">
     <p class="text-3xl md:text-4xl font-heading font-semibold text-slate-50">Kabar OPD</p>
     <div id="kabar-opd-list" class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
       @for ($i = 0; $i < $number; $i++)
