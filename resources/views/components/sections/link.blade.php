@@ -7,7 +7,7 @@
         class="relative grid min-w-40 flex-1 grid-cols-none content-end rounded-none border border-slate-300 bg-white p-1 md:w-1/4 md:min-w-0 md:flex-none md:rounded-3xl">
         <a href="{{ $link->url }}" target="_blank"
           class="group absolute top-1 right-1 w-fit cursor-pointer justify-items-end rounded-lg bg-slate-200 p-1.5 duration-200 hover:bg-orange-600 md:rounded-full md:p-2">
-          <x-icons.arrow-right
+          <x-icons.arrow-up
             class="h-6 w-auto rotate-45 stroke-1 duration-200 group-hover:rotate-90 group-hover:text-white md:h-8 md:stroke-2" />
         </a>
         <div class="grid gap-2 p-2 md:p-3">
