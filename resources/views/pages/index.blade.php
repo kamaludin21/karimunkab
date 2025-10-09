@@ -10,7 +10,7 @@
 @extends('layouts.app', ['activePage' => 'beranda'])
 
 @section('content')
-  <x-commons.modal id="popup" title="Bagikan Berita" :show="$popup->count()">
+  <x-commons.modal id="popup" title="Pop Up" :show="$popup->count()">
     <x-commons.popup :popup="$popup" />
   </x-commons.modal>
   <x-sections.hero />
