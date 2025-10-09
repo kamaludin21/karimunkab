@@ -251,5 +251,5 @@
 @endsection
 
 @push('scripts')
-  @vite(['resources/js/pdf.js', 'resources/js/previewPdf.js'])
+  @vite(['resources/js/pdf.js'])
 @endpush
