@@ -22,6 +22,7 @@ class User extends Authenticatable implements FilamentUser
    * @var list<string>
    */
   protected $fillable = [
+    'institute_id',
     'name',
     'email',
     'password',
@@ -59,5 +60,10 @@ class User extends Authenticatable implements FilamentUser
   public function news()
   {
     return $this->hasMany(News::class, 'user_id');
+  }
+
+  public function institute()
+  {
+    return $this->belongsTo(Institute::class);
   }
 }

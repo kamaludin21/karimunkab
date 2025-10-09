@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
+use App\Models\Institute;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -29,6 +30,12 @@ class UserResource extends Resource
   {
     return $form
       ->schema([
+        Select::make('institute_id')
+          ->label('Institusi')
+          ->options(Institute::all()->pluck('name', 'id'))
+          ->searchable()
+          ->preload()
+          ->native(false),
         TextInput::make('name')
           ->label('Nama')
           ->required(),
@@ -59,6 +66,9 @@ class UserResource extends Resource
         TextColumn::make('order')
           ->label('No.')
           ->rowIndex(),
+        TextColumn::make('institute.alias')
+          ->label('Institusi')
+          ->searchable(),
         TextColumn::make('name')
           ->label('Nama')
           ->searchable(),
