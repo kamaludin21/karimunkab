@@ -32,15 +32,17 @@ class DocumentResource extends Resource
   {
     return $form
       ->schema([
-        Select::make('user_id')
+        Select::make('institute_id')
           ->label('Author')
-          ->relationship('author', 'name')
+          ->relationship('institute', 'name')
           ->native(false)
           ->preload()
-          ->default(fn() => auth()->user()->hasRole('super_admin') ? null : auth()->id())
           ->required()
-          ->disabled(fn() => ! auth()->user()->hasRole('super_admin'))
-          ->dehydrated(),
+          ->dehydrated()
+          ->default(fn() => auth()->user()->hasRole('super_admin')
+            ? null
+            : auth()->user()->institute_id)
+          ->disabled(fn() => ! auth()->user()->hasRole('super_admin')),
         DatePicker::make('published_at')
           ->label('Tanggal Publikasi')
           ->native(false)
@@ -93,14 +95,14 @@ class DocumentResource extends Resource
       ->modifyQueryUsing(function (Builder $query) {
         $user = auth()->user();
         if (! $user->hasRole('super_admin')) {
-          $query->where('user_id', $user->id);
+          $query->where('institute_id', $user->institute->id);
         }
       })
       ->columns([
         TextColumn::make('index')
           ->label('No.')
           ->rowIndex(),
-        TextColumn::make('author.name')
+        TextColumn::make('institute.alias')
           ->label('Author')
           ->toggleable(),
         TextColumn::make('title')
@@ -130,8 +132,8 @@ class DocumentResource extends Resource
       ])
       ->defaultSort('published_at', 'desc')
       ->filters([
-        Tables\Filters\SelectFilter::make('author')
-          ->relationship('author', 'name')
+        Tables\Filters\SelectFilter::make('institute')
+          ->relationship('institute', 'alias')
           ->native(false)
           ->multiple()
           ->preload()

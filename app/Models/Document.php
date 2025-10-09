@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\File;
 class Document extends Model
 {
   protected $fillable = [
-    'user_id',
+    'institute_id',
     'title',
     'slug',
     'file',
@@ -21,10 +21,11 @@ class Document extends Model
     'published_at' => 'date',
   ];
 
-  public function author(): BelongsTo
+  public function institute(): BelongsTo
   {
-    return $this->belongsTo(User::class, 'user_id');
+    return $this->belongsTo(Institute::class);
   }
+
   public function getSizeAttribute()
   {
     try {
