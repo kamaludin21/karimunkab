@@ -19,9 +19,9 @@ use Filament\Tables\Columns\TextColumn;
 class LinkCategoryResource extends Resource
 {
   protected static ?string $model = LinkCategory::class;
-  protected static ?string $navigationParentItem = 'Tautan';
+  protected static ?string $navigationIcon = 'heroicon-o-swatch';
   protected static ?string $navigationLabel = 'Kategori Tautan';
-  protected static ?string $navigationGroup = 'Rilis Informasi';
+  protected static ?string $navigationGroup = 'Data Master';
 
   public static function form(Form $form): Form
   {
