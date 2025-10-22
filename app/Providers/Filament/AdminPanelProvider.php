@@ -70,6 +70,7 @@ class AdminPanelProvider extends PanelProvider
           ->shouldShowBrowserSessionsForm()
       ])
       ->navigationGroups([
+        'IPKD',
         'Rilis Informasi',
         'Data Master',
         'User Management',

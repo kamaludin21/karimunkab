@@ -26,6 +26,9 @@ class IpkdDocResource extends Resource
   protected static ?string $model = IpkdDoc::class;
 
   protected static ?string $navigationIcon = 'heroicon-o-chart-bar';
+  protected static ?string $navigationLabel = 'IPKD';
+  protected static ?string $modelLabel = 'IPKD';
+  protected static ?string $navigationGroup = 'IPKD';
 
   public static function form(Form $form): Form
   {

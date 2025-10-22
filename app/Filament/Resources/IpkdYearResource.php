@@ -23,6 +23,9 @@ class IpkdYearResource extends Resource
   protected static ?string $model = IpkdYear::class;
 
   protected static ?string $navigationIcon = 'heroicon-o-calendar';
+  protected static ?string $navigationLabel = 'Tahun IPKD';
+  protected static ?string $modelLabel = 'Tahun IPKD';
+  protected static ?string $navigationGroup = 'IPKD';
 
   public static function form(Form $form): Form
   {
