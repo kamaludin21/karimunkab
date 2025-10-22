@@ -12,7 +12,7 @@
       <div class="text-slate-700 bg-slate-100 pr-8 py-3 text-sm font-bold pl-1 md:pl-0">
         DOKUMEN
       </div>
-      <div class="text-slate-700 py-3 text-sm font-bold text-center md:text-left w-full bg-slate-100 px-1">
+      <div class="text-slate-700 py-3 text-sm font-bold text-center w-full bg-slate-100 px-1">
         <p class="block md:hidden">DETAIL</p>
         <p class="hidden md:block">AUTHOR</p>
       </div>
@@ -24,7 +24,7 @@
       @foreach ($documents as $doc)
         @php
           $year = $doc->published_at?->year;
-          $date = $doc->published_at?->translatedFormat('j F');
+          $date = $doc->published_at?->translatedFormat('d F');
         @endphp
 
         <div class="contents group">
@@ -49,11 +49,12 @@
           </div>
 
           {{-- JUDUL --}}
-          <div class="border-t border-slate-300 pr-8 text-slate-700 flex items-start py-3 grid">
-            <span class="block md:hidden font-medium flex items-center gap-2 text-sm text-slate-500">
-              <p>{{ \Carbon\Carbon::parse($doc->published_at)->isoFormat('D MMMM Y') }}</p>
-              <x-icons.dot class="w-1 h-1" />
-              <p>{{ $doc->institute->alias ?? '-' }}</p>
+          <div class="border-t border-slate-300 pl-1 md:pl-0 pr-8 text-slate-700 flex items-start py-3 grid">
+            <span class="block md:hidden font-medium flex whitespace-nowrap items-center gap-2 text-sm text-slate-500">
+              <p>
+                <span class="hidden md:block">{{ $doc->published_at?->isoFormat('D MMMM Y') ?? '-' }}</span>
+                <span class="block md:hidden">{{ $doc->published_at?->translatedFormat('d M Y') ?? '-' }}</span>
+              </p>
             </span>
             <span class="text-base font-medium line-clamp-2">
               {{ $doc->title }}
@@ -61,24 +62,62 @@
           </div>
 
           {{-- AUTHOR --}}
-          <div
-            class="border-t border-slate-300 text-slate-700 flex gap-2 items-center md:items-start justify-between w-full px-1 py-3">
-            <p class="hidden md:block line-clamp-1">{{ $doc->institute->alias ?? '-' }}</p>
-            {{-- <a href="/publikasi-dokumen/{{ $doc->slug }}"
-              class="text-center hover:bg-slate-100 rounded-sm px-1.5 cursor-pointer hover:scale-105 hover:text-orange-600 duration-200 mx-auto md:mx-0">
-              <svg fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor"
-                class="w-8 h-fit mx-auto">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
-              </svg>
-            </a> --}}
-            <button data-file="{{ asset('storage/' . $doc->file) }}" data-title="{{ $doc->title }}"
-              data-org="{{ $doc->institute->name ?? 'Tidak diketahui' }}"
-              data-date="{{ $doc->published_at?->isoFormat('D MMMM Y') ?? '-' }}"
-              data-size="{{ $doc->size ?? 'Tidak ditemukan' }}" onclick="openPDF(this)"
-              class="active:scale-95 p-2 bg-slate-100 rounded-full focus:outline-none group">
-              <x-icons.text-scan class="h-5 w-auto stroke-2 group-hover:text-orange-400 text-slate-600" />
+          {{-- <div
+            class="flex w-full items-center justify-between gap-2 border-t border-slate-300 px-1 py-3 text-slate-600 md:items-start">
+            <button data-file="{{ asset('storage/' . $doc->file) }}" onclick="openPDF(this)"
+              class="group mx-auto flex cursor-pointer items-center gap-1 rounded-md bg-slate-50 p-1 ring ring-slate-200 hover:bg-slate-100 hover:text-orange-400 focus:outline-none active:scale-95 md:mx-0">
+              <span class="text-xs md:text-sm font-medium">{{ $doc->institute->alias ?? '-' }}</span>
             </button>
+          </div> --}}
+          {{-- TestButtonGroup --}}
+          <div x-data="{ open: false }"
+            class="flex w-full items-center justify-end gap-2 border-t border-slate-300 px-1 py-3 text-slate-600">
+            <div class="relative inline-flex w-fit text-sm text-slate-500">
+              <!-- Tombol utama (instansi) -->
+              <a href="/publikasi-dokumen/skpd/{{ $doc->institute->slug }}" target="_blank"
+                class="cursor-pointer rounded-s-md border-t border-b border-l border-gray-200 bg-white px-1.5 py-1 text-sm font-medium hover:bg-gray-100 hover:text-orange-600 focus:z-10 focus:text-orange-600 focus:ring-1 focus:ring-orange-600 md:px-2">
+                {{ $doc->institute->alias ?? '-' }}
+              </a>
+
+              <!-- Tombol More -->
+              <button @click="open = !open"
+                class="cursor-pointer rounded-e-md border border-gray-200 bg-white p-1 font-medium hover:bg-gray-100 hover:text-orange-600 focus:z-10 focus:text-orange-600 focus:ring-1 focus:ring-orange-600">
+                <x-icons.dots-vertical class="h-4 w-auto stroke-1" />
+              </button>
+
+              <!-- Overlay (klik di luar akan menutup dropdown) -->
+              <div x-show="open" x-cloak @click="open = false" class="fixed inset-0 z-10 bg-slate-800/5"></div>
+
+              <!-- Dropdown menu -->
+              <div x-show="open" x-cloak @click.outside="open = false"
+                x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 translate-y-1"
+                x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-100"
+                x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-1"
+                class="absolute top-full right-0 z-20 mt-1 w-fit rounded-md bg-white ring-1 ring-slate-200 shadow-lg">
+                <div class="grid p-0.5 text-sm text-slate-700">
+                  <a href="/publikasi-dokumen/{{ $doc->slug }}"
+                    class="flex items-center gap-1 rounded-md p-2 hover:bg-slate-100 hover:text-orange-600">
+                    <x-icons.file-dots class="h-auto w-4 stroke-1" />
+                    <span>Selengkapnya</span>
+                  </a>
+
+                  <button data-file="{{ asset('storage/' . $doc->file) }}" onclick="openPDF(this)"
+                    class="flex items-center gap-1 rounded-md p-2 hover:bg-slate-100 hover:text-orange-600">
+                    <x-icons.scan-dots class="h-auto w-4 stroke-2 md:h-5" />
+                    <span>Preview</span>
+                  </button>
+
+                  <a href="{{ asset('storage/' . $doc->file) }}" download
+                    class="flex items-center gap-1 rounded-md p-2 hover:bg-slate-100 hover:text-orange-600">
+                    <x-icons.cloud-download class="h-auto w-4 stroke-2" />
+                    <span>Unduh</span>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
+
+          {{-- TestButtonGroup --}}
         </div>
       @endforeach
     </div>
@@ -91,55 +130,8 @@
     </div>
   </div>
 </section>
-<x-commons.modal id="preview-pdf" title="Show PDF" :show="false">
-  <div x-data="{ tab: 'preview' }" class="min-w-sm md:min-w-md w-full h-[85dvh] rounded-lg overflow-hidden flex flex-col">
-    <div class="flex-1 relative w-full h-full overflow-hidden bg-white">
-      <div x-show="tab === 'preview'" x-transition.opacity x-cloak class="absolute inset-0 w-full h-full"
-        id="viewer"></div>
-      <div x-show="tab === 'info'" x-transition.opacity x-cloak
-        class="absolute inset-0 w-full h-full p-4 overflow-y-auto text-slate-700 bg-white" id="info">
-        <div class="space-y-3 flex-1">
-          <p class="text-lg text-slate-600">Informasi Dokumen</p>
-          <hr class="border-t border-slate-200">
+<x-docs.modal />
 
-          <div>
-            <p class="text-slate-400 text-sm font-medium">Judul</p>
-            <p id="info-title" class="text-base font-medium text-slate-700 leading-6">–</p>
-          </div>
-
-          <div>
-            <p class="text-slate-400 text-sm font-medium">Pemilik</p>
-            <p id="info-org" class="text-base font-medium text-slate-700 leading-6">–</p>
-          </div>
-
-          <div>
-            <p class="text-slate-400 text-sm font-medium">Tanggal Publikasi</p>
-            <p id="info-date" class="text-base font-medium text-slate-700 leading-6">–</p>
-          </div>
-
-          <div>
-            <p class="text-slate-400 text-sm font-medium">Ukuran File</p>
-            <p id="info-size" class="text-base font-medium text-slate-700 leading-6">–</p>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    {{-- === TAB BUTTONS === --}}
-    <div class="min-w-sm md:min-w-md w-full h-fit rounded-b-lg flex p-1 gap-1 border-t border-slate-200 bg-white">
-      <button @click="tab = 'info'" :class="tab === 'info' ? 'bg-orange-600 text-white' : 'border text-slate-600'"
-        class="flex-1 p-2 rounded-md border-slate-300 duration-150">
-        Informasi Dokumen
-      </button>
-      <button @click="tab = 'preview'"
-        :class="tab === 'preview' ? 'bg-orange-600 text-white' : 'border text-slate-600'"
-        class="flex-1 p-2 rounded-md border-slate-300 duration-150">
-        Preview
-      </button>
-    </div>
-  </div>
-</x-commons.modal>
 
 @push('scripts')
   @vite(['resources/js/pdf.js'])

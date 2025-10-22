@@ -15,7 +15,7 @@
   <title>Pemerintah Kabupaten Karimun</title>
 
   @vite(['resources/css/app.css', 'resources/js/app.js'])
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0M07HYF89"></script>
+  {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0M07HYF89"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -24,7 +24,7 @@
     }
     gtag('js', new Date());
     gtag('config', 'G-S0M07HYF89');
-  </script>
+  </script> --}}
 
   {{-- Meta --}}
   <meta name="title" content="Pemerintah Kabupaten Karimun - Informasi Resmi & Layanan Publik">

@@ -19,6 +19,6 @@
   <x-sections.pengumuman :announcements="$announcements" />
   <x-sections.nomor-penting :phones="$phones" />
   <x-sections.publikasi-dokumen :documents="$documents" />
-  <x-sections.kabar-opd number="6" />
+  {{-- <x-sections.kabar-opd number="6" /> --}}
   <x-sections.kontak />
 @endsection

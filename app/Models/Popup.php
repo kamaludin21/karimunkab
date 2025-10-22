@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Popup extends Model
 {
-  protected $fillable = ['order', 'title', 'slug', 'description', 'is_active', 'image'];
   public static function booted()
   {
     static::creating(function ($partner) {
@@ -16,4 +15,6 @@ class Popup extends Model
       }
     });
   }
+
+  protected $fillable = ['order', 'title', 'slug', 'description', 'is_active', 'image'];
 }

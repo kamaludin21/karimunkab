@@ -11,8 +11,11 @@ return new class extends Migration
    */
   public function up(): void
   {
-    Schema::table('documents', function (Blueprint $table) {
-      $table->renameColumn('user_id', 'institute_id');
+    Schema::create('ipkd_years', function (Blueprint $table) {
+      $table->id();
+      $table->string('year', 4)->unique();
+      $table->boolean('is_active');
+      $table->timestamps();
     });
   }
 
@@ -21,8 +24,6 @@ return new class extends Migration
    */
   public function down(): void
   {
-    Schema::table('documents', function (Blueprint $table) {
-      $table->renameColumn('institute_id', 'user_id');
-    });
+    Schema::dropIfExists('ipkd_years');
   }
 };

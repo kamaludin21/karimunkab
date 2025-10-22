@@ -6,8 +6,6 @@
       <a href="/" class="flex gap-6">
         <img src="{{ asset('assets/images/logo_kab.png') }}" class="w-auto h-12 hover:scale-110 duration-200"
           alt="logo_kab">
-        <img src="{{ asset('assets/images/logo_hut.png') }}" class="w-auto h-12 hover:scale-110 duration-200"
-          alt="logo_hut">
         <img src="{{ asset('assets/images/hutri_80.png') }}" class="w-auto h-12 hover:scale-110 duration-200"
           alt="logo_hut">
       </a>
@@ -50,10 +48,11 @@
       <li class="h-full">
         <a href="/"
           class="{{ ($activePage ?? '') === 'beranda' ? 'text-orange-600' : 'hover:text-slate-800  border-transparent' }} flex gap-1 items-center border-b-2 py-2">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+          <svg viewBox="0 0 24 24" fill="currentColor"
+            class="h-5 w-5">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path
-              d="M9 3a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zm10 -4a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 -8a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2z" />
+              d="M10.205 2.6l-6.96 5.238a3 3 0 0 0 -1.045 3.338l2.896 8.765a3 3 0 0 0 2.85 2.059h8.12a3 3 0 0 0 2.841 -2.037l2.973 -8.764a3 3 0 0 0 -1.05 -3.37l-7.033 -5.237l-.091 -.061l-.018 -.01l-.106 -.07a3 3 0 0 0 -3.377 .148z" />
           </svg>
           <span>Beranda</span>
         </a>
@@ -96,9 +95,9 @@
         </a>
       </li>
       <li>
-        <a href="https://ppid.karimunkab.go.id/" target="_blank"
-          class="hover:text-slate-800 border-transparent border-b-2 h-full block hover:border-b-2 py-2 uppercase">
-          PPID
+        <a href="/ipkd"
+          class="{{ ($activePage ?? '') === 'ipkd' ? 'text-orange-600 border-b-2' : 'hover:text-slate-800 border-transparent border-b-2' }} h-full block hover:border-b-2 py-2 uppercase">
+          IPKD
         </a>
       </li>
     </ul>
@@ -168,9 +167,9 @@
           <path d="M6 11l6 -6" />
         </svg>
       </a>
-      <a href="https://ppid.karimunkab.go.id/" target="_blank"
+      <a href="/ipkd"
         class="w-full text-lg font-base flex justify-between hover:bg-slate-100 p-2 group">
-        <span class="group-hover:text-slate-800">PPID</span>
+        <span class="group-hover:text-slate-800">IPKD</span>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
           stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
           class="h-8 w-8 rotate-45 group-hover:rotate-90 duration-200 text-slate-400 group-hover:text-slate-800">

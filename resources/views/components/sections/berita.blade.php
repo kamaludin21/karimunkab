@@ -16,7 +16,7 @@
                   <p>{{ $first->published_at->isoFormat('D MMMM Y') }}</p>
                 </div>
                 <a href="/berita/baca/{{ $first->slug }}"
-                  class="text-2xl md:text-3xl leading-[1.2] font-bold group-hover:text-white text-slate-100 line-clamp-4">
+                  class="text-xl md:text-2xl leading-[1.2] font-bold group-hover:text-white text-slate-100 line-clamp-4">
                   {{ $first->title }}
                 </a>
               </div>
@@ -38,7 +38,7 @@
             @php
               $isSecond = $index === 0;
               $colSpan = $isSecond ? 'col-span-2 flex' : '';
-              $image = $item->image_url ?? '/img/default.jpg';
+              $image = $item->image_url;
             @endphp
 
             @if ($isSecond)
@@ -50,7 +50,7 @@
                       <p>{{ $item->published_at->isoFormat('D MMMM Y') }}</p>
                     </div>
                     <a href="/berita/baca/{{ $item->slug }}"
-                      class=" text-xl leading-[1.2] font-light hover:text-white text-slate-50 line-clamp-3">
+                      class="text-lg leading-[1.2] font-light hover:text-white text-slate-50 line-clamp-3">
                       {{ $item->title }}
                     </a>
                   </div>
@@ -77,7 +77,7 @@
                       <p>{{ $item->published_at->isoFormat('D MMMM Y') }}</p>
                     </div>
                     <a href="/berita/baca/{{ $item->slug }}"
-                      class=" text-xl leading-[1.2] font-light hover:text-white text-white line-clamp-3">
+                      class="text-lg leading-[1.2] font-light hover:text-white text-white line-clamp-3">
                       {{ $item->title }}
                     </a>
                   </div>
@@ -99,12 +99,12 @@
         </div>
       </div>
       <div
-      class="flex md:hidden items-center before:h-px before:flex-1 before:bg-gray-300  before:content-[''] after:h-px after:flex-1 after:bg-gray-300  after:content-['']">
-      <a href="/berita"
-        class="text-slate-600 hover:text-white hover:bg-orange-600 cursor-pointer border border-slate-300 w-fit mx-auto px-3 py-1 rounded-full">
-        Berita Lainnya
-      </a>
-    </div>
+        class="flex md:hidden items-center before:h-px before:flex-1 before:bg-gray-300  before:content-[''] after:h-px after:flex-1 after:bg-gray-300  after:content-['']">
+        <a href="/berita"
+          class="text-slate-600 hover:text-white hover:bg-orange-600 cursor-pointer border border-slate-300 w-fit mx-auto px-3 py-1 rounded-full">
+          Berita Lainnya
+        </a>
+      </div>
     </div>
   </section>
 @endif

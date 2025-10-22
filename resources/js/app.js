@@ -2,10 +2,11 @@ import Alpine from "alpinejs";
 import focus from "@alpinejs/focus";
 
 import "./modal.js";
+import './pdf.js';
 import { share } from "./share";
 import { copyToClipboard } from "./clipboard";
 import { popupSlider } from "./popupSlider";
-import { openPDF, initPreviewPDF } from "./previewPdf";
+// import { openPDF, initPreviewPDF } from "./previewPdf";
 
 window.copyToClipboard = copyToClipboard;
 window.popupSlider = popupSlider;
@@ -25,8 +26,8 @@ Alpine.store("clipboard", {
   },
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  initPreviewPDF();
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   initPreviewPDF();
+// });
 
 Alpine.start();
