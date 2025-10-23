@@ -33,5 +33,5 @@
 @endsection
 
 @push('scripts')
-  @vite(['resources/js/pdf.js'])
+  @vite(['resources/js/objectPDF.js'])
 @endpush
