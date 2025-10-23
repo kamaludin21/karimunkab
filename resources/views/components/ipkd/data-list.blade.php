@@ -3,20 +3,19 @@
 <ul class="py-4 px-2 grid divide-y divide-slate-200 divide-dashed">
   @forelse ($documents as $doc)
     <div class="flex items-center justify-between hover:bg-slate-50 py-2 px-2">
-      <div class="py-2 w-2/3">
+      <div class="py-2 w-full">
         <div class="flex gap-1 whitespace-nowrap items-center">
           <p class="text-xs font-medium text-slate-400">
             <span class="hidden md:block">Dipublikasi: {{ $doc->published_at?->isoFormat('D MMMM Y') ?? '-' }}</span>
             <span class="block md:hidden">Dipublikasi: {{ $doc->published_at?->translatedFormat('d M Y') ?? '-' }}</span>
           </p>
         </div>
-        <p class="text-lg font-medium text-slate-600 line-clamp-1">
+        <a href="/ipkd/detail/{{ $doc->slug }}" class="text-lg font-medium hover:underline text-slate-600 line-clamp-1 w-fit">
           {{ $doc->title }}
-        </p>
+        </a>
       </div>
-      <div x-data="{ open: false }" class="flex w-full items-center justify-end gap-2 px-1 py-3 text-slate-600">
+      <div x-data="{ open: false }" class="flex w-min items-center justify-end gap-2 px-1 py-3 text-slate-600">
         <div class="relative inline-flex w-fit text-sm text-slate-500">
-
           <!-- Tombol More -->
           <button @click="open = !open"
             class="cursor-pointer rounded-md border border-gray-200 bg-white p-1.5 shadow hover:shadow-lg font-medium hover:bg-gray-100 hover:text-orange-600 focus:z-10 focus:text-orange-600 focus:ring-1 focus:ring-orange-600">
@@ -39,7 +38,7 @@
                 <span>Selengkapnya</span>
               </a>
 
-              <button data-file="{{ asset('storage/' . $doc->file) }}" onclick="openPDF(this)"
+              <button data-file="{{ asset('storage/' . $doc->file) }}" onclick="viewPDF(this)"
                 class="flex items-center gap-1 rounded-md p-2 hover:bg-slate-100 hover:text-orange-600">
                 <x-icons.scan-dots class="h-auto w-4 stroke-2 md:h-5" />
                 <span>Preview</span>

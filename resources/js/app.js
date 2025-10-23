@@ -3,6 +3,7 @@ import focus from "@alpinejs/focus";
 
 import "./modal.js";
 import './pdf.js';
+import './objectPDF.js';
 import { share } from "./share";
 import { copyToClipboard } from "./clipboard";
 import { popupSlider } from "./popupSlider";
@@ -12,6 +13,7 @@ window.copyToClipboard = copyToClipboard;
 window.popupSlider = popupSlider;
 window.share = share;
 window.openPDF = openPDF;
+window.viewPDF = viewPDF;
 
 Alpine.plugin(focus);
 window.Alpine = Alpine;

@@ -1,7 +1,6 @@
-window.openPDF = function (button) {
+window.viewPDF = function (button) {
   const file = button.dataset.file;
-  const viewerUrl = `https://docs.google.com/gview?url=${encodeURIComponent(file)}&embedded=true`;
-  document.getElementById("pdf-frame").src = viewerUrl;
+  document.getElementById("pdf-object").data = file;
   if (window.Alpine && Alpine.store("modal")) {
     Alpine.store("modal").open("preview-pdf");
   } else {
