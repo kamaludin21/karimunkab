@@ -3,6 +3,7 @@
     'institutes',
     'documents',
     'headerTitle' => 'Semua Dokumen',
+    'showInstitute'
 ])
 <section class="max-w-screen-lg mx-auto w-full py-0 lg:py-6 space-y-6 min-h-[60vh] mb-16">
   <div class="px-2 md:px-6 rounded-none lg:rounded-lg py-4 md:py-8 dot-pattern">
@@ -31,7 +32,7 @@
           {{ $headerTitle }}
         </p>
       </div>
-      <x-docs.data-list :documents="$documents" show-institute="true" />
+      <x-docs.data-list :documents="$documents" :show-institute="$showInstitute" />
       <x-docs.pagination :documents="$documents" />
     </div>
   </div>

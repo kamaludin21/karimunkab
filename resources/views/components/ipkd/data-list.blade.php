@@ -14,7 +14,7 @@
           {{ $doc->title }}
         </a>
       </div>
-      <div x-data="{ open: false }" class="flex w-min items-center justify-end gap-2 px-1 py-3 text-slate-600">
+      <div x-data="{ open: false }" class="flex w-min items-center justify-end gap-2 px-2 text-slate-600">
         <div class="relative inline-flex w-fit text-sm text-slate-500">
           <!-- Tombol More -->
           <button @click="open = !open"
@@ -23,14 +23,14 @@
           </button>
 
           <!-- Overlay (klik di luar akan menutup dropdown) -->
-          <div x-show="open" x-cloak @click="open = false" class="fixed inset-0 z-10 bg-slate-800/5"></div>
+          <div x-show="open" x-cloak @click="open = false" class="fixed inset-0 z-20 bg-slate-800/5"></div>
 
           <!-- Dropdown menu -->
           <div x-show="open" x-cloak @click.outside="open = false"
             x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 translate-y-1"
             x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-100"
             x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-1"
-            class="absolute top-full right-0 z-20 mt-1 w-fit rounded-md bg-white ring-1 ring-slate-200 shadow-lg">
+            class="absolute top-full right-0 z-30 mt-1 w-fit rounded-md bg-white ring-1 ring-slate-200 shadow-lg">
             <div class="grid p-0.5 text-sm text-slate-700">
               <a href="/ipkd/detail/{{ $doc->slug }}"
                 class="flex items-center gap-1 rounded-md p-2 hover:bg-slate-100 hover:text-orange-600">

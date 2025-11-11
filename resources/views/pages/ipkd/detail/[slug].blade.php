@@ -21,16 +21,7 @@
       {{-- Header --}}
       <div class="px-4 py-5 border-b border-slate-200 flex items-center gap-2 text-slate-600">
         <a href="/ipkd/{{ $activeYear }}" class="p-1 rounded-md bg-slate-100 hover:bg-slate-200">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-            class="h-5 w-auto stroke-2">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M9 6h11" />
-            <path d="M9 12h11" />
-            <path d="M9 18h11" />
-            <path d="M5 6l0 .01" />
-            <path d="M5 12l0 .01" />
-            <path d="M5 18l0 .01" />
-          </svg>
+          <x-icons.bullet-list class="h-5 w-auto stroke-2" />
         </a>
         <p class="text-lg font-medium line-clamp-1">
           Dokumen IPKD Tahun {{ $activeYear }}
@@ -67,7 +58,7 @@
             </div>
             <div>
               <p class="text-sm font-light text-slate-400">Jenis File</p>
-              <p class="text-base font-medium text-slate-500">PDF</p>
+              <p class="text-base font-medium text-slate-500 uppercase">{{ $doc->file_type }}</p>
             </div>
           </div>
 
@@ -85,19 +76,10 @@
               <span x-text="downloading ? 'Sedang memproses...' : 'Download'"></span>
             </a>
           </div>
-
-
-
-
         </div>
 
         {{-- Pratinjau Dokumen --}}
         <div class="w-full md:w-3/5 overflow-hidden min-h-96 h-[85vh] relative">
-          {{-- <div class="absolute inset-0 flex items-center justify-center bg-white text-slate-400 text-sm select-none">
-            Memuat pratinjau dokumen...
-          </div> --}}
-          {{-- <iframe src="https://docs.google.com/gview?url=https://karimunkab.go.id/storage/&embedded=true"
-            class="h-full w-full rounded-none md:rounded-md relative z-10" frameborder="0"></iframe> --}}
           <object class="pdf" data="{{ asset('storage/' . $doc->file) }}" width="100%" height="100%">
           </object>
         </div>

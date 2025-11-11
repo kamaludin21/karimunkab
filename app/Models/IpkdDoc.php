@@ -67,4 +67,19 @@ class IpkdDoc extends Model
   {
     return $this->belongsTo(IpkdYear::class, 'ipkd_year_id');
   }
+
+  public function getFileTypeAttribute()
+  {
+    try {
+      if (Storage::disk('public')->exists($this->file)) {
+        $path = Storage::disk('public')->path($this->file);
+      } else {
+        $path = public_path($this->file);
+      }
+
+      return strtolower(File::extension($path));
+    } catch (\Exception $e) {
+      return null;
+    }
+  }
 }

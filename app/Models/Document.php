@@ -55,4 +55,19 @@ class Document extends Model
       return $bytes . ' bytes';
     }
   }
+
+  public function getFileTypeAttribute()
+  {
+    try {
+      if (Storage::disk('public')->exists($this->file)) {
+        $path = Storage::disk('public')->path($this->file);
+      } else {
+        $path = public_path($this->file);
+      }
+
+      return strtolower(File::extension($path));
+    } catch (\Exception $e) {
+      return null;
+    }
+  }
 }

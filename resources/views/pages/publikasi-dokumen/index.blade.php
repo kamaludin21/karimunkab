@@ -9,7 +9,8 @@
 @extends('layouts.app', ['activePage' => 'informasi-publik'])
 
 @section('content')
-  <x-docs.layout :institutes="$institutes" :documents="$documents" title="Publikasi Dokumen" headerTitle="Semua Dokumen" />
+  <x-docs.layout :institutes="$institutes" :documents="$documents" title="Publikasi Dokumen" headerTitle="Semua Dokumen"
+    :show-institute="true" />
 @endsection
 
 @push('scripts')
